@@ -3,14 +3,6 @@ What Do They Want
 Why Do They Want It
 
 
-Non-logged in user (NLU):
-- As a NLU, I want to be able to view content (Ex: Picture of cover art, name of game, rating, reviews, etc.) so that I can get more info about games.
-
-- As a NLU, I want to be able to have access to a sign up form in order to create an account.
-
-
-
-- As a new user I want to be able to create an account to be able to log in and access my account info and interact with content (ex: write a review, vote up/down).
 
 
 Logged-in user:
@@ -57,59 +49,79 @@ Logged-in user:
 
 ## Good-Games
 
-### Create Game-Shelf
-
-* As a logged in user, I want to be able to post a new Game-Shelf.
-  * When I'm on the `/new-game-shelf` page:
-    * I can name and submit a new Game-Shelf.
-      * So that I can keep my games organized.
-
-### Viewing Games-Shelves
+### Viewing Game-Shelves
 
 * As a logged in user, I want to be able to view a selection of my created Game-Shelves.
-  * When I'm on the `/profile` page:
+  * When I'm on the `/game-shelves` page:
     * I can view all of my created Game-Shelves.
-      * So that I can read and interact with my Game-Shelves.
+      * So that I can see and interact with my Game-Shelves.
 
-* As a logged in user, I want to be able to view a specific Game-Shelf.
-  * When I'm on the `/game-shelf/:id` page:
-    * I can all the games that have been added to that Game-Shelf.
-      * So that I can read and interact with my Games that are on that Game-Shelf.
+### Create And Remove Game-Shelf
 
-* As a logged in user, I want to be able to remove a Game to a Game-Shelf.
+* As a logged in user, I want to be able to post a new Game-Shelf.
+  * When I'm on the `/game-shelves/:id` page:
+    * I can name and submit a new Game-Shelf.
+      * So that I can keep my games and Game-Shelves organized.
+
+* As a logged in user, I want to be able remove a specific Game-Shelf.
+  * When I'm on the `/game-shelves/:id` page:
+    * I can remove that Game-Shelf.
+      * So that I can keep my Games and Game-Shelves organized.
+
+
+### Adding and Removing A Game To/From A Game-Shelf
+
+* As a logged in user, I want to be able to add a Game to one of my Game-Shelves.
+  * When I'm on the `/games/:id` page:
+    * I want to be able to click a button (maybe drop down?) and select the Game-Shelf you want to add the Game to.
+      * So that I can keep my Games and Game-Shelves organized.
+
+* As a logged in user, I want to be able to remove a Game from a Game-Shelf.
   * When I'm on the `/game-shelf/:id/gamesId` page:
-    * I can .
-      * So that I can read and interact with the thoughts and memes of my friends.
+    * I can remove a game from a Game-Shelf.
+      * So that I can keep my games and Game-Shelves organized.
 
-### Viewing Games
+### Viewing Games, Reviews, and Play Status
 
-* As a logged in _or_ logged out user, I want to be able to view a selection of the most recent Games.
-  * When I'm on the `/` page:
-    * I can view the ten most recently posted Games.
-      * So that I can read and interact with the thoughts and memes of my friends.
-
-* As a logged in _or_ logged out user, I want to be able to view a selection of the most recent Games.
+* As a logged in user, I want to be able to view a selection of the most recent Games.
   * When I'm on the `/games` page:
-    * I can view the ten most recently posted Games.
-      * So that I can read and interact with the thoughts and memes of my friends.
+    * I can view the most recently posted Games.
+      * So that I can see and interact with the most recently added Games.
 
-* As a logged in _or_ logged out user, I want to be able to view a specific Game and its associated Game-Reviews.
+* As a logged in user, I want to be able to view a specific Game and its associated Game-Reviews and My Current Play Status (if any).
   * When I'm on the `/games/:id` page:
     * I can view the content of the Game, as well as the associated Game-Reviews.
-      * So that I can read and interact with the thoughts and memes of my friends, and add my own thoughts and memes in the Game-Comments.
+      * So that I can read and interact with the existing reviews of that game, and add my own thoughts in the Game-Reviews.
 
-### Updating FauxTweets
 
-* As a logged in user, I want to be able to edit my FauxTweets by clicking an Edit button associated with the FauxTweet anywhere that FauxTweet appears.
-  * When I'm on the `/fauxtweets`, `/fauxtweets/:id`, or `/users/:id/fauxtweets` pages:
-    * I can click "Edit" to make permanent changes to FauxTweets I have posted.
-      * So that I can fix any errors I make in my FauxTweets.
+### Updating Play Status
 
-### Deleting FauxTweets
+* As a logged in user, I want to be able to view a specific Game and update my current play status of that Game.
+  * When I'm on the `/games/:id` page:
+    * I click a drop down and select a status from a set list: "Played, Currently Playing, Want to Play".
+      * So that I can keep track what games I have played, want to play, and am currently playing.
 
-* As a logged in user, I want to be able to delete my FauxTweets by clicking a Delete button associated with the FauxTweet anywhere that FauxTweet appears.
-  * When I'm on the `/fauxtweets`, `/fauxtweets/:id`, or `/users/:id/fauxtweets` pages:
-    * I can click "Delete" to permanently delete a FauxTweet I have posted.
+### Creating Game-Reviews / Ratings
+
+* As a logged in user, I want to be able to add a Game-Review by clicking an Add button associated with the specific Game page.
+  * When I'm on the `/games/:id` page: (Other pages where reviews will be visible?)
+    * I can click "Add" to bring up a form that I can fill out.
+    * Once I am done writing my Game-Review and selecting a rating, I can click a "Post/Submit" button to post the Game-Review.
+      * So that I can share my thoughts on a specific game.
+
+
+### Updating Game-Reviews
+
+* As a logged in user, I want to be able to edit my Game-Reviews by clicking an Edit button associated with the Game-Review anywhere that Game-Review appears.
+  * When I'm on the `/games/:id` page: (Other pages where reviews will be visible?)
+    * I can click "Edit" to make permanent changes to Game-Review I have posted.
+      * So that I can fix any errors I make in my Game-Review.
+
+### Deleting Game-Reviews
+
+* As a logged in user, I want to be able to delete my Game-Review by clicking a Delete button associated with the Game-Review anywhere that Game-Review appears.
+  * When I'm on the `/games/:id` page: (Other pages where reviews will be visible?)
+    * I can click "Delete" to permanently delete a Game-Review I have posted.
       * So that when I realize I shouldn't have publicly said something, I can easily remove it.
 
 
