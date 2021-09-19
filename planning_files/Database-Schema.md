@@ -10,48 +10,47 @@
 | password    | varchar   | not null, unique          |
 | created_at  | datetime  | not null                  |
 | updated-at  | datetime  | not null                  |
-| gameshelfId | integer   | not null, foreign key     |
+| gameShelfId | integer   | not null, foreign key     |
 
 * index on `email, unique: true`
 * `gameshelfId` references `game_shelves` table
 
-## `fauxtweets`
+## `games`
 
-| column name | data type | details               |
-|-------------|-----------|-----------------------|
-| id          | integer   | not null, primary key |
-| content     | string    | not null              |
-| userId      | integer   | not null, foreign key |
-| created_at  | datetime  | not null              |
-| updated-at  | datetime  | not null              |
+| column name   | data type     | details               |
+|---------------|---------------|-----------------------|
+| id            | integer       | not null, primary key |
+| name          | string        | not null              |
+| game_img      | string        | not null              |
+| description   | varchar(280)  | not null              |
+| developer     | varchar       | not null              |
+| publisher     | varchar       | not null              |
+| genre         | varchar       | not null              |
+| release_date  | varchar       | not null              |
+| created_at    | datetime      | not null              |
+| updated-at    | datetime      | not null              |
 
-* `userId` references `users` table
 
-## `fauxcomments`
+## `game_shelves`
 
-| column name   | data type | details               |
-|---------------|-----------|-----------------------|
-| id            | integer   | not null, primary key |
-| content       | string    | not null              |
-| userId        | integer   | not null, foreign key |
-| fauxCommentId | integer   | not null, foreign key |
-| created_at    | datetime  | not null              |
-| updated-at    | datetime  | not null              |
+| column name   | data type   | details               |
+|---------------|-------------|-----------------------|
+| id            | integer     | not null, primary key |
+| shelf_name    | varchar(30) | not null              |
+| created_at    | datetime    | not null              |
+| updated-at    | datetime    | not null              |
+| shelfEntryId  | integer     | not null, foreign key |
 
-* `userId` references `users` table
-* `fauxCommentId` references `fauxcomments` table
+* `shelfEntryId` references `shelf_entry` table
 
-## `fauxlikes`
 
-| column name   | data type | details                        |
-|---------------|-----------|--------------------------------|
-| id            | integer   | not null, primary key          |
-| userId        | integer   | not null, indexed, foreign key |
-| fauxTweetId   | integer   | indexed, foreign key           |
-| fauxCommentId | integer   | indexed, foreign key           |
+## `shelf_entry`
 
-* `userId` references `users` table
-* `fauxTweetId` references `fauxtweets` table
-* `fauxCommentId` references `fauxcomments` table
-* Unique index on `[userId, fauxTweetId]`
-* Unique index on `[userId, fauxCommentId]`
+| column name   | data type | details                  |
+|---------------|-----------|--------------------------|
+| id            | integer   | not null, primary key    |
+| play_status   | boolean   | not null                 |
+| updated-at    | datetime  | not null                 |
+| gameId        | integer   | not null, foreign key    |
+
+* `gameId` references `games` table
