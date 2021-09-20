@@ -54,7 +54,7 @@ This page displays all current game-shelves for a logged-in user, and also a but
 | Path                        | HTTP Verb   | What we're doing                                                                 | BONUS |
 | --------------------------- | ----------- | -------------------------------------------------------------------------------- | ----- |
 | /sign-up                    | GET         | Get form to create new user                                                      |       |
-| /sign-up                      | POST        | Submit new user info to user table                                               |       |
+| /sign-up                    | POST        | Submit new user info to user table                                               |       |
 | /log-in                     | GET         | Login page                                                                       |       |
 | /log-in                     | POST        | Submit log-in                                                                    |       |
 | /log-out                    | POST        | Logout Page redirects to home page                                               |       |
