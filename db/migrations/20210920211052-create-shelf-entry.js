@@ -21,14 +21,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'Game_Shelves' }
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
       }
     });
   },
