@@ -7,7 +7,7 @@
 | id          | integer   | not null, primary key     |
 | user_name   | string    | not null, unique          |
 | email       | string    | not null, unique          |
-| password    | varchar   | not null                  |
+| password    | string    | not null                  |
 | created_at  | datetime  | not null                  |
 | updated-at  | datetime  | not null                  |
 
@@ -19,11 +19,11 @@
 | id            | integer       | not null, primary key |
 | name          | string        | not null              |
 | game_img      | string        | not null              |
-| description   | varchar(280)  | not null              |
-| developer     | varchar       | not null              |
-| publisher     | varchar       | not null              |
-| genre         | varchar       | not null              |
-| release_date  | varchar       | not null              |
+| description   | string(280)   | not null              |
+| developer     | string        | not null              |
+| publisher     | string        | not null              |
+| genre         | string        | not null              |
+| release_date  | string        | not null              |
 | created_at    | datetime      | not null              |
 | updated-at    | datetime      | not null              |
 
@@ -33,7 +33,7 @@
 | column name   | data type   | details               |
 |---------------|-------------|-----------------------|
 | id            | integer     | not null, primary key |
-| shelf_name    | varchar(30) | not null              |
+| shelf_name    | string(30)  | not null              |
 | created_at    | datetime    | not null              |
 | updated-at    | datetime    | not null              |
 | userId        | integer     | not null, foreign key |
@@ -46,7 +46,7 @@
 | column name   | data type | details                  |
 |---------------|-----------|--------------------------|
 | id            | integer   | not null, primary key    |
-| play_status   | boolean   | not null                 |
+| play_status   | string    | not null                 |
 | created_at    | datetime  | not null                 |
 | updated-at    | datetime  | not null                 |
 | gameId        | integer   | not null, foreign key    |
@@ -62,7 +62,7 @@
 |----------------|---------------|--------------------------|
 | id             | integer       | not null, primary key    |
 | rating         | numeric(2, 1) | not null                 |
-| review         | varchar(2000) | not null                 |
+| review         | string(2000)  | not null                 |
 | created-at     | datetime      | not null                 |
 | updated-at     | datetime      | not null                 |
 | spoiler_status | boolean       | not null, default: false |
@@ -78,7 +78,7 @@
 | column name    | data type   | details                  |
 |----------------|-------------|--------------------------|
 | id             | integer     | not null, primary key    |
-| genre_tag_name | varchar(20) | not null                 |
+| genre_tag_name | string(20)  | not null                 |
 | updated-at     | datetime    | not null                 |
 | created-at     | datetime    | not null                 |
 
@@ -88,7 +88,6 @@
 | column name  | data type | details                  |
 |--------------|-----------|--------------------------|
 | id           | integer   | not null, primary key    |
-| play_status  | boolean   | not null                 |
 | updated-at   | datetime  | not null                 |
 | created-at   | datetime  | not null                 |
 | gameId       | integer   | not null, foreign key    |
