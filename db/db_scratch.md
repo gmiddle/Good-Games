@@ -21,3 +21,5 @@ npx sequelize model:generate --name Genre_tag_join --attributes gameId:integer,g
 npx dotenv sequelize db:migrate:undo:all
 
 npx dotenv sequelize db:migrate
+
+new note
