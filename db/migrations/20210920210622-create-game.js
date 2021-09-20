@@ -18,7 +18,7 @@ module.exports = {
       },
       description: {
         allowNull: false,
-        type: Sequelize.STRING(280)
+        type: Sequelize.STRING(500)
       },
       developer: {
         allowNull: false,
@@ -35,14 +35,6 @@ module.exports = {
       release_date: {
         allowNull: false,
         type: Sequelize.STRING
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
       }
     });
   },
