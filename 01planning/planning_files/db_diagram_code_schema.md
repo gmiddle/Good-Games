@@ -5,9 +5,8 @@ Table users {
   user_name varchar [unique]
   created_at timestamp
   updated_at timestamp
-  gameShelfId int
 }
-Ref: "users"."gameShelfId" < "game_shelves"."id"
+
 
 Table games {
   id int [PK]
@@ -23,13 +22,13 @@ Table games {
 
 Table reviews {
   id int [PK]
-  subject varchar(30)
+  rating numeric(2, 1)
   description varchar(2000)
   created_at timestamp
   updated_at timestamp
   bonus_spoiler_status boolean
-  fk_to_games int
-  fk_to_users int
+  gameId int
+  userId int
 }
 
 Table game_shelves{
@@ -37,16 +36,17 @@ Table game_shelves{
   shelf_name varchar(30)
   created_at timestamp
   updated_at timestamp
-  shelfEntryId int
+  userId int
 }
-Ref: "game_shelves"."shelfEntryId" < "shelf_entry"."id"
+
 
 // JOIN table for Games and Game_Shelves
 Table shelf_entry {
   id int [PK]
   play_status varchar
   add_to_shelf_date date
-  gameId int 
+  gameId int
+  gameShelfId int
 }
 Ref: "shelf_entry"."gameId" < "games"."id"
 
@@ -59,15 +59,19 @@ Table bonus_genre_tags {
 
 Table genre_tag_join {
   id int [pk]
-  fk_to_genre_tag_genre_tag_id int
-  fk_to_games_game_id int
+  genreTagId int
+  gameId int
 }
 
 
-Ref: "reviews"."fk_to_games" < "games"."id"
+Ref: "reviews"."gameId" < "games"."id"
 
-Ref: "users"."id" < "reviews"."fk_to_users"
+Ref: "users"."id" < "reviews"."userId"
 
-Ref: "games"."id" < "genre_tag_join"."fk_to_games_game_id"
+Ref: "games"."id" < "genre_tag_join"."gameId"
 
-Ref: "bonus_genre_tags"."id" < "genre_tag_join"."fk_to_genre_tag_genre_tag_id"
+Ref: "bonus_genre_tags"."id" < "genre_tag_join"."genreTagId"
+
+Ref: "game_shelves"."id" < "shelf_entry"."gameShelfId"
+
+Ref: "game_shelves"."userId" < "users"."id"
