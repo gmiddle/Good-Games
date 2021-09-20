@@ -17,3 +17,7 @@ npx sequelize model:generate --name Review --attributes rating:numeric,review:st
 npx sequelize model:generate --name Genre_tag --attributes genre_tag_name:string
 
 npx sequelize model:generate --name Genre_tag_join --attributes gameId:integer,genreTagId:integer
+
+npx dotenv sequelize db:migrate:undo:all
+
+npx dotenv sequelize db:migrate
