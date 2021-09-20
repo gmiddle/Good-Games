@@ -10,7 +10,7 @@ Table users {
 
 Table games {
   id int [PK]
-  name text
+  name text [unique, not null]
   game_img text
   description varchar(280)
   developer varchar
@@ -23,10 +23,10 @@ Table games {
 Table reviews {
   id int [PK]
   rating numeric(2, 1)
-  description varchar(2000)
+  review varchar(2000)
   created_at timestamp
   updated_at timestamp
-  bonus_spoiler_status boolean
+  spoiler_status boolean
   gameId int
   userId int
 }
@@ -44,21 +44,26 @@ Table game_shelves{
 Table shelf_entry {
   id int [PK]
   play_status varchar
-  add_to_shelf_date date
+  created_at timestamp
+  updated_at timestamp
   gameId int
   gameShelfId int
 }
 Ref: "shelf_entry"."gameId" < "games"."id"
 
 //BONUS for Genre Tags
-Table bonus_genre_tags {
+Table genre_tags {
   id int [pk]
   genre_tag_name varchar(20)
+  created_at timestamp
+  updated_at timestamp
   
 }
 
 Table genre_tag_join {
   id int [pk]
+  created_at timestamp
+  updated_at timestamp
   genreTagId int
   gameId int
 }
@@ -70,7 +75,7 @@ Ref: "users"."id" < "reviews"."userId"
 
 Ref: "games"."id" < "genre_tag_join"."gameId"
 
-Ref: "bonus_genre_tags"."id" < "genre_tag_join"."genreTagId"
+Ref: "genre_tags"."id" < "genre_tag_join"."genreTagId"
 
 Ref: "game_shelves"."id" < "shelf_entry"."gameShelfId"
 
