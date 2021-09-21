@@ -11,8 +11,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Game_Shelf.associate = function(models) {
-    Game_Shelf.hasMany(models.User, {
+    Game_Shelf.belongsTo(models.User, {
       foreignKey: "userId"
+    }),
+    Game_Shelf.hasMany(models.Shelf_Entry, {
+      foreignKey: "gameShelfId"
     })
   };
   return Game_Shelf;
