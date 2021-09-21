@@ -15,7 +15,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   User.associate = function(models) {
-    User.belongsToMany(models.Game_Shelf, {
+    User.hasMany(models.Game_Shelf, {
+      foreignKey: "userId"
+    }),
+    User.hasMany(models.Review, {
       foreignKey: "userId"
     })
   };
