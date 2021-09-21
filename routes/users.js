@@ -33,7 +33,7 @@ const loginValidators= [
 // User Validator
 
 const userValidators = [
-  check('username')
+  check('user_name')
     .exists({checkFalsy:true})
     .withMessage('Please provide a valid username')
     .isLength({max:30})
