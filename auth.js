@@ -15,7 +15,7 @@ const requireAuth = (req, res, next) => {
     return next();
 }
 
-const restoreUser = (req, res, next) => {
+const restoreUser = async (req, res, next) => {
     if(req.session.auth){
         const {
             userId

@@ -8,4 +8,21 @@ append head
 
 block content
   h1= title
-  p Welcome to your Project Skeleton
+  form(action="/users" method="post")
+    input(type="hidden" name="_csrf" value=token)
+    div
+    label(for="user_name") 
+    input(type="text" id="user_name" name="user_name" value placeholder="User Name" required)
+    div
+    label(for="email")
+    input(type="email" id="email" name="email" value placeholder="Email" required)
+    div
+    label(for="password") 
+    input(type="text" id="password" name="password" value placeholder="Password" required)
+    div
+    label(for="confirm-password")
+    input(type="text" id="confirm-password" name="confirm-password" value placeholder="Confirm Password" required)
+    div
+    input(type="submit" value="Submit")
+
+//- TODO: Add classes to divs
