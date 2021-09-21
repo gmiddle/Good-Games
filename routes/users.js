@@ -8,10 +8,10 @@ const db = require('../db/models');
 
 /* GET users listing. */
 
-router.get('/users', csrfProtection, (req, res, next) => {
-  const user = db.User.build();
-  res.render('index', {user, token:req.csrfToken()});
-});
+// router.get('/', csrfProtection, (req, res, next) => {
+//   const user = db.User.build();
+//   res.render('index', {user, token:req.csrfToken()});
+// });
 
 // TODO: create log-in form
 
@@ -33,7 +33,7 @@ const loginValidators= [
 // User Validator
 
 const userValidators = [
-  check('user_name')
+  check('username')
     .exists({checkFalsy:true})
     .withMessage('Please provide a valid username')
     .isLength({max:30})
@@ -97,6 +97,7 @@ const userValidators = [
 
 router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res) =>{
   const {user_name, email, password} = req.body
+  console.log(req.body)
   const user = await db.User.build({user_name, email})
   const validatorErrors = validationResult(req)
   if(validatorErrors.isEmpty()){
@@ -104,7 +105,7 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res) =
     user.password = hashedPassword
     await user.save()
     loginUser(req, res, user)
-    res.redirect('/') //TODO: Check to make sure of where we are being redirected
+    res.redirect('/users') //TODO: Check to make sure of where we are being redirected
   } else{
     const errors = validatorErrors.array().map((error) => error.msg)
     console.log(errors)
