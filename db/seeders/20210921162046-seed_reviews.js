@@ -7,8 +7,10 @@ module.exports = {
         gameId: '1',
         userId: '1',
         rating: '5',
-        spoiler_status: 'John Doe',
+        spoiler_status: true,
         review: 'This is a very good game! Would recommend to a friend.',
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ], {});
   },
