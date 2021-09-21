@@ -36,12 +36,12 @@ const userValidators = [
   check('user_name')
     .exists({checkFalsy:true})
     .withMessage('Please provide a valid username')
-    .islength({max:30})
+    .isLength({max:30})
     .withMessage('Username must not be more than 30 characters'),
   check('email')
     .exists({checkFalsy:false})
     .withMessage('Please provide a valid email address')
-    .islength({max:255})
+    .isLength({max:255})
     .withMessage('Email must not be more than 255 characters long')
     .isEmail()
     .withMessage('Email address is not a valid email')
@@ -87,12 +87,13 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res) =
   const {user_name, email, password} = req.body
   const user = await db.User.build({user_name, email})
   const validatorErrors = validationResult(req)
+  console.log(req.body)
     if(validatorErrors.isEmpty()){
       const hashedPassword = await bcrypt.hash(password, 10)
       user.password = hashedPassword
       await user.save()
       loginUser(req, res, user)
-      res.redirect('/games') //TODO: Check to make sure of where we are being redirected
+      res.redirect('/') //TODO: Check to make sure of where we are being redirected
     } else{
       const errors = validatorErrors.array().map((error) => error.msg)
       res.render('index', {
