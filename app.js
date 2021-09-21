@@ -1,6 +1,7 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const {sessionSecret}= require('./config')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const { sequelize } = require('./db/models');
@@ -17,7 +18,7 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser(sessionSecret));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // set up session middleware
@@ -25,10 +26,10 @@ const store = new SequelizeStore({ db: sequelize });
 
 app.use(
   session({
-    secret: 'superSecret',
+    secret: sessionSecret,
     store,
-    saveUninitialized: false,
     resave: false,
+    saveUninitialized: false,
   })
 );
 

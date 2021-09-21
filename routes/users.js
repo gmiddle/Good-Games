@@ -8,7 +8,7 @@ const db = require('../db/models');
 
 /* GET users listing. */
 
-router.get('/', csrfProtection, (req, res, next) => {
+router.get('/users', csrfProtection, (req, res, next) => {
   const user = db.User.build();
   res.render('index', {user, token:req.csrfToken()});
 });
@@ -37,7 +37,18 @@ const userValidators = [
     .exists({checkFalsy:true})
     .withMessage('Please provide a valid username')
     .isLength({max:30})
-    .withMessage('Username must not be more than 30 characters'),
+    .withMessage('Username must not be more than 30 characters')
+    .custom((value)=>{ //TODO: Copy logic to user_name check
+      return db.User.findOne({where:{user_name:value}}).then(
+        (user)=>{
+          if(user){
+            return Promise.reject(
+              'The provided username is already in use by another account'
+            )
+          }
+        }
+      )
+    }),
   check('email')
     .exists({checkFalsy:true})
     .withMessage('Please provide a valid email address')
@@ -45,7 +56,7 @@ const userValidators = [
     .withMessage('Email must not be more than 255 characters long')
     .isEmail()
     .withMessage('Email address is not a valid email')
-    .custom((value)=>{
+    .custom((value)=>{ //TODO: Copy logic to user_name check
       return db.User.findOne({where:{email:value}}).then(
         (user)=>{
           if(user){
@@ -56,6 +67,7 @@ const userValidators = [
         }
       )
     }),
+
   check('password')
     .exists({checkFalsy:true})
     .withMessage('Please provide a value for password')
