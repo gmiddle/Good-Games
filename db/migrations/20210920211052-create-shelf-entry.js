@@ -10,7 +10,7 @@ module.exports = {
       },
       play_status: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING(20)
       },
       gameId: {
         allowNull: false,
@@ -21,6 +21,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'Game_Shelves' }
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
     });
   },
