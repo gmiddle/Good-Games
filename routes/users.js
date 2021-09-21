@@ -71,13 +71,38 @@ const userValidators = [
     .withMessage('Must include at least one special character'), // might need to remove underscore(could cause error?)
 
   check('confirm-password')
-  .exists({checkFalsy:true})
-  .withMessage('Please provide a value for confirm password')
-  .isLength({max:50})
-  .withMessage('Confirm password must not be more than 50 characters')
-  .custom((value, {req} ))
-    
-
-  
+    .exists({checkFalsy:true})
+    .withMessage('Please provide a value for confirm password')
+    .isLength({max:50})
+    .withMessage('Confirm password must not be more than 50 characters')
+    .custom((value, {req}) =>{ 
+      if(value !== req.body.password){
+        throw new Error('Passwords do not match')
+      }
+      return true
+    })
 ]
+
+router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res) =>{
+  const {user_name, email, password} = req.body
+  const user = await db.User.build({user_name, email})
+  const validatorErrors = validationResult(req)
+    if(validatorErrors.isEmpty()){
+      const hashedPassword = await bcrypt.hash(password, 10)
+      user.password = hashedPassword
+      await user.save()
+      loginUser(req, res, user)
+      res.redirect('/games') //TODO: Check to make sure of where we are being redirected
+    } else{
+      const errors = validatorErrors.array().map((error) => error.msg)
+      res.render('index', {
+        title:'Sign Up', 
+        user,
+        errors,
+        token:req.csrfToken()
+
+      })
+    }
+}))
+
 module.exports = router;
