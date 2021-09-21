@@ -11,6 +11,14 @@ module.exports = {
       genre_tag_name: {
         allowNull: false,
         type: Sequelize.STRING(20)
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
     });
   },
