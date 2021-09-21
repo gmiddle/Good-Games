@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     Game.hasMany(models.Shelf_Entry, {
       foreignKey: "gameId"
     }),
-    Game.hasMany(models.Genre_Tag_Join, {
+    Game.hasMany(models.Genre_tag_join, {
       foreignKey: "gameId"
     })
   };
