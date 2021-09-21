@@ -2,12 +2,15 @@
 
 ## PSQL commands
 
+```psql
 CREATE USER good_games_dev WITH PASSWORD 'password' SUPERUSER;
 
 CREATE DATABASE good_games WITH OWNER good_games_dev;
+```
 
 ## Sequelize commands
 
+```bash
 npx sequelize model:generate --name User --attributes user_name:string,email:string,password:string
 
 npx sequelize model:generate --name Game --attributes name:string,game_img:string,description:string,developer:string,publisher:string,genre:string,release_date:string
@@ -35,6 +38,7 @@ npx dotenv sequelize db:seed:undo:all
 npx dotenv sequelize db:drop
 
 npx dotenv sequelize db:create
+```
 
 ## Combined Code for drop/migrate/seed
 
