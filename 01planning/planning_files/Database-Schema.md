@@ -42,14 +42,14 @@
 
 ## `shelf_entry`
 
-| column name   | data type | details                  |
-|---------------|-----------|--------------------------|
-| id            | integer   | not null, primary key    |
-| play_status   | string    | not null                 |
-| created_at    | datetime  | not null                 |
-| updated-at    | datetime  | not null                 |
-| gameId        | integer   | not null, foreign key    |
-| gameShelfId   | integer   | not null, foreign key    |
+| column name   | data type  | details                  |
+|---------------|------------|--------------------------|
+| id            | integer    | not null, primary key    |
+| play_status   | string(20) | not null                 |
+| created_at    | datetime   | not null                 |
+| updated-at    | datetime   | not null                 |
+| gameId        | integer    | not null, foreign key    |
+| gameShelfId   | integer    | not null, foreign key    |
 
 * `gameId` references `games` table
 * `gameshelfId` references `game_shelves` table
