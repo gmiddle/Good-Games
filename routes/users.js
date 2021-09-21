@@ -39,7 +39,7 @@ const userValidators = [
     .isLength({max:30})
     .withMessage('Username must not be more than 30 characters'),
   check('email')
-    .exists({checkFalsy:false})
+    .exists({checkFalsy:true})
     .withMessage('Please provide a valid email address')
     .isLength({max:255})
     .withMessage('Email must not be more than 255 characters long')
@@ -87,15 +87,15 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res) =
   const {user_name, email, password} = req.body
   const user = await db.User.build({user_name, email})
   const validatorErrors = validationResult(req)
-  console.log(req.body)
-    if(validatorErrors.isEmpty()){
-      const hashedPassword = await bcrypt.hash(password, 10)
-      user.password = hashedPassword
-      await user.save()
-      loginUser(req, res, user)
-      res.redirect('/') //TODO: Check to make sure of where we are being redirected
-    } else{
-      const errors = validatorErrors.array().map((error) => error.msg)
+  if(validatorErrors.isEmpty()){
+    const hashedPassword = await bcrypt.hash(password, 10)
+    user.password = hashedPassword
+    await user.save()
+    loginUser(req, res, user)
+    res.redirect('/') //TODO: Check to make sure of where we are being redirected
+  } else{
+    const errors = validatorErrors.array().map((error) => error.msg)
+    console.log(errors)
       res.render('index', {
         title:'Sign Up', 
         user,
