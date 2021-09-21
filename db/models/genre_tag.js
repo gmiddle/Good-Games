@@ -5,6 +5,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Genre_tag.associate = function(models) {
     // associations can be defined here
+    Genre_tag.hasMany(models.Genre_tag_join, {
+      foreignKey: "genreTagId"
+    })
   };
   return Genre_tag;
 };

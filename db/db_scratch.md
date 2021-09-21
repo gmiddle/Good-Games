@@ -18,8 +18,16 @@ npx sequelize model:generate --name Genre_tag --attributes genre_tag_name:string
 
 npx sequelize model:generate --name Genre_tag_join --attributes gameId:integer,genreTagId:integer
 
-npx dotenv sequelize db:migrate:undo:all
+npx sequelize seed:generate --name seed_user
 
 npx dotenv sequelize db:migrate
 
-new note
+npx dotenv sequelize db:migrate:undo:all
+
+npx dotenv sequelize db:seed:all
+
+npx dotenv sequelize db:seed:undo:all
+
+npx dotenv sequelize db:drop
+
+npx dotenv sequelize db:create

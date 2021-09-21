@@ -1,16 +1,39 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Game = sequelize.define('Game', {
-    name: { type: DataTypes.STRING, allowNull: false },
-    game_img: { type: DataTypes.STRING, allowNull: false },
-    description: { type: DataTypes.STRING(280), allowNull: false },
-    developer: { type: DataTypes.STRING, allowNull: false },
-    publisher: { type: DataTypes.STRING, allowNull: false },
-    genre: { type: DataTypes.STRING, allowNull: false },
-    release_date: { type: DataTypes.STRING, allowNull: false }
+    name: { 
+      type: DataTypes.STRING,
+      allowNull: false },
+    game_img: { 
+      type: DataTypes.STRING,
+      allowNull: false },
+    description: {
+      type: DataTypes.STRING(500),
+      allowNull: false },
+    developer: {
+      type: DataTypes.STRING,
+      allowNull: false },
+    publisher: {
+      type: DataTypes.STRING,
+      allowNull: false },
+    genre: {
+      type: DataTypes.STRING,
+      allowNull: false },
+    release_date: {
+      type: DataTypes.STRING,
+      allowNull: false }
   }, {});
   Game.associate = function(models) {
     // associations can be defined here
+    Game.hasMany(models.Review, {
+      foreignKey: "gameId"
+    }),
+    Game.hasMany(models.Shelf_Entry, {
+      foreignKey: "gameId"
+    }),
+    Game.hasMany(models.Genre_Tag_Join, {
+      foreignKey: "gameId"
+    })
   };
   return Game;
 };
