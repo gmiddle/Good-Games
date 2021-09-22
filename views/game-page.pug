@@ -1,11 +1,12 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="")
-        title Good Games - #{game.name}
+extends layout.pug
+
+
+block append head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Good Games - #{game.name}
+block append main
     body
         div
             h1 #{game.name}
@@ -15,4 +16,4 @@ html(lang="en")
             p Publisher: #{game.publisher}
             p Genre: #{game.genre}
             p Release Date: #{game.release_date}
-        
+    
