@@ -1,6 +1,14 @@
 h1 {
     display: flex;
-    color: #555555;
+    color: #b8b6b4;
+}
+
+body {
+    /* background-color: #c6d4df; */
+    /* background: linear-gradient( to bottom, rgba(42,71,94,1.0) 5%, rgba(42,71,94,0.0) 70%); */
+    /* background-color:  #2f3138; */
+    background-color: #1b2838;
+    color: #b8b6b4;
 }
 
 .sign_up_form {
@@ -10,11 +18,11 @@ h1 {
 }
 
 .footer {
-    position: fixed;
+    position: sticky;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #555555;
+    background-color: #171a21;
     color: #b8b6b4;
     text-align: center;
 }
