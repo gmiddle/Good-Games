@@ -1,3 +1,20 @@
 h1 {
+    display: flex;
     color: #555555;
+}
+
+.sign_up_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #555555;
+    color: #b8b6b4;
+    text-align: center;
 }
