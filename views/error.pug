@@ -1,6 +1,6 @@
-extends layout
+extends layout.pug
 
-block content
+block append head
   h1= message
   h2= error.status
   pre #{error.stack}
