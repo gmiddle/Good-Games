@@ -5,10 +5,11 @@ block append head
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Good Games - #{game.name}
+    title Good Games - #{title}
 block append main
     body
-        div
+    
+        div(class='gameInfo')
             h1 #{game.name}
             img(src=game.game_img, alt="#{game.name}")
             p #{game.description}
@@ -16,4 +17,23 @@ block append main
             p Publisher: #{game.publisher}
             p Genre: #{game.genre}
             p Release Date: #{game.release_date}
-    
+
+        div(class='userReview')
+            h1 Your Review
+            p #{userReview.User.user_name}
+            p Rating: #{userReview.rating}
+            p #{userReview.review}
+            form(action="/users/login" method="post")
+                input(type="hidden" name="_csrf" value=token)
+                div
+                label(for="user_review")
+                input(type="text" id="user_review" name="user_review" value placeholder=userReview.review required)
+                input(type="submit" value="Submit")
+
+        div(class='reviews')
+            h1 Reviews
+            each review in reviews
+                if review.User.user_name !== userReview.User.user_name
+                    p #{review.User.user_name}
+                    p Rating: #{review.rating}
+                    p #{review.review}
