@@ -6,14 +6,15 @@ block append head
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Good Games - #{game.name}
-block append main
-    body
-        div
-            h1 #{game.name}
-            img(src=game.game_img, alt="#{game.name}")
-            p #{game.description}
-            p Developer: #{game.developer}
-            p Publisher: #{game.publisher}
-            p Genre: #{game.genre}
-            p Release Date: #{game.release_date}
-    
+        body
+            block append header
+                head
+                    div
+                        h1 #{game.name}
+                        img(src=game.game_img, alt="#{game.name}")
+                        p #{game.description}
+                        p Developer: #{game.developer}
+                        p Publisher: #{game.publisher}
+                        p Genre: #{game.genre}
+                        p Release Date: #{game.release_date}
+                
