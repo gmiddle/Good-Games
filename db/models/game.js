@@ -1,11 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Game = sequelize.define('Game', {
-    name: { 
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    game_img: { 
+    game_img: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -28,8 +28,11 @@ module.exports = (sequelize, DataTypes) => {
     release_date: {
       type: DataTypes.STRING,
       allowNull: false
-    }
-  }, {});
+    },
+
+  }, {
+    timestamps: false
+});
   Game.associate = function(models) {
     // associations can be defined here
     Game.hasMany(models.Review, {
