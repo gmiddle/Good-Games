@@ -3,25 +3,32 @@ module.exports = (sequelize, DataTypes) => {
   const Game = sequelize.define('Game', {
     name: { 
       type: DataTypes.STRING,
-      allowNull: false },
+      allowNull: false
+    },
     game_img: { 
       type: DataTypes.STRING,
-      allowNull: false },
+      allowNull: false
+    },
     description: {
       type: DataTypes.STRING(500),
-      allowNull: false },
+      allowNull: false
+    },
     developer: {
       type: DataTypes.STRING,
-      allowNull: false },
+      allowNull: false
+    },
     publisher: {
       type: DataTypes.STRING,
-      allowNull: false },
+      allowNull: false
+    },
     genre: {
       type: DataTypes.STRING,
-      allowNull: false },
+      allowNull: false
+    },
     release_date: {
       type: DataTypes.STRING,
-      allowNull: false }
+      allowNull: false
+    }
   }, {});
   Game.associate = function(models) {
     // associations can be defined here

@@ -15,7 +15,6 @@ function randomReview(rating) {
       'The story was ok but otherwise skip this one.',
       'I want my money back.',
       'It looked fun and has good graphics but is bad otherwise.'
-
     ],
     3:[
       'Most average game I have ever played.',
@@ -36,14 +35,11 @@ function randomReview(rating) {
       'I already beat this on one console but it was so good that I decided to buy it again.'
     ]
   }
-  // set the number of reviews for all rating values
-  // they all must be the same.
   const numOfReviews = ratingReviews[rating].length
   const randomNum = getRandomNum(0, numOfReviews-1);
   return ratingReviews[rating][randomNum];
 }
 
-// TODO add these after random generation
 const fakeReviews = [
     {
     gameId: '1',
