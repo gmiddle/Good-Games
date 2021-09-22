@@ -8,33 +8,38 @@ function randomReview(rating) {
   const ratingReviews = {
     1: [
       'Worse game I have ever played!',
-      'Why did this game cost any money?'
+      'Why did this game cost any money?',
+      'Refunded, this was not worth my time.'
     ],
     2:[
       'The story was ok but otherwise skip this one.',
-      'I want my money back.'
+      'I want my money back.',
+      'It looked fun and has good graphics but is bad otherwise.'
     ],
     3:[
       'Most average game I have ever played.',
-      'I enjoyed it well enough but I would not recommend unless it is on a deep sale.'
+      'I enjoyed it well enough but I would not recommend unless it is on a deep sale.',
+      'Good price for such an average game.',
+      'It\'s just ok.'
     ],
     4:[
       'It was great but it could have been better without the DRM',
-      'Not as good as the original but it is a must buy.'
+      'Not as good as the original but it is a must buy.',
+      'I was given this for my birthday, It is so much fun to play!',
+      'This was well worth the time!'
     ],
     5:[
       'Best game I have ever played!',
-      'How do I send you more money because this was too cheap for the value!'
+      'How do I send you more money because this was too cheap for the value!',
+      'Bought this for a friend! I must get as many people to try this as possible.',
+      'I already beat this on one console but it was so good that I decided to buy it again.'
     ]
   }
-  // set the number of reviews for all rating values
-  // they all must be the same.
-  const numOfReviews = 2
+  const numOfReviews = ratingReviews[rating].length
   const randomNum = getRandomNum(0, numOfReviews-1);
   return ratingReviews[rating][randomNum];
 }
 
-// TODO add these after random generation
 const fakeReviews = [
     {
     gameId: '1',
