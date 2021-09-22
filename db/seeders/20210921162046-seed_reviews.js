@@ -55,7 +55,7 @@ const fakeReviews = [
     userId: '2',
     rating: '1',
     spoiler_status: 'n',
-    review: 'Why are the space dwarves taller then me? 1 foot out of 5!.',
+    review: 'Why are the space dwarves taller then me? 1 foot out of 5!',
     createdAt: new Date(),
     updatedAt: new Date()
   }
