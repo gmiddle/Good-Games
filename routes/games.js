@@ -36,7 +36,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
       include: User,
     });
 
-    res.render('game-page.pug', {game, userReview, reviews, title: `Good Games - ${gameName}`});
+    res.render('game-page.pug', {game, userReview, reviews});
   } else {
     // TODO create error in case of non existant game id
     console.log('Game not found')

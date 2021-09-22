@@ -5,10 +5,10 @@ block append head
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Good Games - #{title}
+    link(rel="stylesheet" href="/stylesheets/game-page.css")
+    title Good Games - #{game.name}
 block append main
     body
-    
         div(class='gameInfo')
             h1 #{game.name}
             img(src=game.game_img, alt="#{game.name}")
@@ -34,6 +34,7 @@ block append main
             h1 Reviews
             each review in reviews
                 if review.User.user_name !== userReview.User.user_name
-                    p #{review.User.user_name}
-                    p Rating: #{review.rating}
-                    p #{review.review}
+                    div(class='reviewEntry')
+                        p #{review.User.user_name}
+                        p Rating: #{review.rating}
+                        p #{review.review}
