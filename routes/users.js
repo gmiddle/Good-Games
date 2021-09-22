@@ -8,7 +8,7 @@ const db = require("../db/models");
 
 /* GET users listing. */
 
-// TODO: create log-in form
+
 
 // Validators
 const loginValidators = [
@@ -29,7 +29,7 @@ const userValidators = [
     .isLength({ max: 30 })
     .withMessage("Username must not be more than 30 characters")
     .custom((value) => {
-      //TODO: Copy logic to user_name check
+
       return db.User.findOne({ where: { user_name: value } }).then((user) => {
         if (user) {
           return Promise.reject(
@@ -46,7 +46,6 @@ const userValidators = [
     .isEmail()
     .withMessage("Email address is not a valid email")
     .custom((value) => {
-      //TODO: Copy logic to user_name check
       return db.User.findOne({ where: { email: value } }).then((user) => {
         if (user) {
           return Promise.reject(
@@ -97,7 +96,7 @@ router.post(
       user.password = hashedPassword;
       await user.save();
       loginUser(req, res, user);
-      res.redirect("/users"); //TODO: Check to make sure of where we are being redirected
+      res.redirect("/users");
       // console.log("testing the redirect")
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
