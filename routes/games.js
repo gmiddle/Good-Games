@@ -22,6 +22,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
   // finds game by id
   const game = await Game.findByPk(gameId);
   if (game) {
+    console.log(game.game_img)
     // renders page if game was found
     const gameName = game.name
     res.render('game-page.pug', {game, title: `Good Games - ${gameName}`});
