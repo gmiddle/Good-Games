@@ -1,3 +1,5 @@
+
+
 h1 {
     display: flex;
     color: #b8b6b4;
@@ -9,6 +11,7 @@ body {
     /* background-color:  #2f3138; */
     background-color: #1b2838;
     color: #b8b6b4;
+    
 }
 
 .sign_up_form {
@@ -17,6 +20,38 @@ body {
     justify-content: center;
 }
 
+
+nav {
+    text-align: right;
+    background-color: #1b2838;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    border-bottom: 1px solid seashell;
+    border-width: 100%;
+    border-width: 0 0 1px;
+    top: 0px;
+    margin-bottom: 25px;
+    position: sticky;
+    min-height: 55px;
+    max-height: 55px;
+    padding: 5px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+
+}
+ nav span {
+    text-align: center;
+    padding: 10px 15px;
+}
+
+
+img {
+    height: 50%;
+    width: 50%;
+}
+=======
 /* TODO: maybe change nav bar position */
 
 .footer {
@@ -60,3 +95,4 @@ body {
 .michael_link {
     margin-right: 100px;
 }
+
