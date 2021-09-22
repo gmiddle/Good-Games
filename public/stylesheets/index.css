@@ -17,12 +17,46 @@ body {
     justify-content: center;
 }
 
+/* TODO: maybe change nav bar position */
+
 .footer {
-    position: sticky;
+    display: flex;
+    box-sizing: border-box;
+    position: fixed;
+    min-height: 75px;
+    max-height: 75px;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: #171a21;
     color: #b8b6b4;
+    justify-content: space-between;
+    padding: 5px 20px;
+    border: 1px solid #282d3a;
+    box-shadow: 0px -1px 2px rgb(255 150 100 / 30%);
+    border-width: 0 0 1px;
+    font-size: 1rem;
+    align-content: center;
+    font-family: "Motiva Sans", Sans-serif;
+    padding: 30px;
+
+}
+
+.names a {
+    text-decoration: none;
+    color: #b8b6b4;
+}
+
+#github-icon {
+    margin-left: 100px;
+}
+
+.names {
+    display: inline-block;
+    margin: 0 15px;
     text-align: center;
+}
+
+.michael_link {
+    margin-right: 100px;
 }
