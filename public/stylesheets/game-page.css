@@ -1,0 +1,19 @@
+body { 
+    margin: auto;
+    max-width: 800px;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.gameInfo {
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.reviewEntry {
+   background-color: #30333b;
+   max-width: 500px;
+   padding: 10px;
+}
