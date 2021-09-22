@@ -5,34 +5,36 @@ block append head
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Good Games -  All Games
-    body
-        h1 Welcome to the all games page
-        table
-            thead
-                div
-                    th= name
-                div
-                    th= description
-                div
-                    th= developer
-                div
-                    th= publisher
-                div
-                    th= genre
-                div
-                    th= release_date
-            tbody
-                each game in games
-                    tr
-                        div
-                            td= game.name
-                        div
-                            td= game.description
-                        div
-                            td= game.developer
-                        div
-                            td= game.publisher
-                        div
-                            td= game.genre
-                        div
-                            td= game.release_date
+        body
+            block append header
+                head 
+                    h1 Welcome to the all games page
+                    table
+                        thead
+                            div
+                                th= name
+                            div
+                                th= description
+                            div
+                                th= developer
+                            div
+                                th= publisher
+                            div
+                                th= genre
+                            div
+                                th= release_date
+                        tbody
+                            each game in games
+                                tr
+                                    div
+                                        td= game.name
+                                    div
+                                        td= game.description
+                                    div
+                                        td= game.developer
+                                    div
+                                        td= game.publisher
+                                    div
+                                        td= game.genre
+                                    div
+                                        td= game.release_date
