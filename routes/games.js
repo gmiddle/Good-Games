@@ -36,7 +36,11 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
       include: User,
     });
 
-    const shelves = await Game_Shelf.findAll();
+    const shelves = await Game_Shelf.findAll(userId, {
+      where: {
+        userId,
+      }
+    });
 
     res.render('game-page.pug', {game, shelves, userReview, reviews});
   } else {
