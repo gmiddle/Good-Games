@@ -17,65 +17,61 @@ block append main
             p Publisher: #{game.publisher}
             p Genre: #{game.genre}
             p Release Date: #{game.release_date}
-            select(name='image')
-                each shelf in shelves
-                    option(value=shelves.shelf_name selected=shelves.id)
+            //- select(name='image')
+            //-     each shelf in shelves
+            //-         option(value=shelves.shelf_name selected=shelves.id)
             button Add to Shelf
 
         div(class='userReview')
-            h1 Your Review
-            p #{userReview.User.user_name}
-            form(action="/games/reviews" method="post")
-                input(type="hidden" name="_csrf" value=token)
-                input(type="hidden" name="gameId" value=game.id)
-                input(type="hidden" name="userId" value=1)
-                //- placeholder ^^^^^^
-                div
-                div(class="rate")
-                    if userReview.rating == 5
-                        input(type="radio" id="star5" name="rating" value=5 checked)
-                    else
-                        input(type="radio" id="star5" name="rating" value=5)
-                    label(for="star5" title="text") 5 stars
+            if (userReview)
+                h1 Your Review
+                p #{userReview.User.user_name}
+                form(action="/games/reviews" method="post")
+                    input(type="hidden" name="_csrf" value=token)
+                    input(type="hidden" name="gameId" value=game.id)
+                    input(type="hidden" name="userId" value=1)
+                    //- placeholder ^^^^^^
+                    div
+                    div(class="rate")
+                        if userReview.rating == 5
+                            input(type="radio" id="star5" name="rating" value=5 checked)
+                        else
+                            input(type="radio" id="star5" name="rating" value=5)
+                        label(for="star5" title="text") 5 stars
 
-                    if userReview.rating == 4
-                        input(type="radio" id="star4" name="rating" value=4 checked)
-                    else
-                        input(type="radio" id="star4" name="rating" value=4)
-                    label(for="star4" title="text") 4 stars
+                        if userReview.rating == 4
+                            input(type="radio" id="star4" name="rating" value=4 checked)
+                        else
+                            input(type="radio" id="star4" name="rating" value=4)
+                        label(for="star4" title="text") 4 stars
 
-                    if userReview.rating == 3
-                        input(type="radio" id="star3" name="rating" value=3 checked)
-                    else
-                        input(type="radio" id="star3" name="rating" value=3)
-                    label(for="star3" title="text") 3 stars
+                        if userReview.rating == 3
+                            input(type="radio" id="star3" name="rating" value=3 checked)
+                        else
+                            input(type="radio" id="star3" name="rating" value=3)
+                        label(for="star3" title="text") 3 stars
 
-                    if userReview.rating == 2
-                        input(type="radio" id="star2" name="rating" value=2 checked)
-                    else
-                        input(type="radio" id="star2" name="rating" value=2)
-                    label(for="star2" title="text") 2 stars
+                        if userReview.rating == 2
+                            input(type="radio" id="star2" name="rating" value=2 checked)
+                        else
+                            input(type="radio" id="star2" name="rating" value=2)
+                        label(for="star2" title="text") 2 stars
 
-                    if userReview.rating == 1
-                        input(type="radio" id="star1" name="rating" value=1 checked)
-                    else
-                        input(type="radio" id="star1" name="rating" value=1)
-                    label(for="star1" title="text") 1 star
+                        if userReview.rating == 1
+                            input(type="radio" id="star1" name="rating" value=1 checked)
+                        else
+                            input(type="radio" id="star1" name="rating" value=1)
+                        label(for="star1" title="text") 1 star
 
-                label(for="review")
-                textarea(type="text" id="review" rows='6' cols='60' name="review" required) #{userReview.review}
-                input(type="submit" value="Submit")
-<<<<<<< HEAD
-                input(type="delete" value="delete")
-
-=======
-            form(action="/games/reviews" method="delete")
-                input(type="button" value="delete")
->>>>>>> main
+                    label(for="review")
+                    textarea(type="text" id="review" rows='6' cols='60' name="review" required) #{userReview.review}
+                    input(type="submit" value="Submit")
+                form(action="/games/reviews" method="delete")
+                    input(type="button" value="delete")
         div(class='reviews')
             h1 Reviews
             each review in reviews
-                if review.User.user_name !== userReview.User.user_name
+                if review.User.user_name !== logInUser
                     div(class='reviewEntry')
                         p #{review.User.user_name}
                         div(class='staticRating')

@@ -1,10 +1,23 @@
 const express = require('express');
 const router = express.Router();
 
-const { asyncHandler } = require("./utils");
+const { requireAuth } = require("../auth");
+const { csrfProtection, asyncHandler } = require("./utils");
 
+// database access
 const db = require("../db/models");
 const { Game, Review, User, Game_Shelf } = db;
+
+async function getUserReview(userId, gameId) {
+    const userReview = await Review.findOne({
+      where: {
+        userId,
+        gameId
+      },
+      include: User
+    });
+  return userReview
+}
 
 // all-games page route
 // /games
@@ -17,32 +30,36 @@ router.get("/", asyncHandler(async (req, res, next) => {
 // single game route
 // /games/id
 router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
-  const gameId = req.params.id;
-  console.log(`You made it to the game page with an ID of ${gameId}`)
-  // finds game by id
-  const game = await Game.findByPk(gameId);
+  console.log('\n\n')
+  console.log(`User ${req.session.auth.userId} is logged in.`)
+  console.log('\n\n')
+  // finds game by id from route
+  const game = await Game.findByPk(req.params.id);
+  // defaults
+  const userReview = false
+  const shelves = [{shelf_name: "No Shelves Exist", id:1}]
+  // renders page if game was found
   if (game) {
-    // renders page if game was found
-    const gameName = game.name
-    userId = 2
-    const userReview = await Review.findOne({
-      where: {
-        userId,
-      },
-      include: User
-    });
-    
+    // find reviews for current game
     const reviews = await Review.findAll({
       include: User,
     });
-
-    const shelves = await Game_Shelf.findAll(userId, {
-      where: {
-        userId,
-      }
-    });
-
-    res.render('game-page.pug', {game, shelves, userReview, reviews});
+    // gets user reviews if a user is logged in
+    let logInUser
+    if (req.session.auth.userId) {
+      const userReview = await getUserReview(req.session.auth.userId, req.params.id)
+      logInUser = userReview.User.user_name
+      console.log(userReview)
+      // const shelves = await Game_Shelf.findAll(userId, {
+      //   where: {
+      //     userId,
+      //   }
+      // });
+  
+      // PH
+      const shelves = [{shelf_name: "Example", id:1}]
+    }
+    res.render('game-page.pug', {game, shelves, userReview, logInUser, reviews});
   } else {
     // TODO create error in case of non existant game id
     console.log('Game not found')
@@ -52,7 +69,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
 
 // add review
   // POST to send it to db from the game-page
-router.post("/reviews", asyncHandler(async (req, res, next) => {
+router.post("/reviews", csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
   console.log('You made it to the all games page.')
   const { review, rating, userId, gameId } = req.body;
   const userReview = await Review.findOne({
@@ -68,8 +85,7 @@ router.post("/reviews", asyncHandler(async (req, res, next) => {
       rating,
       review,
       spoiler_status:'n', //defaults it to no spoilers (not being used)
-      userId,
-      // userId: res.locals.user.id,
+      userId: req.session.auth.userId,
       gameId
     });
   } else {
@@ -84,7 +100,7 @@ router.post("/reviews", asyncHandler(async (req, res, next) => {
 }));
 
 // delete review
-router.delete("/reviews", asyncHandler(async (req, res, next) => {
+router.delete("/reviews", csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
   const userReview = await Review.findOne({
     where: {
       userId,
