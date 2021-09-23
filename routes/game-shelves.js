@@ -46,6 +46,7 @@ router.post('/', asyncHandler( async(req, res) => {
     gameShelf,
     // csrfToken: req.csrfToken(),
   });
+  // we have 2 different res
   res.redirect(`/game-shelves`);
 }));
 
