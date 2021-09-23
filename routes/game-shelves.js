@@ -16,11 +16,12 @@ router.get("/", csrfProtection, asyncHandler(async (req, res, next) => {
   let loggedIn = req.session.auth
   console.log('----------------You made it to the game shelves page.----------------')
   // TODO: will need to figure out how to get current logged in user ID and remove hardcoded user below
-  userId = 1;
+  let userId = req.session.auth;
+  console.log("--------this is the userId", userId)
   // const gameShelves findsAll game shelves that are owned by a specific user
-  const gameShelves = await Game_Shelf.findAll({
-    where: { userId, }
-  })
+  const gameShelves = await Game_Shelf.findAll(
+    {where: userId}
+  )
   console.log(gameShelves);
   res.render('game-shelves.pug', {gameShelves, loggedIn, title: `Good Games`});
 }));
@@ -36,11 +37,13 @@ router.get("/", csrfProtection, asyncHandler(async (req, res, next) => {
 router.post('/', asyncHandler( async(req, res) => {
   let loggedIn = req.session.auth
   console.log("------------- GAME-SHELVES POST ROUTE WAS HIT ---------------");
-  
-  const { shelf_name, userId } = req.body;
+
+  const userId = req.session.auth.userId;
+  // console.log("this should be a userID>>>>>>", req.session.auth.userId)
+  const { shelf_name } = req.body;
   console.log(`>>>>>>>>>>>>> THIS IS THE NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`);
-  
-  const gameShelf = await db.Game_Shelf.create({ shelf_name, userId });
+
+  const gameShelf = await Game_Shelf.create({ shelf_name, userId});
   console.log(`>>>>>>>>>>>>> NEW GAME SHELF WAS CREATED!!!! THIS IS A GAME SHELF", ${gameShelf}`);
   // TODO: if/else to validate if shelf name already exists for this user
 
@@ -85,10 +88,10 @@ router.put('/', asyncHandler( async(req, res) => {
   console.log("Shelf to update:", shelfToUpdate.shelf_name);
 
   // console.log(`>>>>>>>>>>>>> THIS IS THE updated NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`);
-  
+
   // const gameShelf = await shelfId.update({ shelf_name });
   // console.log(`>>>>>>>>>>>>> GAME SHELF WAS updated!!!! THIS IS A GAME SHELF", ${gameShelf}`);
-  
+
   // // res.send("You finally made the game shelf!!")
   // res.render('game-shelves.pug', {
   //   title: 'Game Shelves',
