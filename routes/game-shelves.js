@@ -5,6 +5,7 @@ const { requireAuth } = require('../auth');
 const { Game, Game_Shelf, User } = db;
 const { check, validationResult } = require('express-validator');
 
+
 const router = express.Router();
 
 // game-shelves page route
@@ -40,7 +41,7 @@ router.post('/', asyncHandler( async(req, res) => {
   const gameShelf = await db.Game_Shelf.create({ shelf_name, userId });
   console.log(`>>>>>>>>>>>>> NEW GAME SHELF WAS CREATED!!!! THIS IS A GAME SHELF", ${gameShelf}`);
   // TODO: if/else to validate if shelf name already exists for this user
-  
+
   // res.send("You finally made the game shelf!!")
   res.render('game-shelves.pug', {
     title: 'Game Shelves',
@@ -63,16 +64,26 @@ const shelfValidators = [
   // GET shelf id form
   // PUT button to submit changes to shelf name
 
+const checkPermissions = (game_shelf, currentUser) => {
+  if (game_shelf.userId !== currentUser.id) {
+    const err = new Error('Illegal operation.');
+    err.status = 403; // Forbidden
+    throw err;
+  }
+};
+
 router.put('/', asyncHandler( async(req, res) => {
   console.log("------------- GAME-SHELVES PUT ROUTE WAS HIT ---------------");
-  const { shelf_name, userId } = req.body;
-  const shelfId = await Game_Shelf.findOne({ where: { shelf_name } });
-  console.log(shelfId.id)  // => expect the id of the shelf that is in req body
+  // const { shelf_name, userId } = req.body;
+  // const shelfId = await Game_Shelf.findOne({ where: { shelf_name } });
+  // console.log(shelfId.id)  // => expect the id of the shelf that is in req body
+  const shelfId = 2;
+  const shelfToUpdate = await Game_Shelf.findByPk( shelfId );
+  console.log("Shelf to update:", shelfToUpdate.shelf_name);
 
-  // const { shelf_name } = req.body;
   // console.log(`>>>>>>>>>>>>> THIS IS THE updated NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`);
   
-  // const gameShelf = await db.Game_Shelf.update({ shelf_name });
+  // const gameShelf = await shelfId.update({ shelf_name });
   // console.log(`>>>>>>>>>>>>> GAME SHELF WAS updated!!!! THIS IS A GAME SHELF", ${gameShelf}`);
   
   // // res.send("You finally made the game shelf!!")
