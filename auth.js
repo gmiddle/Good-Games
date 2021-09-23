@@ -11,6 +11,8 @@ const logoutUser = (req, res, user) => {
     req.session.save(()=>{res.redirect('/')})
 };
 
+// TODO this might not be working yet
+// sends to / for logged in users
 const requireAuth = (req, res, next) => {
     if(!res.locals.authenticated){
         return res.redirect('/')
