@@ -1,14 +1,19 @@
 header
     h1 Hello
         nav
-            form(action="/" method="get" )
-                input(class="sign-up" type="submit" value="Sign-Up")
+            if (loggedIn)
+                p Hello User
+                form(action="/users/logout" method="post" )
+                    input(class="log-out" type="submit" value="Log Out")
             
-            form(action="/users/login" method="get" )
-                input(class="log-in" type="submit" value="Log In")
+            else
 
-            form(action="/users/logout" method="post" )
-                input(class="log-out" type="submit" value="Log Out")
+                form(action="/" method="get" )
+                    input(class="sign-up" type="submit" value="Sign-Up")
+            
+                form(action="/users/login" method="get" )
+                    input(class="log-in" type="submit" value="Log In")
 
+            
 
             

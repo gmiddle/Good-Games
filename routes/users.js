@@ -152,28 +152,28 @@ router.post(
         if (passwordMatch) {
           console.log("PASSWORD MATCHES!!!!!!!!!!!!!!")
           loginUser(req, res, user);
-          return res.redirect("/games");
         }
       }
       errors.push("Login failed for the provided username and password");
     } else {
       errors = validatorErrors.array().map((error) => error.msg);
       // console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<THESE ARE THE ERRORS:>>>>>>>>>>>>>>>>>>>>>>>>>>", errors);
-    }
-
     res.render("login.pug", {
       user_name,
       loggedIn,
       errors,
       token: req.csrfToken(),
     });
+    }
+
+    
   })
 );
 
 
 router.post('/logout', (req,res) => {
   logoutUser(req, res);
-  res.redirect('/')//TODO redirect to home page after logout. //TODO still need to add form in pug
+  // res.redirect('/')//TODO redirect to home page after logout. //TODO still need to add form in pug
   console.log("USER SUCCESSFULLY LOGGED OUT")
 });
 
