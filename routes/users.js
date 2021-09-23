@@ -20,7 +20,7 @@ const userValidators = [
   .isLength({ max: 30 })
   .withMessage("Username must not be more than 30 characters")
   .custom((value) => {
-    
+
     return db.User.findOne({ where: { user_name: value } }).then((user) => {
       if (user) {
         return Promise.reject(
@@ -29,7 +29,7 @@ const userValidators = [
         }
       });
     }),
-    
+
     check("email")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a valid email address")
@@ -46,7 +46,7 @@ const userValidators = [
           }
         });
       }),
-      
+
     check("password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for password")
@@ -60,7 +60,7 @@ const userValidators = [
     .withMessage("Must include at least one number 0-9")
     .matches(/(?=.*[!_@#$%^&*])/, "g")
     .withMessage("Must include at least one special character"), // might need to remove underscore(could cause error?)
-    
+
     check("confirm-password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for confirm password")
@@ -73,7 +73,7 @@ const userValidators = [
       return true;
     }),
 ];
-    
+
 router.post(
   "/",
   csrfProtection,
@@ -89,7 +89,7 @@ router.post(
       user.password = hashedPassword;
       await user.save();
       loginUser(req, res, user);
-      res.redirect("/users");
+      res.redirect("/game-shelves");
       // console.log("testing the redirect")
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
@@ -104,7 +104,7 @@ router.post(
     }
   })
   );
-      
+
 router.get("/", (req, res, next) => {
   let loggedIn = req.session.auth
   res.render("user.pug", {loggedIn});
@@ -152,28 +152,28 @@ router.post(
         if (passwordMatch) {
           console.log("PASSWORD MATCHES!!!!!!!!!!!!!!")
           loginUser(req, res, user);
-          return res.redirect("/games");
         }
       }
       errors.push("Login failed for the provided username and password");
     } else {
       errors = validatorErrors.array().map((error) => error.msg);
       // console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<THESE ARE THE ERRORS:>>>>>>>>>>>>>>>>>>>>>>>>>>", errors);
-    }
-
     res.render("login.pug", {
       user_name,
       loggedIn,
       errors,
       token: req.csrfToken(),
     });
+    }
+
+    
   })
 );
 
 
 router.post('/logout', (req,res) => {
   logoutUser(req, res);
-  res.redirect('/')//TODO redirect to home page after logout. //TODO still need to add form in pug
+  // res.redirect('/')//TODO redirect to home page after logout. //TODO still need to add form in pug
   console.log("USER SUCCESSFULLY LOGGED OUT")
 });
 
