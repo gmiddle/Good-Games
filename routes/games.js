@@ -49,22 +49,18 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
     let hasReview
     if (loggedIn) {
       const userReview = await getUserReview(req.session.auth.userId, req.params.id)
-      userName = 
       hasReview = userReview !== null
-      console.log('Has review', hasReview)
+      // PH
       // const shelves = await Game_Shelf.findAll(userId, {
       //   where: {
       //     userId,
       //   }
       // });
-  
-      // PH
     }
     res.render('game-page.pug', {
       game,
       reviews,
       shelves,
-      userName,
       userReview,
       loggedIn,
       hasReview,
@@ -79,18 +75,16 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
 
 // add review
   // POST to send it to db from the game-page
-router.post("/reviews", csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
-  console.log('You made it to the all games page.')
-  const { review, rating, userId, gameId } = req.body;
+router.post("/reviews", csrfProtection, asyncHandler(async (req, res, next) => {
+  const { review, rating, gameId } = req.body;
   const userReview = await Review.findOne({
     where: {
-      userId,
+      userId: req.session.auth.userId,
       gameId
     }
   });
   if (!userReview) {
     // post
-    console.log('New Review will be created.')
     const newReview = await Review.create({
       rating,
       review,
@@ -100,26 +94,26 @@ router.post("/reviews", csrfProtection, requireAuth, asyncHandler(async (req, re
     });
   } else {
     // update
-    console.log('Review will be updated.')
     await userReview.update({
       review: review,
       rating: rating
     });
   }
-  // res.render('all-games.pug', {games, loggedIn});
   res.redirect(`/games/${gameId}`);
 }));
 
 // delete review
-router.delete("/reviews", csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
+router.delete("/reviews", csrfProtection, asyncHandler(async (req, res, next) => {
   const userReview = await Review.findOne({
     where: {
       userId,
       gameId
     }
   });
+  console.log(userReview.rating, userReview.review)
   if (userReview) {
     userReview.destroy();
+    res.redirect(`/games/${gameId}`);
   }
 }));
 
