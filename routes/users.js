@@ -29,6 +29,7 @@ const userValidators = [
         }
       });
     }),
+    
     check("email")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a valid email address")
@@ -46,32 +47,32 @@ const userValidators = [
         });
       }),
       
-      check("password")
-      .exists({ checkFalsy: true })
-      .withMessage("Please provide a value for password")
-      .isLength({ max: 50 })
-      .withMessage("Password must not be more than 50 characters")
-      .matches(/^(?=.*[a-z])/, "g")
-      .withMessage("Must include at least one lowercase letter")
-      .matches(/(?=.*[A-Z])/, "g")
-      .withMessage("Must include at least one uppercase letter")
-      .matches(/(?=.*[0-9])/, "g")
-      .withMessage("Must include at least one number 0-9")
-      .matches(/(?=.*[!_@#$%^&*])/, "g")
-      .withMessage("Must include at least one special character"), // might need to remove underscore(could cause error?)
-      
-      check("confirm-password")
-      .exists({ checkFalsy: true })
-      .withMessage("Please provide a value for confirm password")
-      .isLength({ max: 50 })
-      .withMessage("Confirm password must not be more than 50 characters")
-      .custom((value, { req }) => {
-        if (value !== req.body.password) {
-          throw new Error("Passwords do not match");
-        }
-        return true;
-      }),
-    ];
+    check("password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for password")
+    .isLength({ max: 50 })
+    .withMessage("Password must not be more than 50 characters")
+    .matches(/^(?=.*[a-z])/, "g")
+    .withMessage("Must include at least one lowercase letter")
+    .matches(/(?=.*[A-Z])/, "g")
+    .withMessage("Must include at least one uppercase letter")
+    .matches(/(?=.*[0-9])/, "g")
+    .withMessage("Must include at least one number 0-9")
+    .matches(/(?=.*[!_@#$%^&*])/, "g")
+    .withMessage("Must include at least one special character"), // might need to remove underscore(could cause error?)
+    
+    check("confirm-password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for confirm password")
+    .isLength({ max: 50 })
+    .withMessage("Confirm password must not be more than 50 characters")
+    .custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error("Passwords do not match");
+      }
+      return true;
+    }),
+];
     
 router.post(
   "/",
