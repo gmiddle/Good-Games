@@ -31,7 +31,7 @@ router.get("/", asyncHandler(async (req, res, next) => {
 // /games/id
 router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
   console.log('\n\n')
-  console.log(`User ${req.session.auth.userId} is logged in.`)
+  console.log(`User "${req.session.auth.userId}" is logged in.`)
   console.log('\n\n')
   // finds game by id from route
   const game = await Game.findByPk(req.params.id);
@@ -86,14 +86,16 @@ router.post("/reviews", csrfProtection, requireAuth, asyncHandler(async (req, re
       review,
       spoiler_status:'n', //defaults it to no spoilers (not being used)
       userId: req.session.auth.userId,
-      gameId
+      gameId,
+      token: req.csrfToken()
     });
   } else {
     // update
     console.log('Review will be updated.')
     await userReview.update({
       review: review,
-      rating: rating
+      rating: rating,
+      token: req.csrfToken()
     });
   }
   res.redirect(`/games/${gameId}`);
@@ -104,7 +106,8 @@ router.delete("/reviews", csrfProtection, requireAuth, asyncHandler(async (req, 
   const userReview = await Review.findOne({
     where: {
       userId,
-      gameId
+      gameId,
+      token: req.csrfToken()
     }
   });
   if (userReview) {

@@ -67,6 +67,7 @@ block append main
                     textarea(type="text" id="review" rows='6' cols='60' name="review" required) #{userReview.review}
                     input(type="submit" value="Submit")
                 form(action="/games/reviews" method="delete")
+                    input(type="hidden" name="_csrf" value=token)
                     input(type="button" value="delete")
         div(class='reviews')
             h1 Reviews
