@@ -109,7 +109,7 @@ router.get("/", (req, res, next) => {
   let loggedIn = req.session.auth
   res.render("user.pug", {loggedIn});
 });
-      
+
 router.get(
   "/login",
   csrfProtection, (req, res) => {
