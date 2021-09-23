@@ -147,7 +147,7 @@ router.post(
         if (passwordMatch) {
           console.log("PASSWORD MATCHES!!!!!!!!!!!!!!")
           loginUser(req, res, user);
-          return res.redirect("/games");
+          return res.redirect("/");
         }
       }
       errors.push("Login failed for the provided username and password");
