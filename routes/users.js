@@ -79,6 +79,7 @@ router.post(
   csrfProtection,
   userValidators,
   asyncHandler(async (req, res) => {
+    let loggedIn = req.session.auth
     const { user_name, email, password } = req.body;
     console.log(req.body);
     const user = await db.User.build({ user_name, email });
@@ -97,6 +98,7 @@ router.post(
         title: "Sign Up",
         user,
         errors,
+        loggedIn,
         token: req.csrfToken(),
       });
     }
@@ -104,13 +106,15 @@ router.post(
   );
       
 router.get("/", (req, res, next) => {
-  res.render("user.pug");
+  let loggedIn = req.session.auth
+  res.render("user.pug", {loggedIn});
 });
       
 router.get(
   "/login",
   csrfProtection, (req, res) => {
-    res.render("login.pug", { token: req.csrfToken() });
+    let loggedIn = req.session.auth
+    res.render("login.pug", { token: req.csrfToken(), loggedIn });
   });
 
 // Validators
@@ -122,12 +126,13 @@ const loginValidators = [
     .exists({ checkFalsy: true })
     .withMessage("Please enter the correct password"),
 ];
-        
+
 router.post(
   "/login",
   csrfProtection,
   loginValidators,
   asyncHandler(async (req, res) => {
+    let loggedIn = req.session.auth
     const { user_name, password } = req.body;
     console.log(req.body);
 
@@ -158,6 +163,7 @@ router.post(
 
     res.render("login.pug", {
       user_name,
+      loggedIn,
       errors,
       token: req.csrfToken(),
     });
