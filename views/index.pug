@@ -8,6 +8,7 @@ block append head
 
 block append main
   h1= title
+  p Welcome to #{title}
   form(class="sign_up_form" action="/users" method="post")
     input(type="hidden" name="_csrf" value=token)
     div
