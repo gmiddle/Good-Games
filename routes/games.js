@@ -30,7 +30,7 @@ router.get("/", asyncHandler(async (req, res, next) => {
 
 // single game route
 // /games/id
-router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
+router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => {
   let loggedIn = req.session.auth
   console.log('Logged in', loggedIn)
 
@@ -60,7 +60,16 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
   
       // PH
     }
-    res.render('game-page.pug', {game, reviews, shelves, userName, userReview, loggedIn, hasReview});
+    res.render('game-page.pug', {
+      game,
+      reviews,
+      shelves,
+      userName,
+      userReview,
+      loggedIn,
+      hasReview,
+      token: req.csrfToken(),
+    });
   } else {
     // TODO create error in case of non existant game id
     console.log('Game not found')
@@ -87,18 +96,17 @@ router.post("/reviews", csrfProtection, requireAuth, asyncHandler(async (req, re
       review,
       spoiler_status:'n', //defaults it to no spoilers (not being used)
       userId: req.session.auth.userId,
-      gameId,
-      token: req.csrfToken()
+      gameId
     });
   } else {
     // update
     console.log('Review will be updated.')
     await userReview.update({
       review: review,
-      rating: rating,
-      token: req.csrfToken()
+      rating: rating
     });
   }
+  // res.render('all-games.pug', {games, loggedIn});
   res.redirect(`/games/${gameId}`);
 }));
 
@@ -107,8 +115,7 @@ router.delete("/reviews", csrfProtection, requireAuth, asyncHandler(async (req, 
   const userReview = await Review.findOne({
     where: {
       userId,
-      gameId,
-      token: req.csrfToken()
+      gameId
     }
   });
   if (userReview) {
