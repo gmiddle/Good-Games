@@ -5,6 +5,7 @@ const { requireAuth } = require("../auth");
 const { Game, Game_Shelf, User } = db;
 const { check, validationResult } = require("express-validator");
 
+
 const router = express.Router();
 
 // game-shelves page route
@@ -117,6 +118,18 @@ router.put(
     // });
   })
 );
+
+// const shelfSubmitButton = document.getElementById("shelf_submit")
+
+// const eventListener = shelfSubmitButton.addEventListener("submit", async (e) => {
+//   console.log("----this event listener was hit-----")
+
+//   const shelves = await fetch('/game-shelves', {
+//     method: "GET"
+//   })
+//   console.log(shelves)
+
+// })
 
 // delete a shelf
 // DELETE to remove shelf id from list of users shelves
