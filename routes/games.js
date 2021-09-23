@@ -48,18 +48,17 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
 // add review
   // POST to send it to db from the game-page
 
-  router.get("/reviews", asyncHandler(async (req, res, next) => {
+  router.post("/reviews", asyncHandler(async (req, res, next) => {
   console.log('You made it to the all games page.')
-  const { reviews } = req.body;
-  const review = await Review.create({
+  const { review, rating, userId, gameId } = req.body;
+  console.log(review)
+  const newReview = await Review.create({
     rating,
     review,
     spoiler_status:'n', //defaults it to no spoilers (not being used)
     userId,
     gameId
-    
-  });
-  
+    });
   }));
 // update shelf
   // GET update review
