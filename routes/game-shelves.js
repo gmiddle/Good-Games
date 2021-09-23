@@ -3,6 +3,7 @@ const db = require("../db/models");
 const { csrfProtection, asyncHandler } = require("./utils");
 const { requireAuth } = require('../auth');
 const { Game, Game_Shelf, User } = db;
+const { check, validationResult } = require('express-validator');
 
 const router = express.Router();
 
