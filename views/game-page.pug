@@ -17,21 +17,20 @@ block append main
             p Publisher: #{game.publisher}
             p Genre: #{game.genre}
             p Release Date: #{game.release_date}
-            //- select(name='image')
-            //-     each shelf in shelves
-            //-         option(value=shelves.shelf_name selected=shelves.id)
-            button Add to Shelf
+            if (loggedIn)
+                //- select(name='image')
+                //-     each shelf in shelves
+                //-         option(value=shelves.shelf_name selected=shelves.id)
+                button Add to Shelf
 
         div(class='userReview')
-            if (userReview)
+            if (loggedIn)
                 h1 Your Review
-                p #{userReview.User.user_name}
                 form(action="/games/reviews" method="post")
                     input(type="hidden" name="_csrf" value=token)
                     input(type="hidden" name="gameId" value=game.id)
                     input(type="hidden" name="userId" value=1)
                     //- placeholder ^^^^^^
-                    div
                     div(class="rate")
                         if userReview.rating == 5
                             input(type="radio" id="star5" name="rating" value=5 checked)

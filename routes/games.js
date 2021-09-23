@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { requireAuth } = require("../auth");
+const { requireAuth, loginUser } = require("../auth");
 const { csrfProtection, asyncHandler } = require("./utils");
 
 // database access
@@ -22,22 +22,23 @@ async function getUserReview(userId, gameId) {
 // all-games page route
 // /games
 router.get("/", asyncHandler(async (req, res, next) => {
+  let loggedIn = req.session.auth
   console.log('You made it to the all games page.')
   const games = await Game.findAll()
-  res.render('all-games.pug', {games, title: `Good Games`});
+  res.render('all-games.pug', {games, loggedIn});
 }));
 
 // single game route
 // /games/id
 router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
-  console.log('\n\n')
-  console.log(`User "${req.session.auth.userId}" is logged in.`)
-  console.log('\n\n')
+  let loggedIn = req.session.auth
+  console.log('Logged in', loggedIn)
+
   // finds game by id from route
   const game = await Game.findByPk(req.params.id);
   // defaults
   const userReview = false
-  const shelves = [{shelf_name: "No Shelves Exist", id:1}]
+  let shelves = [{shelf_name: "No Shelves Exist", id:1}]
   // renders page if game was found
   if (game) {
     // find reviews for current game
@@ -45,11 +46,12 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
       include: User,
     });
     // gets user reviews if a user is logged in
-    let logInUser
-    if (req.session.auth.userId) {
+    let hasReview
+    if (loggedIn) {
       const userReview = await getUserReview(req.session.auth.userId, req.params.id)
-      logInUser = userReview.User.user_name
-      console.log(userReview)
+      userName = 
+      hasReview = userReview !== null
+      console.log('Has review', hasReview)
       // const shelves = await Game_Shelf.findAll(userId, {
       //   where: {
       //     userId,
@@ -57,9 +59,8 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
       // });
   
       // PH
-      const shelves = [{shelf_name: "Example", id:1}]
     }
-    res.render('game-page.pug', {game, shelves, userReview, logInUser, reviews});
+    res.render('game-page.pug', {game, reviews, shelves, userName, userReview, loggedIn, hasReview});
   } else {
     // TODO create error in case of non existant game id
     console.log('Game not found')
