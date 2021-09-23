@@ -13,6 +13,7 @@ const router = express.Router();
   // the ID of the logged in user
   // what game-shelves belong to them
 router.get("/", csrfProtection, asyncHandler(async (req, res, next) => {
+  let loggedIn = req.session.auth
   console.log('----------------You made it to the game shelves page.----------------')
   // TODO: will need to figure out how to get current logged in user ID and remove hardcoded user below
   userId = 1;
@@ -21,7 +22,7 @@ router.get("/", csrfProtection, asyncHandler(async (req, res, next) => {
     where: { userId, }
   })
   console.log(gameShelves);
-  res.render('game-shelves.pug', {gameShelves, title: `Good Games`});
+  res.render('game-shelves.pug', {gameShelves, loggedIn, title: `Good Games`});
 }));
 
 
@@ -33,6 +34,7 @@ router.get("/", csrfProtection, asyncHandler(async (req, res, next) => {
 //   // POST to send it to db
 // TODO: verify if we need requireAuth and csrfProtection as middleware
 router.post('/', asyncHandler( async(req, res) => {
+  let loggedIn = req.session.auth
   console.log("------------- GAME-SHELVES POST ROUTE WAS HIT ---------------");
   
   const { shelf_name, userId } = req.body;
@@ -46,6 +48,7 @@ router.post('/', asyncHandler( async(req, res) => {
   res.render('game-shelves.pug', {
     title: 'Game Shelves',
     gameShelf,
+    loggedIn,
     // csrfToken: req.csrfToken(),
   });
   // we have 2 different res
