@@ -45,25 +45,51 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
     // next()
   }
 }));
+
 // add review
   // POST to send it to db from the game-page
-
-  router.post("/reviews", asyncHandler(async (req, res, next) => {
+router.post("/reviews", asyncHandler(async (req, res, next) => {
   console.log('You made it to the all games page.')
   const { review, rating, userId, gameId } = req.body;
-  console.log(review)
-  const newReview = await Review.create({
-    rating,
-    review,
-    spoiler_status:'n', //defaults it to no spoilers (not being used)
-    userId,
-    gameId
+  const userReview = await Review.findOne({
+    where: {
+      userId,
+      gameId
+    }
+  });
+  if (!userReview) {
+    // post
+    console.log('New Review will be created.')
+    const newReview = await Review.create({
+      rating,
+      review,
+      spoiler_status:'n', //defaults it to no spoilers (not being used)
+      userId,
+      // userId: res.locals.user.id,
+      gameId
     });
-  }));
-// update shelf
-  // GET update review
-  // PUT button to submit changes to a review
+  } else {
+    // update
+    console.log('Review will be updated.')
+    await userReview.update({
+      review: review,
+      rating: rating
+    });
+  }
+  res.redirect(`/games/${gameId}`);
+}));
 
-// delete a review
-  // DELETE to remove review
+// delete review
+router.delete("/reviews", asyncHandler(async (req, res, next) => {
+  const userReview = await Review.findOne({
+    where: {
+      userId,
+      gameId
+    }
+  });
+  if (userReview) {
+    userReview.destroy();
+  }
+}));
+
 module.exports = router;
