@@ -9,5 +9,6 @@ block append head
 
         body
             block append header
-                head  
-                    h1 Welcome to the game shelves page for
+                head
+                    each shelf in gameShelves
+                        li= shelf.shelf_name
