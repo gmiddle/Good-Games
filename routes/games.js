@@ -4,7 +4,7 @@ const router = express.Router();
 const { asyncHandler } = require("./utils");
 
 const db = require("../db/models");
-const { Game } = db;
+const { Game, Review, User, Game_Shelf } = db;
 
 // all-games page route
 // /games
@@ -22,10 +22,23 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
   // finds game by id
   const game = await Game.findByPk(gameId);
   if (game) {
-    console.log(game.game_img)
     // renders page if game was found
     const gameName = game.name
-    res.render('game-page.pug', {game, title: `Good Games - ${gameName}`});
+    userId = 2
+    const userReview = await Review.findOne({
+      where: {
+        userId,
+      },
+      include: User
+    });
+    
+    const reviews = await Review.findAll({
+      include: User,
+    });
+
+    const shelves = await Game_Shelf.findAll();
+
+    res.render('game-page.pug', {game, shelves, userReview, reviews});
   } else {
     // TODO create error in case of non existant game id
     console.log('Game not found')
