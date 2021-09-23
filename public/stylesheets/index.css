@@ -11,7 +11,7 @@ body {
     /* background-color:  #2f3138; */
     background-color: #1b2838;
     color: #b8b6b4;
-    
+
 }
 
 .sign_up_form {
@@ -47,11 +47,8 @@ nav {
 }
 
 
-img {
-    height: 50%;
-    width: 50%;
-}
-=======
+
+
 /* TODO: maybe change nav bar position */
 
 .footer {
@@ -95,4 +92,3 @@ img {
 .michael_link {
     margin-right: 100px;
 }
-
