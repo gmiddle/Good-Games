@@ -30,17 +30,23 @@ router.get("/", csrfProtection, asyncHandler(async (req, res, next) => {
         // when clicked, new div appears as a text box...
           // as user starts typing, a submit button appears
 //   // POST to send it to db
-// TODO: verify if we need requireAuth as middleware
-router.post('/', csrfProtection, asyncHandler( async(req, res) => {
-  const { shelf_name } = req.body;
-  const gameShelf = await Game_Shelf.create({ shelf_name });
-  console.log(">>>>>>> NEW GAME SHELF WAS CREATED!!!! THIS IS A GAME SHELF", gameShelf);
-  // res.render('shelf-add.pug', {
-  //   title: 'Add Shelf',
-  //   gameShelf,
-  //   csrfToken: req.csrfToken(),
-  // });
-  res.redirect(`/games-shelves`);
+// TODO: verify if we need requireAuth and csrfProtection as middleware
+router.post('/', asyncHandler( async(req, res) => {
+  console.log(">>>>>>> GAME-SHELVES POST ROUTE WAS HIT!!!!");
+  
+  const { shelf_name, userId } = req.body;
+  console.log(`>>>>>>> THIS IS THE NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`);
+  
+  const gameShelf = await db.Game_Shelf.create({ shelf_name, userId });
+  console.log(`>>>>>>> NEW GAME SHELF WAS CREATED!!!! THIS IS A GAME SHELF", ${gameShelf}`);
+  
+  // res.send("You finally made the game shelf!!")
+  res.render('game-shelves.pug', {
+    title: 'Game Shelves',
+    gameShelf,
+    // csrfToken: req.csrfToken(),
+  });
+  res.redirect(`/game-shelves`);
 }));
 
 const shelfValidators = [
