@@ -10,35 +10,27 @@ const db = require("../db/models");
 
 
 
-// Validators
-const loginValidators = [
-  check("user_name") //log-in with username
-    .exists({ checkFalsy: true })
-    .withMessage("Please provide a valid username"),
-  check("password")
-    .exists({ checkFalsy: true })
-    .withMessage("Please enter the correct password"),
-];
 
 // User Validator
 
 const userValidators = [
   check("user_name")
-    .exists({ checkFalsy: true })
-    .withMessage("Please provide a valid username")
-    .isLength({ max: 30 })
-    .withMessage("Username must not be more than 30 characters")
-    .custom((value) => {
-
-      return db.User.findOne({ where: { user_name: value } }).then((user) => {
-        if (user) {
-          return Promise.reject(
-            "The provided username is already in use by another account"
+  .exists({ checkFalsy: true })
+  .withMessage("Please provide a valid username")
+  .isLength({ max: 30 })
+  .withMessage("Username must not be more than 30 characters")
+  .custom((value) => {
+    
+    return db.User.findOne({ where: { user_name: value } }).then((user) => {
+      if (user) {
+        return Promise.reject(
+          "The provided username is already in use by another account"
           );
         }
       });
     }),
-  check("email")
+    
+    check("email")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a valid email address")
     .isLength({ max: 255 })
@@ -50,12 +42,12 @@ const userValidators = [
         if (user) {
           return Promise.reject(
             "The provided email address is already in use by another account"
-          );
-        }
-      });
-    }),
-
-  check("password")
+            );
+          }
+        });
+      }),
+      
+    check("password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for password")
     .isLength({ max: 50 })
@@ -68,8 +60,8 @@ const userValidators = [
     .withMessage("Must include at least one number 0-9")
     .matches(/(?=.*[!_@#$%^&*])/, "g")
     .withMessage("Must include at least one special character"), // might need to remove underscore(could cause error?)
-
-  check("confirm-password")
+    
+    check("confirm-password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for confirm password")
     .isLength({ max: 50 })
@@ -81,7 +73,7 @@ const userValidators = [
       return true;
     }),
 ];
-
+    
 router.post(
   "/",
   csrfProtection,
@@ -109,12 +101,28 @@ router.post(
       });
     }
   })
-);
-
+  );
+      
 router.get("/", (req, res, next) => {
   res.render("user.pug");
 });
+      
+router.get(
+  "/login",
+  csrfProtection, (req, res) => {
+    res.render("login.pug", { token: req.csrfToken() });
+  });
 
+// Validators
+const loginValidators = [
+  check("user_name") //log-in with username
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a valid username"),
+  check("password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please enter the correct password"),
+];
+        
 router.post(
   "/login",
   csrfProtection,
@@ -137,13 +145,15 @@ router.post(
         );
 
         if (passwordMatch) {
+          console.log("PASSWORD MATCHES!!!!!!!!!!!!!!")
           loginUser(req, res, user);
-          return res.redirect("/");
+          return res.redirect("/games");
         }
       }
       errors.push("Login failed for the provided username and password");
     } else {
       errors = validatorErrors.array().map((error) => error.msg);
+      // console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<THESE ARE THE ERRORS:>>>>>>>>>>>>>>>>>>>>>>>>>>", errors);
     }
 
     res.render("login.pug", {
@@ -154,13 +164,6 @@ router.post(
   })
 );
 
-router.get(
-  "/login",
-  csrfProtection,
-  asyncHandler(async (req, res, next) => {
-    res.render("login.pug", { token: req.csrfToken() });
-  })
-);
 
 router.post('/logout', (req,res) => {
   logoutUser(req, res);
