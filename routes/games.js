@@ -1,10 +1,26 @@
 const express = require('express');
 const router = express.Router();
 
-const { asyncHandler } = require("./utils");
+// auth and security
+const { csrfProtection, asyncHandler } = require("./utils");
+const { requireAuth } = require("../auth");
 
+// database access
 const db = require("../db/models");
 const { Game, Review, User, Game_Shelf } = db;
+
+let findUserReview = async function (userId, gameId) {
+  const userReview = await Review.findOne({
+    where: {
+      userId,
+      gameId
+    },
+    include: User
+  });
+  console.log(userReview.rating)
+  console.log(userReview.User.user_name)
+  return userReview
+}
 
 // all-games page route
 // /games
@@ -23,15 +39,8 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
   const game = await Game.findByPk(gameId);
   if (game) {
     // renders page if game was found
-    const gameName = game.name
-    userId = 2
-    const userReview = await Review.findOne({
-      where: {
-        userId,
-      },
-      include: User
-    });
-    
+    const userId = 2
+    const userReview = findUserReview(userId, gameId)
     const reviews = await Review.findAll({
       include: User,
     });
@@ -48,15 +57,10 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
 
 // add review
   // POST to send it to db from the game-page
-router.post("/reviews", asyncHandler(async (req, res, next) => {
+router.post("/reviews", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
   console.log('You made it to the all games page.')
   const { review, rating, userId, gameId } = req.body;
-  const userReview = await Review.findOne({
-    where: {
-      userId,
-      gameId
-    }
-  });
+  const userReview = findUserReview(userId, gameId)
   if (!userReview) {
     // post
     console.log('New Review will be created.')
@@ -65,7 +69,7 @@ router.post("/reviews", asyncHandler(async (req, res, next) => {
       review,
       spoiler_status:'n', //defaults it to no spoilers (not being used)
       userId,
-      // userId: res.locals.user.id,
+      // userId: res.locals.User.id,
       gameId
     });
   } else {
@@ -76,19 +80,15 @@ router.post("/reviews", asyncHandler(async (req, res, next) => {
       rating: rating
     });
   }
-  res.redirect(`/games/${gameId}`);
+  // res.redirect(`/games/${gameId}`);
 }));
 
 // delete review
-router.delete("/reviews", asyncHandler(async (req, res, next) => {
-  const userReview = await Review.findOne({
-    where: {
-      userId,
-      gameId
-    }
-  });
+router.delete("/reviews", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
+  const userReview = findUserReview(userId, gameId)
   if (userReview) {
     userReview.destroy();
+    // TODO use DOM manip to delete review
   }
 }));
 

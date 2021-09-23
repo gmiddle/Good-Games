@@ -24,7 +24,10 @@ block append main
 
         div(class='userReview')
             h1 Your Review
-            p #{userReview.User.user_name}
+            if (userReview.User)
+                p #{userReview.User.user_name}
+            else
+                p No User Logged In
             form(action="/games/reviews" method="post")
                 input(type="hidden" name="_csrf" value=token)
                 input(type="hidden" name="gameId" value=game.id)
@@ -64,13 +67,17 @@ block append main
 
                 label(for="review")
                 textarea(type="text" id="review" rows='6' cols='60' name="review" required) #{userReview.review}
-                input(type="submit" value="Submit")
+                //- TODO set up submit/update
+                if (userReview.rating)
+                    input(type="submit" value="update")
+                else
+                    input(type="submit" value="Submit")
             form(action="/games/reviews" method="delete")
                 input(type="button" value="delete")
         div(class='reviews')
             h1 Reviews
             each review in reviews
-                if review.User.user_name !== userReview.User.user_name
+                if review.userId !== userReview.userId
                     div(class='reviewEntry')
                         p #{review.User.user_name}
                         div(class='staticRating')
