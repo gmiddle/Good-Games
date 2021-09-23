@@ -32,13 +32,14 @@ router.get("/", csrfProtection, asyncHandler(async (req, res, next) => {
 //   // POST to send it to db
 // TODO: verify if we need requireAuth and csrfProtection as middleware
 router.post('/', asyncHandler( async(req, res) => {
-  console.log(">>>>>>> GAME-SHELVES POST ROUTE WAS HIT!!!!");
+  console.log("------------- GAME-SHELVES POST ROUTE WAS HIT ---------------");
   
   const { shelf_name, userId } = req.body;
-  console.log(`>>>>>>> THIS IS THE NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`);
+  console.log(`>>>>>>>>>>>>> THIS IS THE NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`);
   
   const gameShelf = await db.Game_Shelf.create({ shelf_name, userId });
-  console.log(`>>>>>>> NEW GAME SHELF WAS CREATED!!!! THIS IS A GAME SHELF", ${gameShelf}`);
+  console.log(`>>>>>>>>>>>>> NEW GAME SHELF WAS CREATED!!!! THIS IS A GAME SHELF", ${gameShelf}`);
+  // TODO: if/else to validate if shelf name already exists for this user
   
   // res.send("You finally made the game shelf!!")
   res.render('game-shelves.pug', {
@@ -47,7 +48,7 @@ router.post('/', asyncHandler( async(req, res) => {
     // csrfToken: req.csrfToken(),
   });
   // we have 2 different res
-  res.redirect(`/game-shelves`);
+  // res.redirect(`/game-shelves`);
 }));
 
 const shelfValidators = [
@@ -61,6 +62,26 @@ const shelfValidators = [
 // update shelf
   // GET shelf id form
   // PUT button to submit changes to shelf name
+
+router.put('/', asyncHandler( async(req, res) => {
+  console.log("------------- GAME-SHELVES PUT ROUTE WAS HIT ---------------");
+  const { shelf_name, userId } = req.body;
+  const shelfId = await Game_Shelf.findOne({ where: { shelf_name } });
+  console.log(shelfId.id)  // => expect the id of the shelf that is in req body
+
+  // const { shelf_name } = req.body;
+  // console.log(`>>>>>>>>>>>>> THIS IS THE updated NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`);
+  
+  // const gameShelf = await db.Game_Shelf.update({ shelf_name });
+  // console.log(`>>>>>>>>>>>>> GAME SHELF WAS updated!!!! THIS IS A GAME SHELF", ${gameShelf}`);
+  
+  // // res.send("You finally made the game shelf!!")
+  // res.render('game-shelves.pug', {
+  //   title: 'Game Shelves',
+  //   gameShelf,
+  //   // csrfToken: req.csrfToken(),
+  // });
+}));
 
 // delete a shelf
   // DELETE to remove shelf id from list of users shelves
