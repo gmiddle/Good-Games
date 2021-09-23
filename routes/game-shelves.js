@@ -7,41 +7,41 @@ const { check, validationResult } = require('express-validator');
 
 const router = express.Router();
 
-
-
-
-router.get("/", requireAuth, asyncHandler(async (req, res, next) => {
-  console.log('You made it to the game shelves page.')
-  // console.log(Game.id)
-  // const currentUser = await db.User.findByPK({ order: [['user_name', 'ASC']] });
-  // // const currentUser = await User.findByPk(req.params.id);
-  // console.log(currentUser)
-  // // const shelves = await Game_Shelf.findAll()
-  // res.render('game-shelves.pug', { title: `Good Games`, currentUser });
-  
-  const { userId } = req.session.auth
-  const user = await db.User.findByPk(userId)
-  console.log(userId)
-
-
-  // if user has shelves created already, GET shelves and display them
-
-
+// game-shelves page route
+// what do we need to know?
+  // the ID of the logged in user
+  // what game-shelves belong to them
+router.get("/", csrfProtection, asyncHandler(async (req, res, next) => {
+  console.log('----------------You made it to the game shelves page.----------------')
+  // TODO: will need to figure out how to get current logged in user ID and remove hardcoded user below
+  userId = 1;
+  // const gameShelves findsAll game shelves that are owned by a specific user
+  const gameShelves = await Game_Shelf.findAll({
+    where: { userId, }
+  })
+  console.log(gameShelves);
+  res.render('game-shelves.pug', {gameShelves, title: `Good Games`});
 }));
 
 
-
-// add a shelf
-  // GET to get the add a shelf form
-  // POST to send it to db
-router.get('/book-shelves/add', requireAuth, csrfProtection, (req, res) => {
-  const book = db.Game_Shelf.build();
-  res.render('shelf-add.pug', {
-    title: 'Add Shelf',
-    book,
-    csrfToken: req.csrfToken(),
-  });
-});
+// // add a shelf
+//   // GET to get the add a shelf form
+      // 'Add A New Shelf' button
+        // when clicked, new div appears as a text box...
+          // as user starts typing, a submit button appears
+//   // POST to send it to db
+// TODO: verify if we need requireAuth as middleware
+router.post('/', csrfProtection, asyncHandler( async(req, res) => {
+  const { shelf_name } = req.body;
+  const gameShelf = await Game_Shelf.create({ shelf_name });
+  console.log(">>>>>>> NEW GAME SHELF WAS CREATED!!!! THIS IS A GAME SHELF", gameShelf);
+  // res.render('shelf-add.pug', {
+  //   title: 'Add Shelf',
+  //   gameShelf,
+  //   csrfToken: req.csrfToken(),
+  // });
+  res.redirect(`/games-shelves`);
+}));
 
 const shelfValidators = [
   check('shelf_name')
