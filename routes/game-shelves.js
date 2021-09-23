@@ -18,7 +18,9 @@ router.get("/", csrfProtection, asyncHandler(async (req, res, next) => {
   let userId = req.session.auth;
   console.log("--------this is the userId", userId)
   // const gameShelves findsAll game shelves that are owned by a specific user
-  const gameShelves = await Game_Shelf.findAll()
+  const gameShelves = await Game_Shelf.findAll(
+    {where: userId}
+  )
   console.log(gameShelves);
   res.render('game-shelves.pug', {gameShelves, title: `Good Games`});
 }));
@@ -34,10 +36,12 @@ router.get("/", csrfProtection, asyncHandler(async (req, res, next) => {
 router.post('/', asyncHandler( async(req, res) => {
   console.log("------------- GAME-SHELVES POST ROUTE WAS HIT ---------------");
 
-  const { shelf_name, userId } = req.body;
+  const userId = req.session.auth.userId;
+  // console.log("this should be a userID>>>>>>", req.session.auth.userId)
+  const { shelf_name } = req.body;
   console.log(`>>>>>>>>>>>>> THIS IS THE NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`);
 
-  const gameShelf = await db.Game_Shelf.create({ shelf_name, userId });
+  const gameShelf = await Game_Shelf.create({ shelf_name, userId});
   console.log(`>>>>>>>>>>>>> NEW GAME SHELF WAS CREATED!!!! THIS IS A GAME SHELF", ${gameShelf}`);
   // TODO: if/else to validate if shelf name already exists for this user
 

@@ -10,5 +10,10 @@ block append head
         body
             block append header
                 head
-                    each shelf in gameShelves
-                        li= shelf.shelf_name
+                        div
+                            form(action="/game-shelves" method="post")
+                                label(for="shelf_name")
+                                input(type="text" id="shelf_name" name="shelf_name" value placeholder="Shelf Name" required)
+                                input(type="submit" value="Submit")
+                                each shelf in gameShelves
+                                    li= shelf.shelf_name
