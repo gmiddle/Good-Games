@@ -8,7 +8,9 @@ const { Game, Game_Shelf, User } = db;
 
 router.get("/", asyncHandler(async (req, res, next) => {
   console.log('You made it to the game shelves page.')
+  console.log(req.params)
   const currentUser = await User.findByPk(req.params.id);
+  console.log(currentUser)
   const shelves = await Game_Shelf.findAll()
   res.render('game-shelves.pug', { currentUser, title: `Good Games`});
   
