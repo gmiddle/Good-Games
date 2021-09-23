@@ -47,18 +47,24 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
 }));
 // add review
   // POST to send it to db from the game-page
-router.get("/", asyncHandler(async (req, res, next) => {
-  console.log('You made it to the all games page.')
-  const review = await Review.create({
-    name: "Fido",
-});
 
+  router.get("/reviews", asyncHandler(async (req, res, next) => {
+  console.log('You made it to the all games page.')
+  const { reviews } = req.body;
+  const review = await Review.create({
+    rating,
+    review,
+    spoiler_status:'n', //defaults it to no spoilers (not being used)
+    userId,
+    gameId
+    
+  });
+  
+  }));
 // update shelf
   // GET update review
   // PUT button to submit changes to a review
 
 // delete a review
   // DELETE to remove review
-
-
-  module.exports = router;
+module.exports = router;

@@ -25,7 +25,7 @@ block append main
         div(class='userReview')
             h1 Your Review
             p #{userReview.User.user_name}
-            form(action="/users/login" method="post")
+            form(action="/games/reviews" method="post")
                 input(type="hidden" name="_csrf" value=token)
                 div
                 div(class="rate")
