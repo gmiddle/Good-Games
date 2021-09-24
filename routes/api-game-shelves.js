@@ -7,8 +7,20 @@ const { check, validationResult } = require("express-validator");
 
 const router = express.Router();
 
+// TODO: verify if we need requireAuth and csrfProtection as middleware
+
+const checkPermissions = (game_shelf, currentUser) => {
+  if (game_shelf.userId !== currentUser.id) {
+    const err = new Error("Illegal operation.");
+    err.status = 403; // Forbidden
+    throw err;
+  }
+};
+
+
 router.get(
   "/",
+  requireAuth,
   csrfProtection,
   asyncHandler(async (req, res, next) => {
     // const userId = req.session.auth.userId
@@ -20,24 +32,17 @@ router.get(
   })
 );
 
-// TODO: verify if we need requireAuth and csrfProtection as middleware
 
 const shelfValidators = [
   check("shelf_name")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide a value for Title")
+    .withMessage("Please provide a value for Shelf Name")
     .isLength({ max: 30 })
     .withMessage("Shelf Name must not be more than 30 characters long"),
 ];
 
 
-const checkPermissions = (game_shelf, currentUser) => {
-  if (game_shelf.userId !== currentUser.id) {
-    const err = new Error("Illegal operation.");
-    err.status = 403; // Forbidden
-    throw err;
-  }
-};
+
 
 router.post(
   "/",

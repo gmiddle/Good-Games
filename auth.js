@@ -27,6 +27,8 @@ const restoreUser = async (req, res, next) => {
         } = req.session.auth
         try{
             const user = await db.User.findByPk(userId)
+            res.locals.authenticated = true;
+            next()
         } catch(err){
             res.locals.authenticated = false;
             next(err);
