@@ -6,7 +6,7 @@ const { csrfProtection, asyncHandler } = require("./utils");
 
 // database access
 const db = require("../db/models");
-const { Game, Review, User, Game_Shelf } = db;
+const { Game, Review, User, Game_Shelf, Shelf_Entry } = db;
 
 async function getUserReview(userId, gameId) {
     const userReview = await Review.findOne({
@@ -127,5 +127,21 @@ router.delete("/reviews", csrfProtection, asyncHandler(async (req, res, next) =>
     res.redirect(`/games/${gameId}`);
   }
 }));
+
+// add a game to a shelf-entry
+  // this route will take the selected game and post it to a user's game-shelf
+  // via the shelf-entry join table
+router.post("/shelf-entry", csrfProtection, asyncHandler(async (req, res, next) => {
+  const { gameId, gameShelfId } = req.body;
+  // post
+  await Shelf_Entry.create({
+    gameShelfId,
+    gameId,
+    play_status: "Unplayed"
+  });
+  res.redirect("/game-shelves")
+}));
+
+
 
 module.exports = router;
