@@ -1,4 +1,8 @@
-
+*{
+    font-family: "Microsoft Yi Baiti",
+    "Motiva Sans",
+    Sans-serif;
+}
 
 h1 {
     display: flex;
@@ -11,7 +15,6 @@ body {
     /* background-color:  #2f3138; */
     background-color: #1b2838;
     color: #b8b6b4;
-
 }
 
 .sign_up_form {
@@ -20,48 +23,57 @@ body {
     justify-content: center;
 }
 
+/* HEADER/NAVIGATION */
+.logo {
+    height: 60px;
+}
 
-nav {
+header {
+    width: 100%;
+}
+ .header {
     text-align: right;
-    background-color: #1b2838;
+    background-color: #171a21;
     width: 100%;
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid seashell;
+    border-bottom: 1px solid #282d3a;
     border-width: 100%;
     border-width: 0 0 1px;
-    top: 0px;
+    top: -10px;
+    left: -10px;
     margin-bottom: 25px;
-    position: sticky;
+    position:relative;
     min-height: 55px;
     max-height: 55px;
     padding: 5px 20px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Motiva Sans",Sans-serif;
     font-size: 1rem;
-
-}
- nav span {
-    text-align: center;
-    padding: 10px 15px;
 }
 
+/* FOOTER SECTION*/
 
-/* TODO: maybe change nav bar position */
-
+footer{
+    width: 1000px;
+    box-sizing: content-box;
+    height: 10px;
+    position: absolute;
+    bottom: 25px;
+    
+}
 .footer {
     display: flex;
-    box-sizing: border-box;
+    box-sizing: content-box;
     position: fixed;
-    min-height: 75px;
-    max-height: 75px;
     left: 0;
-    bottom: 0;
+    min-height: 10px;
+    max-height: 10px;
     width: 100%;
     background-color: #171a21;
     color: #b8b6b4;
     justify-content: space-between;
-    padding: 5px 20px;
+    margin-bottom: 0;
     border: 1px solid #282d3a;
     box-shadow: 0px -1px 2px rgb(255 150 100 / 30%);
     border-width: 0 0 1px;
@@ -69,7 +81,10 @@ nav {
     align-content: center;
     font-family: "Motiva Sans", Sans-serif;
     padding: 30px;
+}
 
+.username {
+    margin-right: 20px;
 }
 
 .names a {
@@ -90,3 +105,52 @@ nav {
 .michael_link {
     margin-right: 100px;
 }
+
+.nav-buttons {
+    display: inline-flex;
+    justify-content: space-between;
+    /* margin-right: 15px; */
+    align-content: space-around;
+}
+form {
+    margin: 10px;
+}
+/* Buttons */
+.button {
+
+    font-family: "Motiva Sans", Sans-serif;
+    color:#b8b6b4;
+    background-color: transparent;
+    border: none;
+}
+
+.demo{
+    color:#b8b6b4;
+    background-color: transparent;
+    border: none;
+    
+}
+/* container alignment */
+.box-container {
+    width: 75%;
+    height: fit-content;
+    display: inline-flex;
+    flex-direction: row-reverse;
+
+}
+
+.box-1 {
+    width: 50%;
+}
+
+/* Box-2 */
+.box-2 {
+    width: 50%;
+    font-family: "Microsoft Yi Baiti", "Motiva Sans", Sans-serif;
+    font-size: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+

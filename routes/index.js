@@ -4,7 +4,8 @@ const { csrfProtection, asyncHandler } = require("./utils");
 
 /* GET home page. */
 router.get('/', csrfProtection,  function(req, res, next) {
-  res.render('index',  { title: 'a/A Express Skeleton Home', token:req.csrfToken() });
+  let loggedIn = req.session.auth
+  res.render('index',  { title: 'Home', loggedIn, token:req.csrfToken() });
 });
 
 module.exports = router;

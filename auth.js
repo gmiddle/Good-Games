@@ -1,13 +1,17 @@
 const db = require('./db/models');
 const loginUser = (req, res, user) => {
     req.session.auth = {userId:user.id};
-    //TODO: User id (key name to be checked later)???
+    req.session.save(()=>{res.redirect('/games')})
+
 };
 
 const logoutUser = (req, res, user) => {
     delete req.session.auth;
+    req.session.save(()=>{res.redirect('/')})
 };
 
+
+// sends to / for logged in users
 const requireAuth = (req, res, next) => {
     if(!res.locals.authenticated){
         return res.redirect('/')
@@ -22,6 +26,8 @@ const restoreUser = async (req, res, next) => {
         } = req.session.auth
         try{
             const user = await db.User.findByPk(userId)
+            res.locals.authenticated = true;
+            next()
         } catch(err){
             res.locals.authenticated = false;
             next(err);

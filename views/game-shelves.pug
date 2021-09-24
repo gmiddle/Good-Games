@@ -4,9 +4,16 @@ block append head
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Good Games - #{currentUser}
+    //- title Good Games - #{currentUser}
+    title Game Shelves
 
         body
             block append header
-                head  
-                    h1 Welcome to the game shelves page for #{currentUser}
+                head
+                        div
+                            label(for="shelf_name")
+                            input(type="text" id="shelf_name" name="shelf_name" value placeholder="Shelf Name" required)
+                            button(type="submit" id="shelf_submit" value="Submit") submit22
+                        div(class="shelf_list")
+                            each shelf in gameShelves
+                                div(class="each_shelf")= shelf.shelf_name

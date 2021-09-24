@@ -1,14 +1,16 @@
-extends layout
+extends layout.pug
 
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
-  script(src="/javascripts/users.js" type="module" defer)
+  //- script(src="/javascripts/users.js" type="module" defer)
 
 append main
   body
     h1= title
+    
+    
     form(action="/users/login" method="post")
       input(type="hidden" name="_csrf" value=token)
       div
@@ -18,3 +20,26 @@ append main
       label(for="password")
       input(type="text" id="password" name="password" value placeholder="Password" required)
       input(type="submit" value="Submit")
+
+  
+//- head
+//-   body 
+
+//-   head
+//-   //- add page specific styles by appending to the head
+//-   link(rel="stylesheet" href="/stylesheets/index.css")
+//-   //- add page specific js
+//-   script(src="NEED A SOURCE HERE" type="module" defer)
+
+
+//-   main
+//-     h1= title
+//-     form(action="/users/login" method="post")
+//-       input(type="hidden" name="_csrf" value=token)
+//-       div
+//-       label(for="user_name")
+//-       input(type="text" id="user_name" name="user_name" value placeholder="User Name" required)
+//-       div
+//-       label(for="password")
+//-       input(type="text" id="password" name="password" value placeholder="Password" required)
+//-       input(type="submit" value="Submit")
