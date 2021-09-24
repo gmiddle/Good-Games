@@ -13,7 +13,7 @@ module.exports = {
       {
         play_status: 'Unplayed',
         gameId: '2',
-        gameShelfId: '2',
+        gameShelfId: '1',
         createdAt: new Date(),
         updatedAt: new Date()
       }
