@@ -46,6 +46,7 @@ header {
     padding: 5px 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
+    
 
 }
 
@@ -54,11 +55,12 @@ header {
 /* TODO: maybe change nav bar position */
 
 .footer {
+    overflow: scroll;
     display: flex;
     box-sizing: border-box;
     position: fixed;
-    min-height: 75px;
-    max-height: 75px;
+    min-height: 70px;
+    max-height: 70px;
     left: 0;
     bottom: 0;
     width: 100%;
