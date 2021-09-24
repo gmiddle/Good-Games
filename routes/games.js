@@ -113,7 +113,7 @@ router.post("/reviews", requireAuth, csrfProtection, asyncHandler(async (req, re
       rating: rating
     });
   }
-  res.redirect(`/games/${gameId}`);
+  // res.redirect(`/games/${gameId}`);
 }));
 
 // delete review
@@ -138,6 +138,7 @@ router.post("/reviews/delete", requireAuth, csrfProtection, asyncHandler(async (
 router.post("/shelf-entry", requireAuth, asyncHandler(async (req, res, next) => {
   const { gameId, gameShelfId } = req.body;
   console.log('\n\n\n\n')
+  console.log(req.body)
   console.log(gameId, gameShelfId)
   console.log('\n\n\n\n')
   // post
