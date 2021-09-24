@@ -11,9 +11,9 @@ const fakeUsers = [
     updatedAt: new Date()
   },
   {
-    email: 'purcy99@gmail.com',
-    user_name: 'Dan_Purcy',
-    password: bcrypt.hashSync("theseSpecsSuck%13", 10),
+    email: 'purcellgroup88@gmail.com',
+    user_name: 'Dan_Purcell',
+    password: bcrypt.hashSync("theseSpecsSuck&21", 10),
     createdAt: new Date(),
     updatedAt: new Date()
   },
