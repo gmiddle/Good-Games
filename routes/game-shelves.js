@@ -2,7 +2,7 @@ const express = require("express");
 const db = require("../db/models");
 const { csrfProtection, asyncHandler } = require("./utils");
 const { requireAuth } = require("../auth");
-const { Game, Game_Shelf, User } = db;
+const { Game, Game_Shelf, User, Shelf_Entry } = db;
 const { check, validationResult } = require("express-validator");
 
 
@@ -28,14 +28,19 @@ router.get(
   csrfProtection,
   asyncHandler(async (req, res, next) => {
     let loggedIn = req.session.auth;
-    console.log(
-      "----------------You made it to the game shelves page.----------------"
-    );
+    // console.log("----------------You made it to the game shelves page.----------------");
     let userId = req.session.auth;
-    console.log("--------this is the userId", userId);
+    // console.log("--------this is the userId", userId);
     // const gameShelves findsAll game shelves that are owned by a specific user
-    const gameShelves = await Game_Shelf.findAll({ where: userId });
-    console.log(gameShelves);
+    const gameShelves = await Game_Shelf.findAll({
+      where: userId,
+      include: Shelf_Entry
+    });
+    console.log("-------", gameShelves)
+    for(item of gameShelves){
+      console.log("this is the entries", item.Shelf_Entries)
+    }
+    // console.log(gameShelves);
     res.render("game-shelves.pug", {
       gameShelves,
       loggedIn,
@@ -64,13 +69,13 @@ router.post(
     // console.log("this should be a userID>>>>>>", req.session.auth.userId)
     const { shelf_name } = req.body;
     console.log(
-      `>>>>>>>>>>>>> THIS IS THE NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`
+      // `>>>>>>>>>>>>> THIS IS THE NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`
     );
       try{
         const gameShelf = await Game_Shelf.create({ shelf_name, userId });
-        console.log(
-          `>>>>>>>>>>>>> NEW GAME SHELF WAS CREATED!!!! THIS IS A GAME SHELF", ${gameShelf}`
-        );
+        // console.log(
+          // `>>>>>>>>>>>>> NEW GAME SHELF WAS CREATED!!!! THIS IS A GAME SHELF", ${gameShelf}`
+        // );
         // TODO: if/else to validate if shelf name already exists for this user
 
         // res.send("You finally made the game shelf!!")
@@ -113,7 +118,7 @@ router.put(
     // console.log(shelfId.id)  // => expect the id of the shelf that is in req body
     const shelfId = 2;
     const shelfToUpdate = await Game_Shelf.findByPk(shelfId);
-    console.log("Shelf to update:", shelfToUpdate.shelf_name);
+    // console.log("Shelf to update:", shelfToUpdate.shelf_name);
 
     // console.log(`>>>>>>>>>>>>> THIS IS THE updated NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`);
 

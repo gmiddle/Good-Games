@@ -26,7 +26,11 @@ router.get(
     let userId = req.session.auth;
     const shelf = await Game_Shelf.findAll({
       where: userId,
+      include: Shelf_Entry
     });
+    for(item of shelf){
+      console.log(item.Shelf_Entry.gameId)
+    }
     res.json(shelf);
   })
 );
