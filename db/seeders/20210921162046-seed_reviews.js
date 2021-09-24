@@ -58,10 +58,19 @@ const fakeReviews = [
     review: 'Why are the space dwarves taller then me? 1 foot out of 5!',
     createdAt: new Date(),
     updatedAt: new Date()
+  },
+  {
+    gameId: '22',
+    userId: '1',
+    rating: '5',
+    spoiler_status: 'n',
+    review: 'I love dwarves! Rock and Stone!',
+    createdAt: new Date(),
+    updatedAt: new Date()
   }
 ];
 
-for (let i = 0; i <= 100; i++) {
+for (let i = 0; i <= 150; i++) {
   const rating = getRandomNum(1, 5)
   let newReview = {
     userId: getRandomNum(1, 100),
