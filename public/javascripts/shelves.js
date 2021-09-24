@@ -12,11 +12,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
     e.preventDefault();
     console.log("----this event listener was hit-----");
 
-    const tester = document.createElement("div");
-    // console.log(tester)
-    tester.innerText = "TESTER";
-    let body = document.querySelector(".shelf_list");
-    body.appendChild(tester);
     const shelfName = document.getElementById("shelf_name");
     // await fetch("/api-game-shelves", {
     //   method: "POST",
@@ -34,6 +29,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
     });
     shelfFetch = await shelfFetch.json();
     console.log("hit", shelfFetch);
+
+    const tester = document.createElement("div");
+    // console.log(tester)
+    tester.innerText = shelfFetch.shelf_name;
+    let shelfList = document.querySelector(".shelf_list");
+    shelfList.appendChild(tester);
   });
 });
 

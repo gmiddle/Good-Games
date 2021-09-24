@@ -54,6 +54,7 @@ const checkPermissions = (game_shelf, currentUser) => {
 
 router.post(
   "/",
+  shelfValidators,
   asyncHandler(async (req, res) => {
     let loggedIn = req.session.auth;
 
