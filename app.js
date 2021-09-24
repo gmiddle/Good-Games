@@ -45,7 +45,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/games', gamesRouter);
 app.use('/game-shelves', shelvesRouter);
-app.use('/api-game-shelves', apiRouter);
+app.use('/api-game-shelves', apiRouter); //TODO: comment out if event listener isnt working 
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
