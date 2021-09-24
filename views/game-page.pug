@@ -22,18 +22,12 @@ block append main
             p #{game.description}
 
             if (loggedIn)
-                form(action="/shelf-entry" method="post" )
+                form(action="/games/shelf-entry" method="post" )
                     select(name='add-to-shelf')
                         each shelf in shelves
                             option(value=shelf.id) #{shelf.shelf_name}
                     input(type="hidden" name="gameId" value=game.id)
                     input(class="add-game" type="submit" value="Add to Shelf")
-
-                //- form(action='/SkillOpted' method="post")
-                //-     select(name='dropDown', id='')
-                //-         each skill in Skills
-                //-             option=skill
-                //-         input(type='submit', value='Submit')
 
         div(class='userReview')
             if (loggedIn)

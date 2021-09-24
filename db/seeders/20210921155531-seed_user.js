@@ -6,14 +6,14 @@ const fakeUsers = [
   {
     email: 'Demo@goodgames.com',
     user_name: 'Doug_Demodome',
-    password: bcrypt.hashSync("hashBrowns99", 10),
+    password: bcrypt.hashSync("hashBrowns99$12", 10),
     createdAt: new Date(),
     updatedAt: new Date()
   },
   {
-    email: 'purcellgroup88@gmail.com',
-    user_name: 'Dan_Purcell',
-    password: bcrypt.hashSync("theseSpecsSuck", 10),
+    email: 'purcy99@gmail.com',
+    user_name: 'Dan_Purcy',
+    password: bcrypt.hashSync("theseSpecsSuck%13", 10),
     createdAt: new Date(),
     updatedAt: new Date()
   },
