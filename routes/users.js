@@ -8,29 +8,25 @@ const db = require("../db/models");
 
 /* GET users listing. */
 
-
-
-
 // User Validator
 
 const userValidators = [
   check("user_name")
-  .exists({ checkFalsy: true })
-  .withMessage("Please provide a valid username")
-  .isLength({ max: 30 })
-  .withMessage("Username must not be more than 30 characters")
-  .custom((value) => {
-
-    return db.User.findOne({ where: { user_name: value } }).then((user) => {
-      if (user) {
-        return Promise.reject(
-          "The provided username is already in use by another account"
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a valid username")
+    .isLength({ max: 30 })
+    .withMessage("Username must not be more than 30 characters")
+    .custom((value) => {
+      return db.User.findOne({ where: { user_name: value } }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided username is already in use by another account"
           );
         }
       });
     }),
 
-    check("email")
+  check("email")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a valid email address")
     .isLength({ max: 255 })
@@ -42,12 +38,12 @@ const userValidators = [
         if (user) {
           return Promise.reject(
             "The provided email address is already in use by another account"
-            );
-          }
-        });
-      }),
+          );
+        }
+      });
+    }),
 
-    check("password")
+  check("password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for password")
     .isLength({ max: 50 })
@@ -61,7 +57,7 @@ const userValidators = [
     .matches(/(?=.*[!_@#$%^&*])/, "g")
     .withMessage("Must include at least one special character"), // might need to remove underscore(could cause error?)
 
-    check("confirm-password")
+  check("confirm-password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for confirm password")
     .isLength({ max: 50 })
@@ -79,7 +75,7 @@ router.post(
   csrfProtection,
   userValidators,
   asyncHandler(async (req, res) => {
-    let loggedIn = req.session.auth
+    let loggedIn = req.session.auth;
     const { user_name, email, password } = req.body;
     console.log(req.body);
     const user = await db.User.build({ user_name, email });
@@ -103,19 +99,17 @@ router.post(
       });
     }
   })
-  );
+);
 
 router.get("/", (req, res, next) => {
-  let loggedIn = req.session.auth
-  res.render("user.pug", {loggedIn});
+  let loggedIn = req.session.auth;
+  res.render("user.pug", { loggedIn });
 });
 
-router.get(
-  "/login",
-  csrfProtection, (req, res) => {
-    let loggedIn = req.session.auth
-    res.render("login.pug", { token: req.csrfToken(), loggedIn });
-  });
+router.get("/login", csrfProtection, (req, res) => {
+  let loggedIn = req.session.auth;
+  res.render("login.pug", { token: req.csrfToken(), loggedIn });
+});
 
 // Validators
 const loginValidators = [
@@ -132,7 +126,7 @@ router.post(
   csrfProtection,
   loginValidators,
   asyncHandler(async (req, res) => {
-    let loggedIn = req.session.auth
+    let loggedIn = req.session.auth;
     const { user_name, password } = req.body;
     console.log(req.body);
 
@@ -150,7 +144,7 @@ router.post(
         );
 
         if (passwordMatch) {
-          console.log("PASSWORD MATCHES!!!!!!!!!!!!!!")
+          console.log("PASSWORD MATCHES!!!!!!!!!!!!!!");
           loginUser(req, res, user);
         }
       }
@@ -158,24 +152,20 @@ router.post(
     } else {
       errors = validatorErrors.array().map((error) => error.msg);
       // console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<THESE ARE THE ERRORS:>>>>>>>>>>>>>>>>>>>>>>>>>>", errors);
-    res.render("login.pug", {
-      user_name,
-      loggedIn,
-      errors,
-      token: req.csrfToken(),
-    });
+      res.render("login.pug", {
+        user_name,
+        loggedIn,
+        errors,
+        token: req.csrfToken(),
+      });
     }
-
-    
   })
 );
 
-
-router.post('/logout', (req,res) => {
+router.post("/logout", (req, res) => {
   logoutUser(req, res);
   // res.redirect('/')//TODO redirect to home page after logout. //TODO still need to add form in pug
-  console.log("USER SUCCESSFULLY LOGGED OUT")
+  console.log("USER SUCCESSFULLY LOGGED OUT");
 });
-
 
 module.exports = router;
