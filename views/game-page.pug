@@ -19,6 +19,7 @@ block append main
                     p Publisher: #{game.publisher}
                     p Genre: #{game.genre}
                     p Release Date: #{game.release_date}
+                    p Average Rating: #{averageRating} Stars
             p #{game.description}
 
             if (loggedIn)
@@ -70,9 +71,10 @@ block append main
                     label(for="review")
                     if (hasReview)
                         textarea(type="text" id="review" rows='6' cols='60' name="review" required) #{userReview.review}
+                        input(type="submit" value="Update Review")
                     else
                         textarea(type="text" id="review" rows='6' cols='60' name="review" required)
-                    input(type="submit" value="Submit")
+                        input(type="submit" value="Submit Review")
                 if (hasReview)
                     form(action="/games/reviews/delete" method="post")
                         input(type="hidden" name="_csrf" value=token)
