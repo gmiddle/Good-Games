@@ -39,7 +39,7 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
   // defaults
   let userReview = false
   let currentUser = null
-  let shelves = [{shelf_name: "No Shelves Exist", id:1}]
+  let shelves = [{shelf_name: "No Shelves Exist", id:0}]
   // renders page if game was found
   if (game) {
     // find reviews for current game
@@ -52,12 +52,13 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
       currentUser = req.session.auth.userId
       userReview = await getUserReview(req.session.auth.userId, req.params.id)
       hasReview = userReview !== null
-      // PH
-      // const shelves = await Game_Shelf.findAll(userId, {
-      //   where: {
-      //     userId,
-      //   }
-      // });
+      
+      shelves = await Game_Shelf.findAll({
+        where: {
+          userId: currentUser,
+        }
+      });
+      console.log(shelves)
     }
     res.render('game-page.pug', {
       game,
@@ -117,6 +118,7 @@ router.delete("/reviews", csrfProtection, asyncHandler(async (req, res, next) =>
     }
   });
   if (userReview) {
+    // TODO does not work yet
     userReview.destroy();
     res.redirect(`/games/${gameId}`);
   }
