@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", (e) => {
   const shelfSubmitButton = document.getElementById("shelf_submit");
-  // console.log(shelfSubmitButton);
-
   // event listener to add a shelf div
   //fetch shelves
   //create div with new shelf inisde it with create element
@@ -13,13 +11,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
     console.log("----this event listener was hit-----");
 
     const shelfName = document.getElementById("shelf_name");
-    // await fetch("/api-game-shelves", {
-    //   method: "POST",
-    //   headers: {"Content-Type": "application/json"},
-    //   body: JSON.stringify({shelf_name: shelfName.value})
-    // })
-    // .then(response => response.json())
-    // .then(data => console.log(data))
 
     console.log(shelfName.value);
     let shelfFetch = await fetch("/api-game-shelves", {
@@ -30,12 +21,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
     shelfFetch = await shelfFetch.json();
     console.log("hit", shelfFetch);
 
-    const tester = document.createElement("div");
-    // console.log(tester)
-    tester.innerText = shelfFetch.shelf_name;
+    const newShelfDiv = document.createElement("div");
+
+    newShelfDiv.innerText = shelfFetch.shelf_name;
     let shelfList = document.querySelector(".shelf_list");
-    shelfList.appendChild(tester);
+    shelfList.appendChild(newShelfDiv);
   });
 });
 
-// TODO: comment out if we cant get working and leave
+
