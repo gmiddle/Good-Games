@@ -7,7 +7,6 @@ const { check, validationResult } = require("express-validator");
 
 const router = express.Router();
 
-// TODO: verify if we need requireAuth and csrfProtection as middleware
 
 const checkPermissions = (game_shelf, currentUser) => {
   if (game_shelf.userId !== currentUser.id) {

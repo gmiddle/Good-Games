@@ -12,7 +12,6 @@ const router = express.Router();
 // what do we need to know?
 // the ID of the logged in user
 // what game-shelves belong to them
-// TODO: verify if we need requireAuth and csrfProtection as middleware
 
 
 const checkPermissions = (game_shelf, currentUser) => {
