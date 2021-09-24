@@ -20,20 +20,23 @@ body {
     justify-content: center;
 }
 
-
-nav {
+header {
+    width: 100%;
+}
+ .header {
     text-align: right;
-    background-color: #1b2838;
+    background-color: #171a21;
     width: 100%;
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid seashell;
+    border-bottom: 1px solid #282d3a;
     border-width: 100%;
     border-width: 0 0 1px;
-    top: 0px;
+    top: -10px;
+    left: -10px;
     margin-bottom: 25px;
-    position: sticky;
+    position:relative;
     min-height: 55px;
     max-height: 55px;
     padding: 5px 20px;
@@ -41,10 +44,7 @@ nav {
     font-size: 1rem;
 
 }
- nav span {
-    text-align: center;
-    padding: 10px 15px;
-}
+
 
 
 /* TODO: maybe change nav bar position */
@@ -70,6 +70,10 @@ nav {
     font-family: "Motiva Sans", Sans-serif;
     padding: 30px;
 
+}
+
+.username {
+    margin-right: 20px;
 }
 
 .names a {
