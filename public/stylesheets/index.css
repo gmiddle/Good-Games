@@ -162,8 +162,9 @@ form {
 .box-container {
     width: 100%;
     height: fit-content;
-    display: inline-flex;
+    display: flex;
     flex-direction: row-reverse;
+    align-items: center;
 
 }
 
@@ -173,6 +174,7 @@ form {
     align-items: center;
     align-content: center;
     justify-content: center;
+    bo
     background-color: rgba(28, 102, 137, .4);
     border-radius: 15px;
     margin: 20px;
@@ -191,6 +193,7 @@ form {
     background-color: #b8b6b4;
     border: 1px bevel black;
 }
+
 /* Box-2 */
 .box-2 {
     width: 50%;
