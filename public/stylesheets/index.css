@@ -19,6 +19,7 @@ body {
     justify-content: center;
 }
 
+/* HEADER/NAVIGATION */
 .logo {
     height: 60px;
 }
@@ -47,7 +48,8 @@ header {
     font-size: 1rem;
 }
 
-/* TODO: maybe change nav bar position */
+/* FOOTER SECTION*/
+
 footer{
     width: 1000px;
     box-sizing: content-box;
