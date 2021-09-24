@@ -1,5 +1,7 @@
 extends layout
 
+include utils.pug
+
 block append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
@@ -9,9 +11,14 @@ block append head
 block append main
   h1= title
     div(class="box-container") 
-      div(class="box-1") 
+      div(class="box-1")
+        +validationErrorSummary(errors)
         form(class="sign_up_form" action="/users" method="post")
             input(type="hidden" name="_csrf" value=token)
+            //- +field('User Name', 'user_name', user.user_name)
+            //- +field('Email Address', 'email', user.email)
+            //- +field('Password', 'password', user.password, 'password')
+            //- +field('Confirm Password', 'confirmPassword', '', 'password')
             div
             label(for="user_name")
             input(type="text" id="user_name" name="user_name" value placeholder="User Name" required)
@@ -28,7 +35,7 @@ block append main
             input(type="submit" class="sign-up" value="Sign Up")
       div(class="box-2")
         div
-          h1(class="box-header") Welcome!
+          h1(class="box-header")
         div     
-          p We are excited to have you here. Take some time to explore. When you are ready hit that Sign up button!
+          p Welcome to Good Reads!  A place for you to keep track of and interact with others on games you play or want to play! When you are ready hit that Sign up button!  Already have an account?  Hit the "Log in" button!
       
