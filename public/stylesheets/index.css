@@ -53,16 +53,6 @@ header {
     font-size: 1rem;
 }
 
-/* FOOTER SECTION*/
-
-footer{
-    width: 1000px;
-    box-sizing: content-box;
-    height: 10px;
-    position: absolute;
-    bottom: 25px;
-
-}
 .footer {
     display: flex;
     box-sizing: content-box;
@@ -82,6 +72,15 @@ footer{
     align-content: center;
     font-family: "Motiva Sans", Sans-serif;
     padding: 30px;
+}
+
+footer{
+    width: 1000px;
+    box-sizing: content-box;
+    height: 10px;
+    position: absolute;
+    bottom: 25px;
+
 }
 
 .username {
@@ -129,7 +128,7 @@ form {
     color:#b8b6b4;
     background-color: transparent;
     border: none;
-    
+
 }
 /* container alignment */
 .box-container {
@@ -158,4 +157,36 @@ form {
 
 .new_shelf {
     color: pink;
+}
+
+.shelf_container {
+    display: flex;
+    border: 1px solid black;
+    padding: 150px;
+    background-color: rgba(28, 102, 137, .4);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.shelf_list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+}
+
+.each_shelf {
+    color: whitesmoke;
+    font-size: 25px;
+    margin-left: 0px
+}
+.eachShelf_container {
+    display: flex;
+    border: 1px solid black;
+    padding: 120px;
+    background-color: rgba(28, 102, 137, .4);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    margin-right: 60px;
 }

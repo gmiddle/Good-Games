@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
     newShelfDiv.innerText = shelfFetch.shelf_name;
     let shelfList = document.querySelector(".shelf_list");
-    newShelfContainer.innerText = ""
     shelfList.appendChild(newShelfDiv);
     newShelfDiv.appendChild(newShelfContainer)
   });
