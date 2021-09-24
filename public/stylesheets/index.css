@@ -1,4 +1,4 @@
-*{
+* {
     font-family: "Microsoft Yi Baiti",
     "Motiva Sans",
     Sans-serif;
@@ -17,6 +17,8 @@ body {
     color: #b8b6b4;
     padding-bottom: 75px; 
 }
+
+/* Sign Up Form */
 
 .sign_up_form {
     display: flex;
@@ -123,6 +125,7 @@ form {
     color:#b8b6b4;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .demo{
@@ -131,6 +134,10 @@ form {
     border: none;
     
 }
+
+
+
+
 /* container alignment */
 .box-container {
     width: 75%;
@@ -142,6 +149,15 @@ form {
 
 .box-1 {
     width: 50%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    
+}
+
+.box-1 input.sign-up {
+    margin-top: 5px;
 }
 
 /* Box-2 */
@@ -152,6 +168,7 @@ form {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    align-content: center;
     justify-content: center;
 }
 
