@@ -9,10 +9,10 @@ header
             if (loggedIn)
                 div(class="nav-buttons")
                     form(action="/games" method="get" )
-                        input(class="games-button" type="submit" value="To Games")
+                        input(class="games-button button" type="submit" value="To Games")
                     
                     form(action="/users/logout" method="post" )
-                        input(class="log-out" type="submit" value="Log Out")
+                        input(class="log-out button" type="submit" value="Log Out")
             
             else
                 div(class="nav-buttons")
