@@ -15,6 +15,7 @@ body {
     /* background-color:  #2f3138; */
     background-color: #1b2838;
     color: #b8b6b4;
+    padding-bottom: 75px; 
 }
 
 .sign_up_form {
@@ -115,10 +116,20 @@ footer{
 form {
     margin: 10px;
 }
-
+/* Buttons */
 .button {
-    background-color: #b8b6b4;
+
     font-family: "Motiva Sans", Sans-serif;
+    color:#b8b6b4;
+    background-color: transparent;
+    border: none;
+}
+
+.demo{
+    color:#b8b6b4;
+    background-color: transparent;
+    border: none;
+    
 }
 /* container alignment */
 .box-container {
