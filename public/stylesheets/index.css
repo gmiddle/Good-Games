@@ -46,26 +46,33 @@ header {
     padding: 5px 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
+    
 
 }
 
 
 
 /* TODO: maybe change nav bar position */
-
+footer{
+    width: 1000px;
+    box-sizing: content-box;
+    height: 10px;
+    
+    
+    
+}
 .footer {
     display: flex;
-    box-sizing: border-box;
-    position: fixed;
-    min-height: 75px;
-    max-height: 75px;
+    box-sizing: content-box;
+    position: absolute;
     left: 0;
-    bottom: 0;
+    min-height: 10px;
+    max-height: 10px;
     width: 100%;
     background-color: #171a21;
     color: #b8b6b4;
     justify-content: space-between;
-    padding: 5px 20px;
+    margin-bottom: 0;
     border: 1px solid #282d3a;
     box-shadow: 0px -1px 2px rgb(255 150 100 / 30%);
     border-width: 0 0 1px;
