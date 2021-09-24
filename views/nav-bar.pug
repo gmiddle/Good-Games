@@ -6,25 +6,27 @@ header
             img(class="logo" src="/images/Good Games.png", alt="Good Games Logo")
     
         nav
-            if (loggedIn)
-                div(class="nav-buttons")
-                    form(action="/games" method="get" )
-                        input(class="games-button button" type="submit" value="To Games")
-                    
+            div(class="nav-buttons")
+                form(action="/games" method="get" )
+                    input(class="games-button button" type="submit" value="Games")
+                
+                if (loggedIn)
                     form(action="/users/logout" method="post" )
-                        input(class="log-out button" type="submit" value="Log Out")
-            
-            else
-                div(class="nav-buttons")
-                    form(action="/games" method="get" )
-                        input(class="games-button button" type="submit" value="To Games")
+                            input(class="log-out button" type="submit" value="Log Out")
+                
+                else
+                    form(action="/users/login" method="post")
+                        input(type="hidden" name="_csrf" value=token)
+                        input(type="hidden" id="user_name" name="user_name" value="Doug_Demodome")
+                        input(type="hidden" id="password" name="password" value= "hashBrowns99$12")
+                        input(type="submit" class="button" value="Demo Login")
                     
                     form(action="/" method="get" )
-                        input(class="sign-in button" type="submit" value="Sign-Up")
+                        input(class="sign-in button" type="submit" value="Sign Up")
             
                     form(action="/users/login" method="get" )
                         input(class="log-in button" type="submit" value="Log In")
 
-        
+            
 
-        
+            
