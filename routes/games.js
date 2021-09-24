@@ -51,12 +51,15 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
     ],
     });
     // create average game rating
-    let averageRating = 0
+    averageRating = 0
     for (review of reviews) {
       averageRating += Number(review.rating)
     }
     averageRating = averageRating/reviews.length
-    
+    let starAverage = ''
+    for (let i = 1; i <= averageRating; i++) {
+      starAverage += '★'
+    }
     // gets user reviews if a user is logged in
     let hasReview
     let userRating = 0
@@ -79,7 +82,7 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
       shelves,
       userReview,
       userRating,
-      averageRating,
+      starAverage,
       currentUser,
       loggedIn,
       hasReview,
