@@ -23,7 +23,7 @@ block append main
 
             if (loggedIn)
                 form(action="/games/shelf-entry" method="post" )
-                    select(name='add-to-shelf')
+                    select(name='gameShelfId')
                         each shelf in shelves
                             option(value=shelf.id) #{shelf.shelf_name}
                     input(type="hidden" name="gameId" value=game.id)
