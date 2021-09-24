@@ -46,7 +46,7 @@ header {
     min-height: 55px;
     max-height: 55px;
     padding: 5px 20px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Motiva Sans",Sans-serif;
     font-size: 1rem;
     
 
@@ -106,4 +106,19 @@ footer{
 
 .michael_link {
     margin-right: 100px;
+}
+
+.nav-buttons {
+    display: inline-flex;
+    justify-content: space-between;
+    /* margin-right: 15px; */
+    align-content: space-around;
+}
+form {
+    margin: 10px;
+}
+
+.button {
+    background-color: #b8b6b4;
+    font-family: "Motiva Sans", Sans-serif;
 }
