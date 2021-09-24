@@ -12,15 +12,25 @@ const router = express.Router();
 // what do we need to know?
 // the ID of the logged in user
 // what game-shelves belong to them
+
+
+const checkPermissions = (game_shelf, currentUser) => {
+  if (game_shelf.userId !== currentUser.id) {
+    const err = new Error("Illegal operation.");
+    err.status = 403; // Forbidden
+    throw err;
+  }
+};
+
 router.get(
   "/",
+ requireAuth,
   csrfProtection,
   asyncHandler(async (req, res, next) => {
     let loggedIn = req.session.auth;
     console.log(
       "----------------You made it to the game shelves page.----------------"
     );
-    // TODO: will need to figure out how to get current logged in user ID and remove hardcoded user below
     let userId = req.session.auth;
     console.log("--------this is the userId", userId);
     // const gameShelves findsAll game shelves that are owned by a specific user
@@ -40,7 +50,6 @@ router.get(
 // when clicked, new div appears as a text box...
 // as user starts typing, a submit button appears
 //   // POST to send it to db
-// TODO: verify if we need requireAuth and csrfProtection as middleware
 router.post(
   "/",
   asyncHandler(async (req, res) => {
@@ -49,7 +58,7 @@ router.post(
       "------------- GAME-SHELVES POST ROUTE WAS HIT ---------------"
     );
 
-    
+
 
     const userId = req.session.auth.userId;
     // console.log("this should be a userID>>>>>>", req.session.auth.userId)
@@ -93,13 +102,7 @@ const shelfValidators = [
 // GET shelf id form
 // PUT button to submit changes to shelf name
 
-const checkPermissions = (game_shelf, currentUser) => {
-  if (game_shelf.userId !== currentUser.id) {
-    const err = new Error("Illegal operation.");
-    err.status = 403; // Forbidden
-    throw err;
-  }
-};
+
 
 router.put(
   "/",

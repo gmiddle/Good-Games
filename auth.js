@@ -3,7 +3,6 @@ const loginUser = (req, res, user) => {
     req.session.auth = {userId:user.id};
     req.session.save(()=>{res.redirect('/games')})
 
-    //TODO: User id (key name to be checked later)???
 };
 
 const logoutUser = (req, res, user) => {
@@ -11,7 +10,7 @@ const logoutUser = (req, res, user) => {
     req.session.save(()=>{res.redirect('/')})
 };
 
-// TODO this might not be working yet
+
 // sends to / for logged in users
 const requireAuth = (req, res, next) => {
     if(!res.locals.authenticated){
@@ -27,6 +26,8 @@ const restoreUser = async (req, res, next) => {
         } = req.session.auth
         try{
             const user = await db.User.findByPk(userId)
+            res.locals.authenticated = true;
+            next()
         } catch(err){
             res.locals.authenticated = false;
             next(err);

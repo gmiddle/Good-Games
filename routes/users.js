@@ -164,7 +164,7 @@ router.post(
 
 router.post("/logout", (req, res) => {
   logoutUser(req, res);
-  // res.redirect('/')//TODO redirect to home page after logout. //TODO still need to add form in pug
+  // res.redirect('/')
   console.log("USER SUCCESSFULLY LOGGED OUT");
 });
 
