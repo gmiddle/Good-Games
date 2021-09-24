@@ -4,37 +4,13 @@ block append head
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="/stylesheets/all-games.css")
     title All Games
-        body
-            block append header
-                head 
-                    //- h1 Welcome to the all games page
-                    table
-                        thead
-                            div
-                                th= name
-                            div
-                                th= description
-                            div
-                                th= developer
-                            div
-                                th= publisher
-                            div
-                                th= genre
-                            div
-                                th= release_date
-                        tbody
-                            each game in games
-                                tr
-                                    div
-                                        td= game.name
-                                    div
-                                        td= game.description
-                                    div
-                                        td= game.developer
-                                    div
-                                        td= game.publisher
-                                    div
-                                        td= game.genre
-                                    div
-                                        td= game.release_date
+
+block append main
+    body
+        div(class="allGames")
+            each game in games
+                div(class="gameBox")
+                    a(href=`/games/${game.id}`)
+                        img(src=game.game_img, alt="#{game.name}")
