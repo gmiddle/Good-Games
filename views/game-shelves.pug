@@ -14,10 +14,11 @@ block append head
                             form(action="/game-shelves" method="post")
                                 label(for="shelf_name")
                                 input(type="text" id="shelf_name" name="shelf_name" value placeholder="Shelf Name" required)
-                                input(type="submit" id="shelf_submit" value="Submit")
+                                button(type="submit" id="shelf_submit" value="Submit") Submit
                         div(class="shelf_list")
-                            each shelf in gameShelves
-                                div(class="each_shelf")
-                                    div= shelf.shelf_name
-                                div(class="new_shelf")
+                            //- each shelf in gameShelves
+                            //-     div(class="each_shelf")
+                            //-         div= shelf.shelf_name
+                            //-     div(class="new_shelf")
                                     //- this is where new shelf will be rendered
+            //- script(src="/javascripts/game-shelves.js")
