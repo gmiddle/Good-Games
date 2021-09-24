@@ -1,4 +1,4 @@
-*{
+* {
     font-family: "Microsoft Yi Baiti",
     "Motiva Sans",
     Sans-serif;
@@ -18,10 +18,13 @@ body {
     padding-bottom: 75px; 
 }
 
+/* Sign Up Form */
+
 .sign_up_form {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 50%;
 }
 
 /* HEADER/NAVIGATION */
@@ -30,7 +33,8 @@ body {
 }
 
 header {
-    width: 100%;
+    width: 99%;
+    /* 100% includes unnecessary scroll */
 }
  .header {
     text-align: right;
@@ -55,8 +59,8 @@ header {
 
 /* FOOTER SECTION*/
 
-footer{
-    width: 1000px;
+footer {
+    width: 100px;
     box-sizing: content-box;
     height: 10px;
     position: absolute;
@@ -123,6 +127,11 @@ form {
     color:#b8b6b4;
     background-color: transparent;
     border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: white;
 }
 
 .demo{
@@ -131,9 +140,14 @@ form {
     border: none;
     
 }
+
+
+
+
+
 /* container alignment */
 .box-container {
-    width: 75%;
+    width: fit-content;
     height: fit-content;
     display: inline-flex;
     flex-direction: row-reverse;
@@ -141,9 +155,28 @@ form {
 }
 
 .box-1 {
-    width: 50%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: rgba(28, 102, 137, .4);
+    border-radius: 15px;
+    margin: 20px;
+    
 }
 
+.box-1 input.sign-up {
+    margin-top: 10px;
+}
+
+.box-1 input {
+    margin: 5px;
+}
+
+.box-1 input:hover {
+    background-color: #b8b6b4;
+}
 /* Box-2 */
 .box-2 {
     width: 50%;
@@ -152,6 +185,15 @@ form {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    align-content: center;
     justify-content: center;
+    margin: 20px;
+    
 }
 
+.box-2 p {
+    color: whitesmoke;
+}
+.box-2 h1 {
+     color: whitesmoke;
+}
