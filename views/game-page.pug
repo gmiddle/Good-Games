@@ -19,10 +19,18 @@ block append main
                 p Genre: #{game.genre}
                 p Release Date: #{game.release_date}
             if (loggedIn)
-                //- select(name='image')
-                //-     each shelf in shelves
-                //-         option(value=shelves.shelf_name selected=shelves.id)
-                button Add to Shelf
+                form(action="/shelf-entry" method="post" )
+                    select(name='add-to-shelf')
+                        each shelf in shelves
+                            option(value=shelf.id) #{shelf.shelf_name}
+                    input(class="add-game" type="submit" value="Add to Shelf")
+                    input(type="hidden" name="gameId" value=game.id)
+
+                //- form(action='/SkillOpted' method="post")
+                //-     select(name='dropDown', id='')
+                //-         each skill in Skills
+                //-             option=skill
+                //-         input(type='submit', value='Submit')
 
         div(class='userReview')
             if (loggedIn)
@@ -31,38 +39,42 @@ block append main
                     input(type="hidden" name="_csrf" value=token)
                     input(type="hidden" name="gameId" value=game.id)
                     div(class="rate")
-                        if userReview.rating == 5
+                        if userRating == 5
                             input(type="radio" id="star5" name="rating" value=5 checked)
                         else
                             input(type="radio" id="star5" name="rating" value=5)
                         label(for="star5" title="text") 5 stars
 
-                        if userReview.rating == 4
+                        if userRating == 4
                             input(type="radio" id="star4" name="rating" value=4 checked)
                         else
                             input(type="radio" id="star4" name="rating" value=4)
                         label(for="star4" title="text") 4 stars
 
-                        if userReview.rating == 3
+                        if userRating == 3
                             input(type="radio" id="star3" name="rating" value=3 checked)
                         else
                             input(type="radio" id="star3" name="rating" value=3)
                         label(for="star3" title="text") 3 stars
 
-                        if userReview.rating == 2
+                        if userRating == 2
                             input(type="radio" id="star2" name="rating" value=2 checked)
                         else
                             input(type="radio" id="star2" name="rating" value=2)
                         label(for="star2" title="text") 2 stars
 
-                        if userReview.rating == 1
+                        if userRating == 1
                             input(type="radio" id="star1" name="rating" value=1 checked)
                         else
                             input(type="radio" id="star1" name="rating" value=1)
                         label(for="star1" title="text") 1 star
 
+
                     label(for="review")
-                    textarea(type="text" id="review" rows='6' cols='60' name="review" required) #{userReview.review}
+                    if (hasReview)
+                        textarea(type="text" id="review" rows='6' cols='60' name="review" required) #{userReview.review}
+                    else
+                        textarea(type="text" id="review" rows='6' cols='60' name="review" required)
                     input(type="submit" value="Submit")
                 if (hasReview)
                     form(action="/games/reviews" method="delete")

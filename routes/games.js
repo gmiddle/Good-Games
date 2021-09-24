@@ -6,7 +6,7 @@ const { csrfProtection, asyncHandler } = require("./utils");
 
 // database access
 const db = require("../db/models");
-const { Game, Review, User, Game_Shelf } = db;
+const { Game, Review, User, Game_Shelf, Shelf_Entry } = db;
 
 async function getUserReview(userId, gameId) {
     const userReview = await Review.findOne({
@@ -39,7 +39,7 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
   // defaults
   let userReview = false
   let currentUser = null
-  let shelves = [{shelf_name: "No Shelves Exist", id:1}]
+  let shelves = [{shelf_name: "No Shelves Exist", id:0}]
   // renders page if game was found
   if (game) {
     // find reviews for current game
@@ -48,22 +48,27 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
     });
     // gets user reviews if a user is logged in
     let hasReview
+    let userRating = 0
     if (loggedIn) {
       currentUser = req.session.auth.userId
       userReview = await getUserReview(req.session.auth.userId, req.params.id)
+      if (userReview)
+        userRating = userReview.rating
       hasReview = userReview !== null
-      // PH
-      // const shelves = await Game_Shelf.findAll(userId, {
-      //   where: {
-      //     userId,
-      //   }
-      // });
+      
+      shelves = await Game_Shelf.findAll({
+        where: {
+          userId: currentUser,
+        }
+      });
+      console.log(shelves)
     }
     res.render('game-page.pug', {
       game,
       reviews,
       shelves,
       userReview,
+      userRating,
       currentUser,
       loggedIn,
       hasReview,
@@ -117,9 +122,26 @@ router.delete("/reviews", csrfProtection, asyncHandler(async (req, res, next) =>
     }
   });
   if (userReview) {
+    // TODO does not work yet
     userReview.destroy();
     res.redirect(`/games/${gameId}`);
   }
 }));
+
+// add a game to a shelf-entry
+  // this route will take the selected game and post it to a user's game-shelf
+  // via the shelf-entry join table
+router.post("/shelf-entry", csrfProtection, asyncHandler(async (req, res, next) => {
+  const { gameId, gameShelfId } = req.body;
+  // post
+  await Shelf_Entry.create({
+    gameShelfId,
+    gameId,
+    play_status: "Unplayed"
+  });
+  res.redirect("/game-shelves")
+}));
+
+
 
 module.exports = router;
