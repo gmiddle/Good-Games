@@ -10,8 +10,8 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // routers
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const gamesRouter = require('./routes/games'); 
-const shelvesRouter = require('./routes/game-shelves.js'); 
+const gamesRouter = require('./routes/games');
+const shelvesRouter = require('./routes/game-shelves.js');
 
 const app = express();
 
