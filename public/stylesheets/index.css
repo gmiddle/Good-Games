@@ -11,9 +11,6 @@ body {
     /* background-color:  #2f3138; */
     background-color: #1b2838;
     color: #b8b6b4;
-    
-    
-
 }
 
 .sign_up_form {
@@ -49,13 +46,10 @@ header {
     padding: 5px 20px;
     font-family: "Motiva Sans",Sans-serif;
     font-size: 1rem;
-    
-
 }
 
-
-
 /* FOOTER SECTION*/
+
 footer{
     width: 1000px;
     box-sizing: content-box;
@@ -83,7 +77,6 @@ footer{
     align-content: center;
     font-family: "Motiva Sans", Sans-serif;
     padding: 30px;
-
 }
 
 .username {
@@ -122,5 +115,4 @@ form {
 .button {
     background-color: #b8b6b4;
     font-family: "Motiva Sans", Sans-serif;
-    
 }

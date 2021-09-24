@@ -49,26 +49,33 @@ router.post(
       "------------- GAME-SHELVES POST ROUTE WAS HIT ---------------"
     );
 
+    
+
     const userId = req.session.auth.userId;
     // console.log("this should be a userID>>>>>>", req.session.auth.userId)
     const { shelf_name } = req.body;
     console.log(
       `>>>>>>>>>>>>> THIS IS THE NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`
     );
+      try{
+        const gameShelf = await Game_Shelf.create({ shelf_name, userId });
+        console.log(
+          `>>>>>>>>>>>>> NEW GAME SHELF WAS CREATED!!!! THIS IS A GAME SHELF", ${gameShelf}`
+        );
+        // TODO: if/else to validate if shelf name already exists for this user
 
-    const gameShelf = await Game_Shelf.create({ shelf_name, userId });
-    console.log(
-      `>>>>>>>>>>>>> NEW GAME SHELF WAS CREATED!!!! THIS IS A GAME SHELF", ${gameShelf}`
-    );
-    // TODO: if/else to validate if shelf name already exists for this user
+        // res.send("You finally made the game shelf!!")
+        res.render("game-shelves.pug", {
+          title: "Game Shelves",
+          gameShelf,
+          loggedIn,
+          // csrfToken: req.csrfToken(),
+        });
 
-    // res.send("You finally made the game shelf!!")
-    res.render("game-shelves.pug", {
-      title: "Game Shelves",
-      gameShelf,
-      loggedIn,
-      // csrfToken: req.csrfToken(),
-    });
+      } catch(err){
+        console.log(">>>>>>>>", err)
+        next()
+      }
     // we have 2 different res
     // res.redirect(`/game-shelves`);
   })
@@ -118,6 +125,7 @@ router.put(
     // });
   })
 );
+
 
 
 // delete a shelf
