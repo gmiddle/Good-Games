@@ -1,4 +1,8 @@
-
+*{
+    font-family: "Microsoft Yi Baiti",
+    "Motiva Sans",
+    Sans-serif;
+}
 
 h1 {
     display: flex;
@@ -116,3 +120,27 @@ form {
     background-color: #b8b6b4;
     font-family: "Motiva Sans", Sans-serif;
 }
+/* container alignment */
+.box-container {
+    width: 75%;
+    height: fit-content;
+    display: inline-flex;
+    flex-direction: row-reverse;
+
+}
+
+.box-1 {
+    width: 50%;
+}
+
+/* Box-2 */
+.box-2 {
+    width: 50%;
+    font-family: "Microsoft Yi Baiti", "Motiva Sans", Sans-serif;
+    font-size: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
