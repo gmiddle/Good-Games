@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { requireAuth, loginUser } = require("../auth");
+const { requireAuth } = require("../auth");
 const { csrfProtection, asyncHandler } = require("./utils");
 
 // database access
@@ -44,7 +44,13 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
   if (game) {
     // find reviews for current game
     const reviews = await Review.findAll({
+      where: {
+        gameId:game.id
+      },
       include: User,
+      order: [
+        ['id', 'DESC']
+    ],
     });
     // gets user reviews if a user is logged in
     let hasReview
@@ -139,7 +145,5 @@ router.post("/shelf-entry", csrfProtection, asyncHandler(async (req, res, next) 
   });
   res.redirect("/game-shelves")
 }));
-
-
 
 module.exports = router;
