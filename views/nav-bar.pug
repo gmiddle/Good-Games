@@ -1,20 +1,29 @@
+
+
 header
     div(class="header")
-        img(class="logo" src="/images/Good Games.png", alt="Good Games Logo")
+        a(href="/") 
+            img(class="logo" src="/images/Good Games.png", alt="Good Games Logo")
     
         nav
             if (loggedIn)
-                
+                div(class="nav-buttons")
+                    form(action="/games" method="get" )
+                        input(class="games-button" type="submit" value="To Games")
+                    
                     form(action="/users/logout" method="post" )
                         input(class="log-out" type="submit" value="Log Out")
             
             else
-                
+                div(class="nav-buttons")
+                    form(action="/games" method="get" )
+                        input(class="games-button button" type="submit" value="To Games")
+                    
                     form(action="/" method="get" )
-                        input(class="sign-up" type="submit" value="Sign-Up")
+                        input(class="sign-in button" type="submit" value="Sign-Up")
             
                     form(action="/users/login" method="get" )
-                        input(class="log-in" type="submit" value="Log In")
+                        input(class="log-in button" type="submit" value="Log In")
 
         
 
