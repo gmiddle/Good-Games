@@ -1,30 +1,33 @@
 extends layout.pug
 
-
 block append head
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet" href="/stylesheets/game-page.css")
     title Good Games - #{game.name}
+
 block append main
     body
+
         div(class='gameInfo')
             h1 #{game.name}
-            img(src=game.game_img, alt="#{game.name}")
+            div(class='imageAndInfo')
+                img(src=game.game_img, alt="#{game.name}")
+                div(class='shortInfo')
+                    p Developer: #{game.developer}
+                    p Publisher: #{game.publisher}
+                    p Genre: #{game.genre}
+                    p Release Date: #{game.release_date}
             p #{game.description}
-            div(class='shortInfo')
-                p Developer: #{game.developer}
-                p Publisher: #{game.publisher}
-                p Genre: #{game.genre}
-                p Release Date: #{game.release_date}
+
             if (loggedIn)
                 form(action="/shelf-entry" method="post" )
                     select(name='add-to-shelf')
                         each shelf in shelves
                             option(value=shelf.id) #{shelf.shelf_name}
-                    input(class="add-game" type="submit" value="Add to Shelf")
                     input(type="hidden" name="gameId" value=game.id)
+                    input(class="add-game" type="submit" value="Add to Shelf")
 
                 //- form(action='/SkillOpted' method="post")
                 //-     select(name='dropDown', id='')
@@ -38,6 +41,7 @@ block append main
                 form(action="/games/reviews" method="post")
                     input(type="hidden" name="_csrf" value=token)
                     input(type="hidden" name="gameId" value=game.id)
+
                     div(class="rate")
                         if userRating == 5
                             input(type="radio" id="star5" name="rating" value=5 checked)
@@ -69,7 +73,6 @@ block append main
                             input(type="radio" id="star1" name="rating" value=1)
                         label(for="star1" title="text") 1 star
 
-
                     label(for="review")
                     if (hasReview)
                         textarea(type="text" id="review" rows='6' cols='60' name="review" required) #{userReview.review}
@@ -77,10 +80,11 @@ block append main
                         textarea(type="text" id="review" rows='6' cols='60' name="review" required)
                     input(type="submit" value="Submit")
                 if (hasReview)
-                    form(action="/games/reviews" method="delete")
+                    form(action="/games/reviews/delete" method="post")
                         input(type="hidden" name="_csrf" value=token)
                         input(type="hidden" name="gameId" value=game.id)
-                        input(type="button" value="Delete Review")
+                        input(type="submit" value="Delete Review")
+
         div(class='reviews')
             h1 Reviews
             each review in reviews

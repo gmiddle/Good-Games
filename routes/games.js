@@ -111,10 +111,8 @@ router.post("/reviews", csrfProtection, asyncHandler(async (req, res, next) => {
 }));
 
 // delete review
-router.delete("/reviews", csrfProtection, asyncHandler(async (req, res, next) => {
-  console.log('\n\n\n\n\ndelete\n\n\n\n')
+router.post("/reviews/delete", csrfProtection, asyncHandler(async (req, res, next) => {
   const { gameId } = req.body;
-  console.log(gameId, req.session.auth.userId)
   const userReview = await Review.findOne({
     where: {
       userId: req.session.auth.userId,

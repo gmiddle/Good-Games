@@ -1,21 +1,40 @@
-body { 
-    margin: auto;
-    max-width: 800px;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
+*{
+    margin: 0;
+    padding: 0;
+
+
+    /* border: 1px solid black; */
 }
 
-/* .gameInfo {
-    display: flex;
-     justify-content: center;
-    align-items: center;
-} */
+body { 
+    font-family: "Microsoft Yi Baiti";
+    font-size: 25px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.imageAndInfo {
+    /* display: flex;
+    max-width: 900px;
+    justify-content: center;
+    align-items: center; */
+}
+
+.reviews {
+    margin: auto;
+    /* display: flex;
+    justify-content: center;
+    flex-direction: column; */
+}
 
 .reviewEntry {
-   background-color: #30333b;
-   max-width: 500px;
-   padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #30333b;
+    max-width: 800px;
+    padding: 25px;
 }
 
 .staticRating {
@@ -23,16 +42,7 @@ body {
     color: #ffc700;
 }
 
-#user_review {
-    width: 150;
-    height: 100;
-}
-
-
-*{
-    margin: 0;
-    padding: 0;
-}
+/* Star Rating System */
 .rate {
     float: left;
     height: 46px;
