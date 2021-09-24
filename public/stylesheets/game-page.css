@@ -43,7 +43,9 @@ body {
 }
 
 /* Star Rating System */
+
 .rate {
+    margin: 0;
     float: left;
     height: 46px;
     padding: 0 10px;
