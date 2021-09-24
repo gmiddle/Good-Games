@@ -119,21 +119,15 @@ router.put(
   })
 );
 
-// const shelfSubmitButton = document.getElementById("shelf_submit")
-
-// const eventListener = shelfSubmitButton.addEventListener("submit", async (e) => {
-//   console.log("----this event listener was hit-----")
-
-//   const shelves = await fetch('/game-shelves', {
-//     method: "GET"
-//   })
-//   console.log(shelves)
-
-// })
 
 // delete a shelf
 // DELETE to remove shelf id from list of users shelves
 
 // add a game? -> link to redirect games page?
+
+
+//set up api route for fetch in event listener
+// check to add json object
+
 
 module.exports = router;
