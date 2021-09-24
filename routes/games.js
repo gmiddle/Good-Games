@@ -48,9 +48,12 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
     });
     // gets user reviews if a user is logged in
     let hasReview
+    let userRating = 0
     if (loggedIn) {
       currentUser = req.session.auth.userId
       userReview = await getUserReview(req.session.auth.userId, req.params.id)
+      if (userReview)
+        userRating = userReview.rating
       hasReview = userReview !== null
       
       shelves = await Game_Shelf.findAll({
@@ -65,6 +68,7 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
       reviews,
       shelves,
       userReview,
+      userRating,
       currentUser,
       loggedIn,
       hasReview,
