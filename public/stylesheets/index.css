@@ -20,6 +20,10 @@ body {
     justify-content: center;
 }
 
+.logo {
+    height: 60px;
+}
+
 header {
     width: 100%;
 }
