@@ -8,25 +8,25 @@ block append head
 
 block append main
   h1= title
-  p #{title}
-    div(class="box-1") 
-      form(class="sign_up_form" action="/users" method="post")
-        input(type="hidden" name="_csrf" value=token)
-        div
-        label(for="user_name")
-        input(type="text" id="user_name" name="user_name" value placeholder="User Name" required)
-        div
-        label(for="email")
-        input(type="email" id="email" name="email" value placeholder="Email" required)
-        div
-        label(for="password")
-        input(type="text" id="password" name="password" value placeholder="Password" required)
-        div
-        label(for="confirm-password")
-        input(type="text" id="confirm-password" name="confirm-password" value placeholder="Confirm Password" required)
-        div
-        input(type="submit" value="Submit")
-    div(class="box-2") 
-  h1 
+    div(class="box-container") 
+      div(class="box-1") 
+        form(class="sign_up_form" action="/users" method="post")
+            input(type="hidden" name="_csrf" value=token)
+            div
+            label(for="user_name")
+            input(type="text" id="user_name" name="user_name" value placeholder="User Name" required)
+            div
+            label(for="email")
+            input(type="email" id="email" name="email" value placeholder="Email" required)
+            div
+            label(for="password")
+            input(type="text" id="password" name="password" value placeholder="Password" required)
+            div
+            label(for="confirm-password")
+            input(type="text" id="confirm-password" name="confirm-password" value placeholder="Confirm Password" required)
+            div
+            input(type="submit" value="Submit")
+      div(class="box-2") 
+        
 
-//- TODO: Add classes to divs
+    
