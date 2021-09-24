@@ -22,11 +22,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
     console.log("hit", shelfFetch);
 
     const newShelfDiv = document.createElement("div");
+    const newShelfContainer = document.createElement("div")
+    newShelfDiv.className = "new_shelf"
+    newShelfContainer.className = "shelf_container"
 
     newShelfDiv.innerText = shelfFetch.shelf_name;
     let shelfList = document.querySelector(".shelf_list");
+    newShelfContainer.innerText = ""
     shelfList.appendChild(newShelfDiv);
+    newShelfDiv.appendChild(newShelfContainer)
   });
 });
-
-
