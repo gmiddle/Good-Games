@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       body: JSON.stringify({ shelf_name: shelfName.value }),
     });
     shelfFetch = await shelfFetch.json();
-    console.log("hit", shelfFetch);
+    // console.log("hit", shelfFetch);
 
     const newShelfDiv = document.createElement("div");
     const newShelfContainer = document.createElement("div")
