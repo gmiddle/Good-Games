@@ -89,7 +89,7 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
 
 // add review
   // POST to send it to db from the game-page
-router.post("/reviews", csrfProtection, asyncHandler(async (req, res, next) => {
+router.post("/reviews", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
   const { review, rating, gameId } = req.body;
   const userReview = await Review.findOne({
     where: {
@@ -117,7 +117,7 @@ router.post("/reviews", csrfProtection, asyncHandler(async (req, res, next) => {
 }));
 
 // delete review
-router.post("/reviews/delete", csrfProtection, asyncHandler(async (req, res, next) => {
+router.post("/reviews/delete", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
   const { gameId } = req.body;
   const userReview = await Review.findOne({
     where: {
@@ -135,8 +135,11 @@ router.post("/reviews/delete", csrfProtection, asyncHandler(async (req, res, nex
 // add a game to a shelf-entry
   // this route will take the selected game and post it to a user's game-shelf
   // via the shelf-entry join table
-router.post("/shelf-entry", csrfProtection, asyncHandler(async (req, res, next) => {
+router.post("/shelf-entry", requireAuth, asyncHandler(async (req, res, next) => {
   const { gameId, gameShelfId } = req.body;
+  console.log('\n\n\n\n')
+  console.log(gameId, gameShelfId)
+  console.log('\n\n\n\n')
   // post
   await Shelf_Entry.create({
     gameShelfId,
