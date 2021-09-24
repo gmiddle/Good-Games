@@ -11,15 +11,9 @@ block append head
             block append header
                 head
                         div
-                            form(action="/game-shelves" method="post")
-                                label(for="shelf_name")
-                                input(type="text" id="shelf_name" name="shelf_name" value placeholder="Shelf Name" required)
-                                button(type="submit" id="shelf_submit" value="Submit") submit22
+                            label(for="shelf_name")
+                            input(type="text" id="shelf_name" name="shelf_name" value placeholder="Shelf Name" required)
+                            button(type="submit" id="shelf_submit" value="Submit") submit22
                         div(class="shelf_list")
-                            //- each shelf in gameShelves
-                            //-     div(class="each_shelf")
-                            //-         div= shelf.shelf_name
-                            //-     div(class="new_shelf")
-                                    //- this is where new shelf will be rendered
-            //- script(src="/javascripts/game-shelves.js")
-//- TODO: SWITCH from button to input in case of eventlistener not working
+                            each shelf in gameShelves
+                                div(class="each_shelf")= shelf.shelf_name
