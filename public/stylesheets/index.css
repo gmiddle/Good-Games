@@ -176,6 +176,7 @@ form {
 
 .box-1 input:hover {
     background-color: #b8b6b4;
+    border: 1px bevel black;
 }
 /* Box-2 */
 .box-2 {
