@@ -13,10 +13,11 @@ block append main
             h1 #{game.name}
             img(src=game.game_img, alt="#{game.name}")
             p #{game.description}
-            p Developer: #{game.developer}
-            p Publisher: #{game.publisher}
-            p Genre: #{game.genre}
-            p Release Date: #{game.release_date}
+            div(class='shortInfo')
+                p Developer: #{game.developer}
+                p Publisher: #{game.publisher}
+                p Genre: #{game.genre}
+                p Release Date: #{game.release_date}
             if (loggedIn)
                 //- select(name='image')
                 //-     each shelf in shelves
@@ -29,8 +30,6 @@ block append main
                 form(action="/games/reviews" method="post")
                     input(type="hidden" name="_csrf" value=token)
                     input(type="hidden" name="gameId" value=game.id)
-                    input(type="hidden" name="userId" value=1)
-                    //- placeholder ^^^^^^
                     div(class="rate")
                         if userReview.rating == 5
                             input(type="radio" id="star5" name="rating" value=5 checked)
@@ -65,13 +64,15 @@ block append main
                     label(for="review")
                     textarea(type="text" id="review" rows='6' cols='60' name="review" required) #{userReview.review}
                     input(type="submit" value="Submit")
-                form(action="/games/reviews" method="delete")
-                    input(type="hidden" name="_csrf" value=token)
-                    input(type="button" value="delete")
+                if (hasReview)
+                    form(action="/games/reviews" method="delete")
+                        input(type="hidden" name="_csrf" value=token)
+                        input(type="hidden" name="gameId" value=game.id)
+                        input(type="button" value="Delete Review")
         div(class='reviews')
             h1 Reviews
             each review in reviews
-                if review.User.user_name !== logInUser
+                if review.User.userId !== currentUser
                     div(class='reviewEntry')
                         p #{review.User.user_name}
                         div(class='staticRating')
