@@ -23,7 +23,6 @@ async function getUserReview(userId, gameId) {
 // /games
 router.get("/", asyncHandler(async (req, res, next) => {
   let loggedIn = req.session.auth
-  console.log('You made it to the all games page.')
   const games = await Game.findAll()
   res.render('all-games.pug', {games, loggedIn});
 }));
@@ -32,7 +31,6 @@ router.get("/", asyncHandler(async (req, res, next) => {
 // /games/id
 router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => {
   let loggedIn = req.session.auth
-  console.log('Logged in', loggedIn)
 
   // finds game by id from route
   const game = await Game.findByPk(req.params.id);
@@ -67,7 +65,6 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
           userId: currentUser,
         }
       });
-      console.log(shelves)
     }
     res.render('game-page.pug', {
       game,
@@ -137,16 +134,23 @@ router.post("/reviews/delete", requireAuth, csrfProtection, asyncHandler(async (
   // via the shelf-entry join table
 router.post("/shelf-entry", requireAuth, asyncHandler(async (req, res, next) => {
   const { gameId, gameShelfId } = req.body;
-  console.log('\n\n\n\n')
-  console.log(req.body)
-  console.log(gameId, gameShelfId)
-  console.log('\n\n\n\n')
-  // post
-  await Shelf_Entry.create({
-    gameShelfId,
-    gameId,
-    play_status: "Unplayed"
+  const currentShelfEntry = await Shelf_Entry.findOne({
+    where: {
+      gameShelfId,
+      gameId,
+    }
   });
+  // post
+  if (!currentShelfEntry) {
+    await Shelf_Entry.create({
+      gameShelfId,
+      gameId,
+      play_status: "Unplayed"
+    });
+  } else {
+    // TODO add error for shelf already existing
+    console.log('Shelf Already Exists')
+  }
   res.redirect("/game-shelves")
 }));
 
