@@ -37,7 +37,8 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
   // finds game by id from route
   const game = await Game.findByPk(req.params.id);
   // defaults
-  const userReview = false
+  let userReview = false
+  let currentUser = null
   let shelves = [{shelf_name: "No Shelves Exist", id:1}]
   // renders page if game was found
   if (game) {
@@ -48,7 +49,8 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
     // gets user reviews if a user is logged in
     let hasReview
     if (loggedIn) {
-      const userReview = await getUserReview(req.session.auth.userId, req.params.id)
+      currentUser = req.session.auth.userId
+      userReview = await getUserReview(req.session.auth.userId, req.params.id)
       hasReview = userReview !== null
       // PH
       // const shelves = await Game_Shelf.findAll(userId, {
@@ -62,6 +64,7 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
       reviews,
       shelves,
       userReview,
+      currentUser,
       loggedIn,
       hasReview,
       token: req.csrfToken(),
@@ -85,7 +88,7 @@ router.post("/reviews", csrfProtection, asyncHandler(async (req, res, next) => {
   });
   if (!userReview) {
     // post
-    const newReview = await Review.create({
+    await Review.create({
       rating,
       review,
       spoiler_status:'n', //defaults it to no spoilers (not being used)
@@ -104,13 +107,15 @@ router.post("/reviews", csrfProtection, asyncHandler(async (req, res, next) => {
 
 // delete review
 router.delete("/reviews", csrfProtection, asyncHandler(async (req, res, next) => {
+  console.log('\n\n\n\n\ndelete\n\n\n\n')
+  const { gameId } = req.body;
+  console.log(gameId, req.session.auth.userId)
   const userReview = await Review.findOne({
     where: {
-      userId,
+      userId: req.session.auth.userId,
       gameId
     }
   });
-  console.log(userReview.rating, userReview.review)
   if (userReview) {
     userReview.destroy();
     res.redirect(`/games/${gameId}`);

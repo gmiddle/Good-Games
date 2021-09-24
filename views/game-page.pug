@@ -31,7 +31,6 @@ block append main
                     input(type="hidden" name="_csrf" value=token)
                     input(type="hidden" name="gameId" value=game.id)
                     div(class="rate")
-                        p #{userReview.rating}
                         if userReview.rating == 5
                             input(type="radio" id="star5" name="rating" value=5 checked)
                         else
@@ -68,11 +67,12 @@ block append main
                 if (hasReview)
                     form(action="/games/reviews" method="delete")
                         input(type="hidden" name="_csrf" value=token)
+                        input(type="hidden" name="gameId" value=game.id)
                         input(type="button" value="Delete Review")
         div(class='reviews')
             h1 Reviews
             each review in reviews
-                if review.User.user_name !== logInUser
+                if review.User.userId !== currentUser
                     div(class='reviewEntry')
                         p #{review.User.user_name}
                         div(class='staticRating')
