@@ -56,20 +56,17 @@ router.post(
   "/",
   asyncHandler(async (req, res) => {
     let loggedIn = req.session.auth;
-    console.log("this fucking sucks")
-    console.log(
-      "------------- GAME-SHELVES POST ROUTE WAS HIT ---------------"
-    );
 
     const userId = req.session.auth.userId;
     // console.log("this should be a userID>>>>>>", req.session.auth.userId)
     // console.log(
-      const  shelf_name  = req.body;
-    //   `>>>>>>>>>>>>> THIS IS THE NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`
-    // );
-    console.log(req.body);
-    const gameShelf = await Game_Shelf.create({ shelf_name, userId });
-    console.log(gameShelf);
+      const  { shelf_name } = req.body;
+      //   `>>>>>>>>>>>>> THIS IS THE NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`
+      // );
+      console.log("-------", shelf_name, userId);
+      // console.log(req.body);
+      const gameShelf = await Game_Shelf.create({ shelf_name, userId });
+      console.log( "------------- GAME-SHELVES POST ROUTE WAS HIT ---------------");
     // console.log(
     //   `>>>>>>>>>>>>> NEW GAME SHELF WAS CREATED!!!! THIS IS A GAME SHELF", ${gameShelf}`
     // );
@@ -90,6 +87,6 @@ router.post(
 //set up api route for fetch in event listener
 // check to add json object
 
-// TODO: SWITCH comment out if event listener doesnt work 
+// TODO: SWITCH comment out if event listener doesnt work
 
 module.exports = router;
