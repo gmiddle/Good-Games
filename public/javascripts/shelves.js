@@ -17,20 +17,23 @@ document.addEventListener("DOMContentLoaded", (e) => {
     tester.innerText = "TESTER";
     let body = document.querySelector(".shelf_list");
     body.appendChild(tester);
+    const shelfName = document.getElementById("shelf_name");
     // await fetch("/api-game-shelves", {
     //   method: "POST",
+    //   headers: {"Content-Type": "application/json"},
+    //   body: JSON.stringify({shelf_name: shelfName.value})
     // })
     // .then(response => response.json())
     // .then(data => console.log(data))
-    const shelfName = document.getElementById("shelf_name")
-    console.log(shelfName.value)
-    let tasks = await fetch("/api-game-shelves", {
+
+    console.log(shelfName.value);
+    let shelfFetch = await fetch("/api-game-shelves", {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({shelf_name: shelfName.value})
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ shelf_name: shelfName.value }),
     });
-    tasks = await tasks.json();
-    console.log("hit", tasks);
+    shelfFetch = await shelfFetch.json();
+    console.log("hit", shelfFetch);
   });
 });
 
