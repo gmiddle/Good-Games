@@ -19,14 +19,16 @@ document.addEventListener("DOMContentLoaded", (e) => {
       body: JSON.stringify({ shelf_name: shelfName.value }),
     });
     shelfFetch = await shelfFetch.json();
-    console.log("hit", shelfFetch);
+    // console.log("hit", shelfFetch);
 
     const newShelfDiv = document.createElement("div");
+    const newShelfContainer = document.createElement("div")
+    newShelfDiv.className = "new_shelf"
+    newShelfContainer.className = "shelf_container"
 
     newShelfDiv.innerText = shelfFetch.shelf_name;
     let shelfList = document.querySelector(".shelf_list");
     shelfList.appendChild(newShelfDiv);
+    newShelfDiv.appendChild(newShelfContainer)
   });
 });
-
-

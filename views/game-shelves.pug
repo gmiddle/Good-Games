@@ -13,7 +13,8 @@ block append head
                         div
                             label(for="shelf_name")
                             input(type="text" id="shelf_name" name="shelf_name" value placeholder="Shelf Name" required)
-                            button(type="submit" id="shelf_submit" value="Submit") submit22
+                            button(type="submit" id="shelf_submit" value="Submit") Create Shelf
                         div(class="shelf_list")
                             each shelf in gameShelves
-                                div(class="each_shelf")= shelf.shelf_name
+                                div(class="each_shelf" id=`${shelf.id}`)= shelf.shelf_name
+                                    div(class="eachShelf_container")
