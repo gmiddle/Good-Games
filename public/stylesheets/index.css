@@ -182,6 +182,9 @@ form {
     margin-top: 70px;
     margin-left: 70px;
     padding: 30px;
+    box-shadow: 5px 5px 12px rgb(0, 0, 0);
+
+    
 }
 
 .box-1 input.sign-up {
@@ -208,6 +211,7 @@ form {
     align-content: center;
     justify-content: center;
     margin: 30px;
+    margin-top: 70px;
     
 
 }
@@ -262,5 +266,7 @@ form {
 }
 
 .idx-img {
+    max-width: 420px;
+    border-radius: 15px;
     box-shadow: 5px 5px 12px rgb(0, 0, 0);
 }
