@@ -23,7 +23,21 @@ async function getUserReview(userId, gameId) {
 // /games
 router.get("/", asyncHandler(async (req, res, next) => {
   let loggedIn = req.session.auth
-  const games = await Game.findAll()
+  let games
+  if (req.body.search !== undefined) {
+    const searchValue = req.body.search
+    console.log(req.body.search)
+    games = await Game.findAll({
+    where: {
+      name:{
+        [Sequelize.Op.iLike]: searchValue
+      }
+    }
+  })
+  } else {
+    console.log(req.body.search)
+    games = await Game.findAll()
+  }
   res.render('all-games.pug', {games, loggedIn});
 }));
 

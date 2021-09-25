@@ -10,7 +10,12 @@ block append head
 block append main
     body
         div(class="allGames")
-            each game in games
-                div(class="gameBox")
-                    a(href=`/games/${game.id}`)
-                        img(class="gameImage" src=game.game_img, alt="#{game.name}")
+            div(class="search")
+                form(action="/games")
+                    input(type="text" name="search")
+                    input(type="submit" value="Search")
+            div(class="foundGames")
+                each game in games
+                    div(class="gameBox")
+                        a(href=`/games/${game.id}`)
+                            img(class="gameImage" src=game.game_img, alt="#{game.name}")
