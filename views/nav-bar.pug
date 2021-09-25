@@ -7,6 +7,10 @@ header
     
         nav
             div(class="nav-buttons")
+                form(action="/search/entry" method="post")
+                    input(type="text" name="search")
+                    input(type="submit" value="Search")
+
                 form(action="/games" method="get" )
                     input(class="games-button button" type="submit" value="Games")
                 
