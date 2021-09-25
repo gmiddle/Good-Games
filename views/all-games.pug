@@ -13,4 +13,4 @@ block append main
             each game in games
                 div(class="gameBox")
                     a(href=`/games/${game.id}`)
-                        img(src=game.game_img, alt="#{game.name}")
+                        img(class="gameImage" src=game.game_img, alt="#{game.name}")
