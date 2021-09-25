@@ -2,6 +2,7 @@
     margin: auto;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     flex-direction: row;
     align-content: center;
     max-width: 2200px;
