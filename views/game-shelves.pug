@@ -4,6 +4,7 @@ block append head
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="/stylesheets/shelves-page.css")
     //- title Good Games - #{currentUser}
     title Game Shelves
 
@@ -17,10 +18,13 @@ block append head
                         div(class="shelf_list")
                             each shelf in gameShelves
                                 div(class="each_shelf" id=`${shelf.id}`)= shelf.shelf_name
+                                    button(type="submit" value="Delete Shelf" class="delete_button" id=`${shelf.id}`) Delete Shelf
                                     div(class="eachShelf_container")
-                                        div(class="")
-                                            form(action="/game-shelves/delete" method="post")
-                                              input(type="hidden" name="shelfId" value=shelf.id)
-                                              input(type="submit" value="Delete Shelf")
+                                        each game in shelf.Games
+                                            div(class="gameBox")
+                                                a(href=`/games/${game.id}`)
+                                                    img(class="gameImage" src=game.game_img, alt="#{game.name}")
+
+                                            //-     a
                                         //- each game in Shelf_Entry
                                         //-     div()= game.gameId
