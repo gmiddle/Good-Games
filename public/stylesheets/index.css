@@ -16,8 +16,12 @@ body {
     background-color: #1b2838;
     color: #b8b6b4;
     padding-bottom: 75px;
+    
 }
 
+main {
+    box-sizing: content-box;
+}
 /* Sign Up Form */
 
 .sign_up_form {
@@ -156,15 +160,16 @@ form {
 
 /* container alignment */
 .box-container {
-    width: fit-content;
+    width: 100%;
     height: fit-content;
-    display: inline-flex;
+    display: flex;
     flex-direction: row-reverse;
+    align-items: center;
 
 }
 
 .box-1 {
-    width: 40%;
+    width: 50%;
     display: flex;
     align-items: center;
     align-content: center;
@@ -187,6 +192,7 @@ form {
     background-color: #b8b6b4;
     border: 1px bevel black;
 }
+
 /* Box-2 */
 .box-2 {
     width: 50%;
