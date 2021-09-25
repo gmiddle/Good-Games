@@ -22,7 +22,7 @@ body {
 main {
     box-sizing: content-box;
     width: 75%;
-    padding: 50px;
+    padding-top: 50px;
 }
 
 /* Sign Up Form */
