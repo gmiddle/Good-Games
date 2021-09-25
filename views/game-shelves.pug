@@ -10,7 +10,7 @@ block append head
         body
             block append header
                 head
-                        div
+                        div(class="shelf_add")
                             label(for="shelf_name")
                             input(type="text" id="shelf_name" name="shelf_name" value placeholder="Shelf Name" required)
                             button(type="submit" id="shelf_submit" value="Submit") Create Shelf
@@ -18,5 +18,9 @@ block append head
                             each shelf in gameShelves
                                 div(class="each_shelf" id=`${shelf.id}`)= shelf.shelf_name
                                     div(class="eachShelf_container")
+                                        div(class="")
+                                            form(action="/game-shelves/delete" method="post")
+                                              input(type="hidden" name="shelfId" value=shelf.id)
+                                              input(type="submit" value="Delete Shelf")
                                         //- each game in Shelf_Entry
                                         //-     div()= game.gameId
