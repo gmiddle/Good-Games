@@ -23,7 +23,7 @@ async function getUserReview(userId, gameId) {
 // /games
 router.get("/", asyncHandler(async (req, res, next) => {
   let loggedIn = req.session.auth
-  const games = await Game.findAll()
+  games = await Game.findAll()
   res.render('all-games.pug', {games, loggedIn});
 }));
 
@@ -121,7 +121,7 @@ router.post("/reviews", requireAuth, csrfProtection, asyncHandler(async (req, re
       rating: rating
     });
   }
-  // res.redirect(`/games/${gameId}`);
+  res.redirect(`/games/${gameId}`);
 }));
 
 // delete review

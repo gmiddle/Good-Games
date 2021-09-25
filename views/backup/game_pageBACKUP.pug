@@ -1,11 +1,12 @@
-//- copy from James that has known working review creation and editing.  
 extends layout.pug
+
 block append head
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet" href="/stylesheets/game-page.css")
     title Good Games - #{game.name}
+
 block append main
     body
         div(class='gameInfo')
@@ -18,6 +19,7 @@ block append main
                     p Genre: #{game.genre}
                     p Release Date: #{game.release_date}
             p #{game.description}
+            
             if (loggedIn)
                 form(action="/shelf-entry" method="post" )
                     select(name='add-to-shelf')
@@ -37,6 +39,7 @@ block append main
                 form(action="/games/reviews" method="post")
                     input(type="hidden" name="_csrf" value=token)
                     input(type="hidden" name="gameId" value=game.id)
+                    
                     div(class="rate")
                         if userRating == 5
                             input(type="radio" id="star5" name="rating" value=5 checked)
