@@ -18,10 +18,10 @@ router.get("/", asyncHandler(async (req, res, next) => {
 
 router.post("/entry", asyncHandler(async (req, res, next) => {
   const { search } = req.body;
-    console.log('\n\n\n')
-    let loggedIn = req.session.auth
-    let games
-    if (search !== undefined) {
+  let loggedIn = req.session.auth
+  let games
+  let searchResult = false
+  if (search !== undefined) {
       console.log('Starting search for', search)
       games = await Game.findAll({
         where:{
@@ -30,12 +30,16 @@ router.post("/entry", asyncHandler(async (req, res, next) => {
           }
         }
       })
-    console.log(games)
+      console.log('\n\n\n')
+      console.log(games.length)
+      if (games.length > 0) {
+        searchResult = true
+      }
     } else {
+      searchResult = false
       games = await Game.findAll()
     }
-    console.log(games)
-    res.render('search_results.pug', {games, loggedIn});
+    res.render('search_results.pug', {games, searchResult, loggedIn});
 }));
 
 module.exports = router;
