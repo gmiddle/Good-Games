@@ -184,6 +184,7 @@ form {
     margin-left: 70px;
     padding: 30px;
     box-shadow: 5px 5px 12px rgb(0, 0, 0);
+    margin-right: 100px;
 
     
 }
@@ -207,20 +208,18 @@ form {
     font-family: "Microsoft Yi Baiti", "Motiva Sans", Sans-serif;
     font-size: 1rem;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: center;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    align-items: center; 
+    /* align-content: center; */
     justify-content: center;
     margin: 30px;
     margin-top: 70px;
+    margin-left: 100px;
+    /* padding: 50px; */
     
 
 }
-
-.box-2 p {
-    color: whitesmoke;
-}
-
 
 .new_shelf {
     color: pink;
@@ -260,12 +259,26 @@ form {
 
 
 .img-container {
-    min-width: 100px;
-    max-width: 100px;
+    min-width: 500px;
+    max-width: 500px;
+    /* display: inline-block; */
+
 }
 
 .idx-img {
-    max-width: 420px;
+    max-width: 500px;
     border-radius: 15px;
     box-shadow: 5px 5px 12px rgb(0, 0, 0);
+    /* display: inline-block; */
+}
+
+.box-header{
+    display: inline-block;
+    max-width: 500px;
+    
+}
+.box-2 p {
+    color: whitesmoke;
+    text-align: justify;
+
 }
