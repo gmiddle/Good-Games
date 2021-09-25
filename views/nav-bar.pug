@@ -7,18 +7,23 @@ header
     
         nav
             div(class="nav-buttons")
+            
+                form(action="/search/entry" method="post" class="search-box")
+                    input(type="text" name="search" placeholder="Search games" class="search-input")
+                    input(type="submit" value="Search" class="search-button")
+
                 form(action="/games" method="get" )
                     input(class="games-button button" type="submit" value="Games")
                 
                 if (loggedIn)
+
                     form(action="/game-shelves" method="get" )
                         input(class="gshelf-button button" type="submit" value="Games Shelves")
                     
                     form(action="/users/logout" method="post" )
                         input(class="log-out button" type="submit" value="Log Out")
-                    
-                
                 else
+
                     form(action="/users/login" method="post")
                         input(type="hidden" name="_csrf" value=token)
                         input(type="hidden" id="user_name" name="user_name" value="Doug_Demodome")
@@ -30,7 +35,3 @@ header
             
                     form(action="/users/login" method="get" )
                         input(class="log-in button" type="submit" value="Log In")
-
-            
-
-            
