@@ -23,7 +23,7 @@ async function getUserReview(userId, gameId) {
 // /games
 router.get("/", asyncHandler(async (req, res, next) => {
   let loggedIn = req.session.auth
-  const games = await Game.findAll()
+  games = await Game.findAll()
   res.render('all-games.pug', {games, loggedIn});
 }));
 

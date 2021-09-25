@@ -1,8 +1,19 @@
-.allGames {
+body {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.allGames {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    justify-content: center;
     align-content: center;
     max-width: 2200px;
 }
