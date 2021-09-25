@@ -31,4 +31,17 @@ document.addEventListener("DOMContentLoaded", (e) => {
     shelfList.appendChild(newShelfDiv);
     newShelfDiv.appendChild(newShelfContainer)
   });
+
+  const shelfDeleteteButton = document.querySelectorAll("delete_button")
+  console.log(shelfDeleteteButton)
+
+  // shelfDeleteteButton.addEventListener("click", (e) => {
+  //   e.preventDefault()
+  //   console.log("this event listener was hit")
+
+
+  // })
+
+
+
 });

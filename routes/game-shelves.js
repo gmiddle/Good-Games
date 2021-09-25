@@ -36,10 +36,13 @@ router.get(
       where: userId,
       include: Game
     });
-    console.log("-------", gameShelves)
-    for(item of gameShelves){
-      console.log("this is the entries", item.Shelf_Entries)
+    // console.log(">>>>>>>>>>>>>>", gameShelves.Game, "<<<<<<<<<<<<<<<<<")
+    for (shelf of gameShelves) {
+      for(game of shelf.Games){
+        console.log(game.game_img)
+      }
     }
+
     // console.log(gameShelves);
     res.render("game-shelves.pug", {
       gameShelves,
@@ -138,6 +141,23 @@ router.put(
 
 // delete a shelf
 // DELETE to remove shelf id from list of users shelves
+// router.post("/game-shelves/delete", asyncHandler(async (req, res, next) => {
+//   console.log("THIS POST WAS HITTTTTTTT")
+//   let loggedIn = req.session.auth;
+//   // console.log("----------------You made it to the game shelves page.----------------");
+//   let userId = req.session.auth;
+//   // console.log("--------this is the userId", userId);
+//   // const gameShelves findsAll game shelves that are owned by a specific user
+//   const {shelfId} = req.body
+//   const gameShelves = await Game_Shelf.findOne({
+//     where: {
+//       userId,
+//       shelfId
+//     }
+//   })
+//   gameShelves.destroy()
+//   res.redirect('/game-shelves')
+// }))
 
 // add a game? -> link to redirect games page?
 

@@ -4,10 +4,10 @@
     Sans-serif;
 }
 
-h1 {
+/* h1 {
     display: flex;
     color: #b8b6b4;
-}
+} */
 
 body {
     /* background-color: #c6d4df; */
@@ -21,6 +21,8 @@ body {
 
 main {
     box-sizing: content-box;
+    width: 75%;
+    padding-top: 50px;
 }
 
 /* Sign Up Form */
@@ -29,7 +31,8 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 50%;
+    min-width: 300px;
+   
 }
 
 /* HEADER/NAVIGATION */
@@ -37,10 +40,10 @@ main {
     height: 50px;
 }
 
-header {
-    width: 99%;
-    /* 100% includes unnecessary scroll */
-}
+/* header {
+    width: 100%;
+    /* 100% includes unnecessary scroll
+} */
  .header {
     text-align: right;
     background-color: #171a21;
@@ -54,7 +57,7 @@ header {
     top: -10px;
     left: -10px;
     margin-bottom: 25px;
-    position:relative;
+    position: fixed;
     min-height: 55px;
     max-height: 55px;
     padding: 5px 20px;
@@ -129,7 +132,7 @@ footer{
 .nav-buttons {
     display: inline-flex;
     justify-content: space-between;
-    /* margin-right: 15px; */
+    margin-right: 15px;
     align-content: space-around;
 }
 
@@ -152,7 +155,7 @@ form {
     color: white;
 }
 
-.demo{
+.demo{ 
     color:#b8b6b4;
     background-color: transparent;
     border: none;
@@ -162,23 +165,14 @@ form {
 /* container alignment */
 .box-container {
     width: 100%;
-    height: fit-content;
+    height:100%;
     display: flex;
     flex-direction: row-reverse;
-    align-items: center;
-
-}
-
-.box-1 {
-    width: 50%;
-    display: flex;
-    align-items: center;
+    /* align-items: center; */
     align-content: center;
-    justify-content: center;
-    background-color: rgba(28, 102, 137, .4);
-    border-radius: 15px;
-    margin: 20px;
+
 }
+
 
 .box-1 input.sign-up {
     margin-top: 10px;
@@ -192,6 +186,22 @@ form {
     background-color: #b8b6b4;
     border: 1px bevel black;
 }
+.box-1 {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: rgba(28, 102, 137, .4);
+    margin-top: 70px;
+    margin-left: 70px;
+    /* padding: 30px; */
+    border-radius: 15px;
+    box-shadow: 5px 5px 12px rgb(0, 0, 0);
+    margin-right: 100px;
+
+
+}
 
 /* Box-2 */
 .box-2 {
@@ -199,52 +209,44 @@ form {
     font-family: "Microsoft Yi Baiti", "Motiva Sans", Sans-serif;
     font-size: 1rem;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    margin: 20px;
-}
-
-.box-2 p {
-    color: whitesmoke;
-}
-.box-2 h1 {
-     color: whitesmoke;
-}
-
-.new_shelf {
-    color: pink;
-}
-
-.shelf_container {
-    display: flex;
-    border: 1px solid black;
-    padding: 150px;
-    background-color: rgba(28, 102, 137, .4);
-    border-radius: 20px;
-    margin-bottom: 30px;
-    margin-left: 60px;
-    margin-right: 60px;
-}
-
-.shelf_list {
-    display: flex;
     flex-direction: column;
-    margin-left: 60px;
+    /* flex-wrap: wrap; */
+    align-items: center; 
+    /* align-content: center; */
+    justify-content: center;
+    margin-top: 70px;
+    margin-left: 100px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 12px rgb(0, 0, 0);
+    /* padding: 50px; */
+    
+
 }
 
-.each_shelf {
+
+
+
+.img-container {
+    min-width: 500px;
+    max-width: 500px;
+    /* display: inline-block; */
+
+}
+
+.idx-img {
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 12px rgb(0, 0, 0);
+    display: inline-block;
+    margin: 30px;
+
+}
+
+.box-header{
+    display: inline-block;
+    max-width: 500px;
     color: whitesmoke;
-    font-size: 25px;
-    margin-left: 0px
+    text-align: justify;
+    font-size: large;
 }
-.eachShelf_container {
-    display: flex;
-    border: 1px solid black;
-    padding: 120px;
-    background-color: rgba(28, 102, 137, .4);
-    border-radius: 20px;
-    margin-bottom: 30px;
-    margin-right: 60px;
-}
+
