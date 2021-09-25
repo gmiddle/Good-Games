@@ -34,7 +34,7 @@ router.get(
     // const gameShelves findsAll game shelves that are owned by a specific user
     const gameShelves = await Game_Shelf.findAll({
       where: userId,
-      include: Shelf_Entry
+      include: Game
     });
     console.log("-------", gameShelves)
     for(item of gameShelves){
