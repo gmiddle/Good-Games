@@ -1,31 +1,58 @@
 *{
-    margin: 0;
-    padding: 0;
-
-
+    /* margin: 0;
+    padding: 0; */
     /* border: 1px solid black; */
 }
 
-body { 
+.content { 
     font-family: "Microsoft Yi Baiti";
-    font-size: 25px;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
+    font-size: 30px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    max-width: 2200px;
+}
+.gameInfo {
+    max-width: 800px;
 }
 
-.imageAndInfo {
-    /* display: flex;
-    max-width: 900px;
-    justify-content: center;
-    align-items: center; */
+form {
+    font-size: 40px;
+}
+
+.userReview {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+textarea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+  }
+
+.reviewText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+}
+
+.reviewsContainer {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .reviews {
-    margin: auto;
-    /* display: flex;
-    justify-content: center;
-    flex-direction: column; */
+    box-sizing: content-box;
 }
 
 .reviewEntry {
@@ -33,8 +60,17 @@ body {
     align-items: center;
     flex-direction: column;
     background-color: #30333b;
-    max-width: 800px;
-    padding: 25px;
+    min-width: 800px;
+    margin-bottom: 10px;
+    border: 3px solid rgb(29, 29, 29);
+}
+
+.reviewEntry > h1 {
+    font-size: 35px;
+}
+
+.reviewEntry > p {
+    font-size: 30px;
 }
 
 .staticRating {
@@ -45,8 +81,8 @@ body {
 /* Star Rating System */
 
 .rate {
+    text-align: center;
     margin: 0;
-    float: left;
     height: 46px;
     padding: 0 10px;
 }

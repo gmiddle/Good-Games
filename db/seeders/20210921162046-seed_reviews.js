@@ -23,7 +23,7 @@ function randomReview(rating) {
       'It\'s just ok.'
     ],
     4:[
-      'It was great but it could have been better without the DRM',
+      'It was great but it could have been better without the DRM.',
       'Not as good as the original but it is a must buy.',
       'I was given this for my birthday, It is so much fun to play!',
       'This was well worth the time!'
