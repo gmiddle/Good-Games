@@ -9,7 +9,6 @@ block append head
 
 block append main
     body
-
         div(class='gameInfo')
             h1 #{game.name}
             div(class='imageAndInfo')
@@ -19,68 +18,65 @@ block append main
                     p Publisher: #{game.publisher}
                     p Genre: #{game.genre}
                     p Release Date: #{game.release_date}
-                    p Average Rating: #{starAverage}
             p #{game.description}
-
+            
             if (loggedIn)
-                form(action="/games/shelf-entry" method="post" )
-                    select(name='gameShelfId')
+                form(action="/shelf-entry" method="post" )
+                    select(name='add-to-shelf')
                         each shelf in shelves
                             option(value=shelf.id) #{shelf.shelf_name}
                     input(type="hidden" name="gameId" value=game.id)
                     input(class="add-game" type="submit" value="Add to Shelf")
 
+                //- form(action='/SkillOpted' method="post")
+                //-     select(name='dropDown', id='')
+                //-         each skill in Skills
+                //-             option=skill
+                //-         input(type='submit', value='Submit')
         div(class='userReview')
             if (loggedIn)
                 h1 Your Review
                 form(action="/games/reviews" method="post")
                     input(type="hidden" name="_csrf" value=token)
                     input(type="hidden" name="gameId" value=game.id)
-
+                    
                     div(class="rate")
                         if userRating == 5
                             input(type="radio" id="star5" name="rating" value=5 checked)
                         else
                             input(type="radio" id="star5" name="rating" value=5)
                         label(for="star5" title="text") 5 stars
-
                         if userRating == 4
                             input(type="radio" id="star4" name="rating" value=4 checked)
                         else
                             input(type="radio" id="star4" name="rating" value=4)
                         label(for="star4" title="text") 4 stars
-
                         if userRating == 3
                             input(type="radio" id="star3" name="rating" value=3 checked)
                         else
                             input(type="radio" id="star3" name="rating" value=3)
                         label(for="star3" title="text") 3 stars
-
                         if userRating == 2
                             input(type="radio" id="star2" name="rating" value=2 checked)
                         else
                             input(type="radio" id="star2" name="rating" value=2)
                         label(for="star2" title="text") 2 stars
-
                         if userRating == 1
                             input(type="radio" id="star1" name="rating" value=1 checked)
                         else
                             input(type="radio" id="star1" name="rating" value=1)
                         label(for="star1" title="text") 1 star
-
                     label(for="review")
                     if (hasReview)
                         textarea(type="text" id="review" rows='6' cols='60' name="review" required) #{userReview.review}
-                        input(type="submit" value="Update Review")
                     else
                         textarea(type="text" id="review" rows='6' cols='60' name="review" required)
-                        input(type="submit" value="Submit Review")
+                    input(type="submit" value="Submit")
                 if (hasReview)
                     form(action="/games/reviews/delete" method="post")
                         input(type="hidden" name="_csrf" value=token)
                         input(type="hidden" name="gameId" value=game.id)
                         input(type="submit" value="Delete Review")
-
         div(class='reviews')
             h1 Reviews
             each review in reviews

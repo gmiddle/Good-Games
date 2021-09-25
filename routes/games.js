@@ -121,7 +121,7 @@ router.post("/reviews", requireAuth, csrfProtection, asyncHandler(async (req, re
       rating: rating
     });
   }
-  // res.redirect(`/games/${gameId}`);
+  res.redirect(`/games/${gameId}`);
 }));
 
 // delete review
