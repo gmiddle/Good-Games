@@ -10,7 +10,11 @@ block append head
 block append main
     body
         div(class="allGames")
-            each game in games
-                div(class="gameBox")
-                    a(href=`/games/${game.id}`)
-                        img(class="gameImage" src=game.game_img, alt="#{game.name}")
+            if (searchResult)
+                each game in games
+                    div(class="gameBox")
+                        a(href=`/games/${game.id}`)
+                            img(class="gameImage" src=game.game_img, alt="#{game.name}")
+            else
+                div(class="none-found")
+                    h1 No Results Found
