@@ -18,3 +18,5 @@ block append head
                             each shelf in gameShelves
                                 div(class="each_shelf" id=`${shelf.id}`)= shelf.shelf_name
                                     div(class="eachShelf_container")
+                                        each game in shelf.Shelf_Entry
+                                            div()= game.gameId
