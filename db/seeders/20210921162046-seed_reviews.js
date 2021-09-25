@@ -9,6 +9,7 @@ function randomReview(rating) {
     1: [
       'Worse game I have ever played!',
       'Why did this game cost any money?',
+      'I rather try to steal a bear\'s cub then play this game.',
       'Refunded, this was not worth my time.'
     ],
     2:[
@@ -29,6 +30,7 @@ function randomReview(rating) {
       'This was well worth the time!'
     ],
     5:[
+      'This game is amazing. I love it more then my family!',
       'Best game I have ever played!',
       'How do I send you more money because this was too cheap for the value!',
       'Bought this for a friend! I must get as many people to try this as possible.',
