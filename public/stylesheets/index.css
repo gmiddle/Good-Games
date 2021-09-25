@@ -269,16 +269,13 @@ form {
     max-width: 500px;
     border-radius: 15px;
     box-shadow: 5px 5px 12px rgb(0, 0, 0);
-    /* display: inline-block; */
+    display: inline-block;
 }
 
 .box-header{
     display: inline-block;
     max-width: 500px;
-    
-}
-.box-2 p {
     color: whitesmoke;
     text-align: justify;
-
+    font-size: large;
 }
