@@ -11,8 +11,12 @@ header
                     input(class="games-button button" type="submit" value="Games")
                 
                 if (loggedIn)
+                    form(action="/game-shelves" method="get" )
+                        input(class="gshelf-button button" type="submit" value="Games Shelves")
+                    
                     form(action="/users/logout" method="post" )
-                            input(class="log-out button" type="submit" value="Log Out")
+                        input(class="log-out button" type="submit" value="Log Out")
+                    
                 
                 else
                     form(action="/users/login" method="post")
