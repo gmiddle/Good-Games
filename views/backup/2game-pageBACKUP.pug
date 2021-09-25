@@ -1,0 +1,102 @@
+extends layout.pug
+
+block append head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="/stylesheets/game-page.css")
+    title Good Games - #{game.name}
+
+block append main
+    body
+        div(class="content")
+            div(class='gameInfo')
+                h1 #{game.name}
+                div(class='imageAndInfo')
+                    img(src=game.game_img, alt="#{game.name}")
+                    div(class='shortInfo')
+                        p Developer: #{game.developer}
+                        p Publisher: #{game.publisher}
+                        p Genre: #{game.genre}
+                        p Release Date: #{game.release_date}
+                        p Average Rating: #{starAverage}
+                p #{game.description}
+
+                if (loggedIn)
+                    form(class="shelfForm" action="/games/shelf-entry" method="post" )
+                        select(name='gameShelfId')
+                            each shelf in shelves
+                                option(value=shelf.id) #{shelf.shelf_name}
+                        input(type="hidden" name="gameId" value=game.id)
+                        input(class="add-game" type="submit" value="Add to Shelf")
+
+            div(class='userReview')
+                if (loggedIn)
+                    h1 Your Review
+                    form(action="/games/reviews" method="post")
+                        input(type="hidden" name="_csrf" value=token)
+                        input(type="hidden" name="gameId" value=game.id)
+
+                        div(class="rate")
+                            if userRating == 5
+                                input(type="radio" id="star5" name="rating" value=5 checked)
+                            else
+                                input(type="radio" id="star5" name="rating" value=5)
+                            label(for="star5" title="text") 5 stars
+
+                            if userRating == 4
+                                input(type="radio" id="star4" name="rating" value=4 checked)
+                            else
+                                input(type="radio" id="star4" name="rating" value=4)
+                            label(for="star4" title="text") 4 stars
+
+                            if userRating == 3
+                                input(type="radio" id="star3" name="rating" value=3 checked)
+                            else
+                                input(type="radio" id="star3" name="rating" value=3)
+                            label(for="star3" title="text") 3 stars
+
+                            if userRating == 2
+                                input(type="radio" id="star2" name="rating" value=2 checked)
+                            else
+                                input(type="radio" id="star2" name="rating" value=2)
+                            label(for="star2" title="text") 2 stars
+
+                            if userRating == 1
+                                input(type="radio" id="star1" name="rating" value=1 checked)
+                            else
+                                input(type="radio" id="star1" name="rating" value=1)
+                            label(for="star1" title="text") 1 star
+
+                        div(class="reviewText")
+                            if (hasReview)
+                                textarea(type="text" id="review" rows='6' cols='60' name="review" required) #{userReview.review}
+                                input(type="submit" value="Update Review")
+                            else
+                                textarea(type="text" id="review" rows='6' cols='60' name="review" required)
+                                input(type="submit" value="Submit Review")
+                            if (hasReview)
+                                form(action="/games/reviews/delete" method="post")
+                                    input(type="hidden" name="_csrf" value=token)
+                                    input(type="hidden" name="gameId" value=game.id)
+                                    input(type="submit" value="Delete Review")
+
+            div(class='reviewsContainer')
+                h1 Reviews
+                div(class='reviews')
+                    each review in reviews
+                        if review.User.userId !== currentUser
+                            div(class='reviewEntry')
+                                p #{review.User.user_name}
+                                div(class='staticRating')
+                                    if review.rating == 1
+                                        p ★
+                                    else if review.rating == 2
+                                        p ★★
+                                    else if review.rating == 3
+                                        p ★★★
+                                    else if review.rating == 4
+                                        p ★★★★
+                                    else if review.rating == 5
+                                        p ★★★★★
+                                p #{review.review}
