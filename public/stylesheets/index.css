@@ -21,6 +21,7 @@ body {
 
 main {
     box-sizing: content-box;
+    width: 75%;
 }
 
 /* Sign Up Form */
@@ -38,7 +39,7 @@ main {
 }
 
 header {
-    width: 99%;
+    width: 100%;
     /* 100% includes unnecessary scroll */
 }
  .header {
@@ -54,7 +55,7 @@ header {
     top: -10px;
     left: -10px;
     margin-bottom: 25px;
-    position:relative;
+    position: fixed;
     min-height: 55px;
     max-height: 55px;
     padding: 5px 20px;
@@ -162,10 +163,11 @@ form {
 /* container alignment */
 .box-container {
     width: 100%;
-    height: fit-content;
+    height:100%;
     display: flex;
     flex-direction: row-reverse;
-    align-items: center;
+    /* align-items: center; */
+    align-content: center;
 
 }
 
@@ -177,7 +179,9 @@ form {
     justify-content: center;
     background-color: rgba(28, 102, 137, .4);
     border-radius: 15px;
-    margin: 20px;
+    margin-top: 70px;
+    margin-left: 70px;
+    padding: 30px;
 }
 
 .box-1 input.sign-up {
@@ -203,7 +207,9 @@ form {
     align-items: center;
     align-content: center;
     justify-content: center;
-    margin: 20px;
+    margin: 30px;
+    
+
 }
 
 .box-2 p {
