@@ -4,10 +4,10 @@
     Sans-serif;
 }
 
-h1 {
+/* h1 {
     display: flex;
     color: #b8b6b4;
-}
+} */
 
 body {
     /* background-color: #c6d4df; */
@@ -22,6 +22,7 @@ body {
 main {
     box-sizing: content-box;
     width: 75%;
+    padding: 50px;
 }
 
 /* Sign Up Form */
@@ -38,10 +39,10 @@ main {
     height: 50px;
 }
 
-header {
+/* header {
     width: 100%;
-    /* 100% includes unnecessary scroll */
-}
+    /* 100% includes unnecessary scroll
+} */
  .header {
     text-align: right;
     background-color: #171a21;
@@ -219,9 +220,7 @@ form {
 .box-2 p {
     color: whitesmoke;
 }
-.box-2 h1 {
-     color: whitesmoke;
-}
+
 
 .new_shelf {
     color: pink;
