@@ -35,15 +35,24 @@ module.exports = (sequelize, DataTypes) => {
 });
   Game.associate = function(models) {
     // associations can be defined here
+      const columnMapping = {
+        through: 'Shelf_Entry',  
+        otherKey: 'gameShelfId',  
+        foreignKey: 'gameId'
+      }
+    Game.belongsToMany(models.Game_Shelf, columnMapping);
+    
     Game.hasMany(models.Review, {
       foreignKey: "gameId"
-    }),
-    Game.hasMany(models.Shelf_Entry, {
-      foreignKey: "gameId"
-    }),
+    });
+
     Game.hasMany(models.Genre_tag_join, {
       foreignKey: "gameId"
-    })
+    });
+    
+    // Game.hasMany(models.Shelf_Entry, {
+    //   foreignKey: "gameId"
+    // })
   };
   return Game;
 };
