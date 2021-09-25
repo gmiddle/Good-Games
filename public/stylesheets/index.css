@@ -22,6 +22,7 @@ body {
 main {
     box-sizing: content-box;
 }
+
 /* Sign Up Form */
 
 .sign_up_form {
@@ -130,10 +131,13 @@ footer{
     /* margin-right: 15px; */
     align-content: space-around;
 }
+
 form {
     margin: 10px;
 }
+
 /* Buttons */
+
 .button {
 
     font-family: "Motiva Sans", Sans-serif;
@@ -154,10 +158,6 @@ form {
 
 }
 
-
-
-
-
 /* container alignment */
 .box-container {
     width: 100%;
@@ -177,7 +177,6 @@ form {
     background-color: rgba(28, 102, 137, .4);
     border-radius: 15px;
     margin: 20px;
-
 }
 
 .box-1 input.sign-up {
@@ -204,7 +203,6 @@ form {
     align-content: center;
     justify-content: center;
     margin: 20px;
-
 }
 
 .box-2 p {
