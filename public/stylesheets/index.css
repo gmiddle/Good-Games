@@ -254,3 +254,13 @@ form {
     margin-bottom: 30px;
     margin-right: 60px;
 }
+
+
+.img-container {
+    min-width: 100px;
+    max-width: 100px;
+}
+
+.idx-img {
+    box-shadow: 5px 5px 12px rgb(0, 0, 0);
+}
