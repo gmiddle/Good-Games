@@ -62,6 +62,13 @@ h1 {
     margin-left: 25px;
 }
 
+.add_to_shelf {
+    border: 0;
+    margin-left: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
 .review_form {
     font-size: 40px;
     display: flex;
