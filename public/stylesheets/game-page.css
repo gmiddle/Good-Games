@@ -1,7 +1,3 @@
-*{
-    /* border: 1px solid black; */
-}
-
 main {
     margin: auto;
     display: flex;
@@ -66,7 +62,6 @@ h1 {
     margin-left: 25px;
 }
 
-
 .review_form {
     font-size: 40px;
     display: flex;
@@ -111,7 +106,7 @@ textarea {
     font-size: 18px;
     background-color: #e6f9ffcc;
   }
-y
+
 .reviewText {
     display: flex;
     flex-direction: column;
@@ -130,18 +125,21 @@ y
 }
 
 .review_entry {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
     background-color: #30333b;
-    min-width: 800px;
+    max-width: 700px;
     margin-bottom: 10px;
     border: 3px solid rgb(29, 29, 29);
     font-size: 25px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.review_user {
+    font-weight: bold;
 }
 
 .staticRating {
-    font-size: 22px;
+    font-size: 26px;
     color: #ffc700;
 }
 
