@@ -2,24 +2,24 @@
 
 header
     div(class="header")
-        a(href="/") 
+        a(href="/")
             img(class="logo" src="/images/Good Games.png", alt="Good Games Logo")
-    
+
         nav
             div(class="nav-buttons")
-            
+
                 form(action="/search/entry" method="post" class="search-box")
                     input(type="text" name="search" placeholder="Search games" class="search-input")
-                    input(type="submit" value="Search" class="search-button")
+                    input(type="submit" value="Search" class="search-button button")
 
                 form(action="/games" method="get" )
                     input(class="games-button button" type="submit" value="Games")
-                
+
                 if (loggedIn)
 
                     form(action="/game-shelves" method="get" )
                         input(class="gshelf-button button" type="submit" value="Games Shelves")
-                    
+
                     form(action="/users/logout" method="post" )
                         input(class="log-out button" type="submit" value="Log Out")
                 else
@@ -29,9 +29,9 @@ header
                         input(type="hidden" id="user_name" name="user_name" value="Doug_Demodome")
                         input(type="hidden" id="password" name="password" value= "hashBrowns99$12")
                         input(type="submit" class="button" value="Demo Login")
-                    
+
                     form(action="/" method="get" )
                         input(class="sign-in button" type="submit" value="Sign Up")
-            
+
                     form(action="/users/login" method="get" )
                         input(class="log-in button" type="submit" value="Log In")

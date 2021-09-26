@@ -8,9 +8,9 @@ block append head
   //- add page specific js
   //- script(src="NEED A SOURCE HERE" type="module" defer)
 
+  //- TODO: add a line of text above box 1 to sign up
 
-
-  div(class="box-container") 
+  div(class="box-container")
     div(class="box-1")
       +validationErrorSummary(errors)
       form(class="sign_up_form" action="/users" method="post")
@@ -36,10 +36,9 @@ block append head
     div(class="box-2")
       div(class="img-container")
         img(class="idx-img" src="/images/splash-img.png", alt="Video Game Img")
-      div(class="box-header")   
-        p| 
-          | Good Games is a place for you to interact with others and keep track of games in your library! 
+      div(class="box-header")
+        p|
+          | Good Games is a place for you to interact with others and keep track of games in your library!
           ul
             li To create an account: Fill out the "Sign Up" form.
             li Already have an account?  Click "Log In"!
-

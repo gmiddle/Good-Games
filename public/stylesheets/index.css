@@ -67,7 +67,14 @@ main {
 
 /* FOOTER SECTION*/
 
+footer {
+    width: 100px;
+    box-sizing: content-box;
+    height: 10px;
+    position: absolute;
+    bottom: 25px;
 
+}
 .footer {
     display: flex;
     box-sizing: content-box;
@@ -90,17 +97,13 @@ main {
     padding: 30px;
 }
 
-footer {
+footer{
     width: 1000px;
     box-sizing: content-box;
     height: 10px;
     position: absolute;
     bottom: 25px;
 
-}
-
-.footer a:hover {
-    color: whitesmoke;
 }
 
 .username {
@@ -133,9 +136,17 @@ footer {
     align-content: space-around;
 }
 
-
 form {
     margin: 10px;
+}
+
+.search-input {
+    background-color: #e6f9ffcc;
+}
+
+::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
 }
 
 /* Buttons */
