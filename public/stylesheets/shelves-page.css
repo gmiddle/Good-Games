@@ -8,21 +8,12 @@
     /* min-height: 500px; */
     display: flex;
     border: 1px solid black;
-    padding: 150px;
-    background-color: rgba(28, 102, 137, .4);
-    border-radius: 20px;
-    margin-bottom: 30px;
-    margin-left: 60px;
-    margin-right: 60px;
-
-    /*display: flex;
-    border: 1px solid black;
-    padding: 30px;
+    padding: 120px;
     background-color: rgba(28, 102, 137, .4);
     border-radius: 10px;
     margin-bottom: 30px;
     margin-right: 60px;
-    overflow-x: scroll;
+    /* overflow-x: scroll;
     overflow-y: hidden;
     white-space:nowrap */
 }
