@@ -141,7 +141,10 @@ form {
 }
 
 .search-input {
+    border: 0;
     background-color: #e6f9ffcc;
+    min-width: 150px;
+    border-radius: 10px;
 }
 
 ::placeholder {

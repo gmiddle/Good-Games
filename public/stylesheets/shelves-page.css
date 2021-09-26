@@ -70,7 +70,6 @@
   margin-right: 20px;
 }
 
-
 .gameImage {
   max-width: 320px;
   box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.500);
@@ -94,9 +93,11 @@
   height: 150px;
   width: 320px;
   color: whitesmoke;
-  font-size: xx-large;
+  font-size: 25px;
   text-align: justify;
   white-space: normal;
   word-wrap: break-word;
-
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 0;
 }

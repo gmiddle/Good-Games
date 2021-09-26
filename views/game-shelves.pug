@@ -27,7 +27,7 @@ block append head
                                                     img(class="gameImage" src=game.game_img, alt="#{game.name}")
                                         div(class="shelf_gamesLink")
                                             form(action="/games" method="get" )
-                                              input(class="shelf_gamesButton" type="submit" value="Click here to find games to add to your shelf!")
+                                              input(class="shelf_gamesButton gameImage" type="submit" value="Click here to find games to add to your shelf!")
                                             //-     a
                                         //- each game in Shelf_Entry
                                         //-     div()= game.gameId
