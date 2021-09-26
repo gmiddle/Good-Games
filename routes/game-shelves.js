@@ -137,29 +137,28 @@ router.put(
 
 // delete a shelf
 // DELETE to remove shelf id from list of users shelves
-// router.post("/game-shelves/delete", asyncHandler(async (req, res, next) => {
-//   console.log("THIS POST WAS HITTTTTTTT")
-//   let loggedIn = req.session.auth;
-//   // console.log("----------------You made it to the game shelves page.----------------");
-//   let userId = req.session.auth;
-//   // console.log("--------this is the userId", userId);
-//   // const gameShelves findsAll game shelves that are owned by a specific user
-//   const {shelfId} = req.body
-//   const gameShelves = await Game_Shelf.findOne({
-//     where: {
-//       userId,
-//       shelfId
-//     }
-//   })
-//   gameShelves.destroy()
-//   res.redirect('/game-shelves')
-// }))
+router.delete("/:gameShelfId/delete", asyncHandler(async (req, res, next) => {
+  console.log("---------- DELETE POST WAS HIT ------------")
+  let loggedIn = req.session.auth;
+  // console.log("----------------You made it to the game shelves page.----------------");
+  let userId = req.session.auth;
+  // console.log("--------this is the userId", userId);
+  // const gameShelves findsAll game shelves that are owned by a specific user
+  const { gameShelfId } = req.params
+  console.log("------------------------ This is the ID of the game shelf we are deleting", gameShelfId)
+  const gameShelves = await Game_Shelf.findByPk( gameShelfId );
+
+  await gameShelves.destroy()
+  res.json(gameShelves)
+  res.redirect('/game-shelves')
+}))
 
 // add a game? -> link to redirect games page?
 
 
 //set up api route for fetch in event listener
 // check to add json object
+// note add
 
 
 module.exports = router;
