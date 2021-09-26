@@ -4,13 +4,25 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.bulkInsert('Game_Shelves', [
       {
-        shelf_name: 'Demo Shelf 1',
+        shelf_name: 'Favorites',
         userId: '1',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        shelf_name: 'Demo Shelf 2',
+        shelf_name: 'Finished',
+        userId: '1',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        shelf_name: 'Playing',
+        userId: '1',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        shelf_name: 'Unplayed',
         userId: '1',
         createdAt: new Date(),
         updatedAt: new Date()

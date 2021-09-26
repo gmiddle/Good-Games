@@ -32,7 +32,7 @@ main {
     flex-direction: column;
     justify-content: center;
     min-width: 300px;
-   
+
 }
 
 /* HEADER/NAVIGATION */
@@ -67,7 +67,14 @@ main {
 
 /* FOOTER SECTION*/
 
+footer {
+    width: 100px;
+    box-sizing: content-box;
+    height: 10px;
+    position: absolute;
+    bottom: 25px;
 
+}
 .footer {
     display: flex;
     box-sizing: content-box;
@@ -90,17 +97,13 @@ main {
     padding: 30px;
 }
 
-footer {
+footer{
     width: 1000px;
     box-sizing: content-box;
     height: 10px;
     position: absolute;
     bottom: 25px;
 
-}
-
-.footer a:hover {
-    color: whitesmoke;
 }
 
 .username {
@@ -133,9 +136,17 @@ footer {
     align-content: space-around;
 }
 
-
 form {
     margin: 10px;
+}
+
+.search-input {
+    background-color: #e6f9ffcc;
+}
+
+::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
 }
 
 /* Buttons */
@@ -153,7 +164,7 @@ form {
     color: white;
 }
 
-.demo{ 
+.demo{
     color:#b8b6b4;
     background-color: transparent;
     border: none;
@@ -209,7 +220,7 @@ form {
     display: flex;
     flex-direction: column;
     /* flex-wrap: wrap; */
-    align-items: center; 
+    align-items: center;
     /* align-content: center; */
     justify-content: center;
     margin-top: 70px;
@@ -217,7 +228,7 @@ form {
     border-radius: 15px;
     box-shadow: 5px 5px 12px rgb(0, 0, 0);
     /* padding: 50px; */
-    
+
 
 }
 
@@ -257,3 +268,6 @@ form {
     padding: 2px 16px;
 }
 
+.shelf_pageContainer {
+    margin-top: 80px;
+}

@@ -10,17 +10,17 @@ block append head
 block append main
     body
 
-        div(class='gameInfo')
+        div(class='game_info')
             h1 #{game.name}
-            div(class='imageAndInfo')
-                img(src=game.game_img, alt="#{game.name}")
-                div(class='shortInfo')
+            div(class='image_info')
+                img(src=game.game_img, alt="#{game.name}" class='game_image')
+                div(class='short_info')
                     p Developer: #{game.developer}
                     p Publisher: #{game.publisher}
                     p Genre: #{game.genre}
                     p Release Date: #{game.release_date}
                     p Average Rating: #{starAverage}
-            p #{game.description}
+            p(class="game_desc") #{game.description}
 
             if (loggedIn)
                 form(action="/games/shelf-entry" method="post" )
@@ -30,10 +30,10 @@ block append main
                     input(type="hidden" name="gameId" value=game.id)
                     input(class="add-game" type="submit" value="Add to Shelf")
 
-        div(class='userReview')
+        div(class='user_review')
             if (loggedIn)
-                h1 Your Review
-                form(action="/games/reviews" method="post")
+                p(class="title_text review_text") Your Review
+                form(action="/games/reviews" method="post" class="review_form")
                     input(type="hidden" name="_csrf" value=token)
                     input(type="hidden" name="gameId" value=game.id)
 
@@ -71,21 +71,21 @@ block append main
                     label(for="review")
                     if (hasReview)
                         textarea(type="text" id="review" rows='6' cols='60' name="review" required) #{userReview.review}
-                        input(type="submit" value="Update Review")
+                        input(type="submit" value="Update Review" class="review_button edit_add_form")
                     else
                         textarea(type="text" id="review" rows='6' cols='60' name="review" required)
-                        input(type="submit" value="Submit Review")
+                        input(type="submit" value="Submit Review" class="review_button edit_add_form")
                 if (hasReview)
                     form(action="/games/reviews/delete" method="post")
                         input(type="hidden" name="_csrf" value=token)
                         input(type="hidden" name="gameId" value=game.id)
-                        input(type="submit" value="Delete Review")
+                        input(type="submit" value="Delete Review" class="review_button delete_button")
 
         div(class='reviews')
-            h1 Reviews
+            p(class="title_text") Reviews
             each review in reviews
                 if review.User.userId !== currentUser
-                    div(class='reviewEntry')
+                    div(class='review_entry')
                         p #{review.User.user_name}
                         div(class='staticRating')
                             if review.rating == 1
