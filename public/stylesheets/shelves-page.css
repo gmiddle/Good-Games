@@ -24,6 +24,32 @@
     margin-left: 60px;
 }
 
+.shelf_add {
+  display: flex;
+  margin-left: 60px;
+  margin-bottom: 15px;
+  /* background-color: red; */
+  
+}
+
+#shelf_name {
+  border-style: none;
+  height: 30px;
+  width: 345px;
+  border-radius: 7.5px;
+  background-color: #e6f9ffcc;
+}
+
+#shelf_submit {
+  border-style: none;
+  height: 33px;
+  margin-left: 10px;
+  border-radius: 7.5px;
+  background-color: #434953;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
 .delete_button{
   border: 0;
   font-size: 20px;
