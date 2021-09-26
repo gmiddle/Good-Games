@@ -38,6 +38,8 @@ main {
 /* HEADER/NAVIGATION */
 .logo {
     height: 50px;
+    margin-top: 15px;
+    margin-left: 55px;
 }
 
 /* header {
@@ -139,7 +141,8 @@ footer a:hover{
 .nav-buttons {
     display: inline-flex;
     justify-content: space-between;
-    margin-right: 15px;
+    margin-right: 60px;
+    margin-top: 9px;
     align-content: space-around;
 }
 
