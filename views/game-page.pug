@@ -23,12 +23,12 @@ block append main
             p(class="game_desc") #{game.description}
 
             if (loggedIn)
-                form(action="/games/shelf-entry" method="post" )
-                    select(name='gameShelfId')
+                form(action="/games/shelf-entry" method="post")
+                    select(name='gameShelfId' class="add_to_shelf shelf_drop")
                         each shelf in shelves
                             option(value=shelf.id) #{shelf.shelf_name}
                     input(type="hidden" name="gameId" value=game.id)
-                    input(class="add-game" type="submit" value="Add to Shelf")
+                    input(class="add-game" type="submit" value="Add to Shelf" class="add_to_shelf shelf_button")
 
         div(class='user_review')
             if (loggedIn)
@@ -82,7 +82,7 @@ block append main
                         input(type="submit" value="Delete Review" class="review_button delete_button")
 
         div(class='reviews')
-            p(class="title_text") Reviews
+            p(class="title_text reviews_title") Reviews
             each review in reviews
                 if review.User.userId !== currentUser
                     div(class='review_entry')
