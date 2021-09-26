@@ -51,14 +51,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 // TODO: event listener to comment out and leave
 
-  shelfDeleteteButton.addEventListener("click", (e) => {
+  // shelfDeleteteButton.addEventListener("click", (e) => {
 
-    if (e.target.classList.contains("delete_button")){
-      const shelfId = e.target.value
-      const shelfName = document.getElementById(`shelf_number_${shelfId}`)
-      shelfName.remove()
-    }
-  })
+  //   if (e.target.classList.contains("delete_button")){
+  //     const shelfId = e.target.value
+  //     const shelfName = document.getElementById(`shelf_number_${shelfId}`)
+  //     shelfName.remove()
+  //   }
+  // })
 
 
 

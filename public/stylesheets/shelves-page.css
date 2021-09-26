@@ -24,6 +24,34 @@
     margin-left: 60px;
 }
 
+.shelf_add {
+  display: flex;
+  margin-left: 60px;
+  margin-bottom: 15px;
+  /* background-color: red; */
+
+}
+
+#shelf_name {
+  border-style: none;
+  height: 30px;
+  width: 345px;
+  border-radius: 7.5px;
+  background-color: #e6f9ffcc;
+  box-shadow: 5px 5px 12px rgb(0, 0, 0);
+}
+
+#shelf_submit {
+  border-style: none;
+  height: 33px;
+  margin-left: 10px;
+  border-radius: 7.5px;
+  background-color: #434953;
+  color: whitesmoke;
+  font-weight: bold;
+  box-shadow: 5px 5px 12px rgb(0, 0, 0);
+}
+
 .delete_button{
   border: 0;
   font-size: 20px;
@@ -49,7 +77,8 @@
   margin-right: 60px;
   overflow-x: scroll;
   overflow-y: hidden;
-  white-space:nowrap
+  white-space:nowrap;
+  box-shadow: 5px 5px 12px rgb(0, 0, 0);
 }
 
 .eachShelf_container::-webkit-scrollbar {
@@ -82,7 +111,7 @@
 
 .gameImage {
   max-width: 320px;
-  box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.500);
+  box-shadow: 5px 5px 12px rgb(0, 0, 0);
 }
 
 .shelf_gamesLink {
@@ -110,4 +139,5 @@
   padding-left: 20px;
   padding-right: 20px;
   border: 0;
+  box-shadow: 5px 5px 12px rgb(0, 0, 0);
 }
