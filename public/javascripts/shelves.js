@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
   const shelfDeleteteButton = document.getElementById("shelf_list")
 
 
-
+// TODO: event listener to comment out and leave
 
   shelfDeleteteButton.addEventListener("click", (e) => {
 
