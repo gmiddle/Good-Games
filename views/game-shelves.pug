@@ -11,6 +11,7 @@ block append head
         body
             block append header
                 head
+                    div(class="shelf_pageContainer")
                         div(class="shelf_add")
                             label(for="shelf_name")
                             input(type="text" id="shelf_name" name="shelf_name" value placeholder="Shelf Name" required)
@@ -24,7 +25,9 @@ block append head
                                             div(class="gameBox")
                                                 a(href=`/games/${game.id}`)
                                                     img(class="gameImage" src=game.game_img, alt="#{game.name}")
-
+                                        div(class="shelf_gamesLink")
+                                            form(action="/games" method="get" )
+                                              input(class="shelf_gamesButton" type="submit" value="Click here to find games to add to your shelf!")
                                             //-     a
                                         //- each game in Shelf_Entry
                                         //-     div()= game.gameId

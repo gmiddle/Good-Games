@@ -32,7 +32,7 @@ main {
     flex-direction: column;
     justify-content: center;
     min-width: 300px;
-   
+
 }
 
 /* HEADER/NAVIGATION */
@@ -155,7 +155,7 @@ form {
     color: white;
 }
 
-.demo{ 
+.demo{
     color:#b8b6b4;
     background-color: transparent;
     border: none;
@@ -211,7 +211,7 @@ form {
     display: flex;
     flex-direction: column;
     /* flex-wrap: wrap; */
-    align-items: center; 
+    align-items: center;
     /* align-content: center; */
     justify-content: center;
     margin-top: 70px;
@@ -219,7 +219,7 @@ form {
     border-radius: 15px;
     box-shadow: 5px 5px 12px rgb(0, 0, 0);
     /* padding: 50px; */
-    
+
 
 }
 
@@ -250,3 +250,6 @@ form {
     font-size: large;
 }
 
+.shelf_pageContainer {
+    margin-top: 80px;
+}
