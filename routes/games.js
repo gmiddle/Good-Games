@@ -107,13 +107,15 @@ router.post("/reviews", requireAuth, csrfProtection, asyncHandler(async (req, re
   });
   if (!userReview) {
     // post
-    await Review.create({
-      rating,
-      review,
-      spoiler_status:'n', //defaults it to no spoilers (not being used)
-      userId: req.session.auth.userId,
-      gameId
-    });
+    if (rating) {
+      await Review.create({
+        rating,
+        review,
+        spoiler_status:'n', //defaults it to no spoilers (not being used)
+        userId: req.session.auth.userId,
+        gameId
+      });
+    }
   } else {
     // update
     await userReview.update({
