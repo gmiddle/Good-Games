@@ -1,16 +1,21 @@
 .new_shelf {
-    color: pink;
+  color: whitesmoke;
+  font-size: 25px;
+  margin-left: 0px
 }
 
 .shelf_container {
+    /* min-height: 500px; */
     display: flex;
     border: 1px solid black;
-    padding: 150px;
+    padding: 120px;
     background-color: rgba(28, 102, 137, .4);
-    border-radius: 20px;
+    border-radius: 10px;
     margin-bottom: 30px;
-    margin-left: 60px;
     margin-right: 60px;
+    /* overflow-x: scroll;
+    overflow-y: hidden;
+    white-space:nowrap */
 }
 
 .shelf_list {
@@ -69,4 +74,29 @@
 .gameImage {
   max-width: 320px;
   box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.500);
+}
+
+.shelf_gamesLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  /* margin-bottom: 20px; */
+}
+
+.shelf_gamesButton {
+  display: flex;
+  font-weight: bolder;
+  margin-left: -10px;
+  margin-top: -9px;
+  background-color: #434953;
+  height: 150px;
+  width: 320px;
+  color: whitesmoke;
+  font-size: xx-large;
+  text-align: justify;
+  white-space: normal;
+  word-wrap: break-word;
+
 }
