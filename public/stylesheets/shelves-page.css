@@ -73,7 +73,7 @@
 
 .gameImage {
   max-width: 320px;
-
+  box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.500);
 }
 
 .shelf_gamesLink {

@@ -1,32 +1,106 @@
 *{
-    /* margin: 0;
-    padding: 0; */
     /* border: 1px solid black; */
 }
 
-.content { 
-    font-family: "Microsoft Yi Baiti";
-    font-size: 30px;
+main {
     margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 65px;
+    color: #ccc;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.title_text {
+    font-size: 55px;
+}
+
+.content { 
+    font-family: "Microsoft Yi Baiti", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
     display: flex;
     flex-direction: column;
     align-content: center;
     max-width: 2200px;
 }
-.gameInfo {
+
+.game_info {
     max-width: 800px;
+    background-color: rgba(28, 102, 137, .4);
+    border: 1px solid black;
 }
 
-form {
+.image_info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #0000007d;
+    /* margin-left: 100px; */
+    left: 0;
+}
+
+.game_image {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.short_info {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.game_desc {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+
+.review_form {
     font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.userReview {
-    margin: auto;
+.review_button {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 25px;
+    width: 180px;
+    height: 45px;
+    background-color: #b8b6b4;
+}
+
+.delete_button {
+    margin-top: -10px;
+}
+
+.review_text {
+    margin: 1px;
+}
+
+.user_review {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
+}
+
+/* TODO move left */
+.user_review review_text {
+    color: #c59b08;
 }
 
 textarea {
@@ -34,7 +108,8 @@ textarea {
     flex-direction: column;
     align-items: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 30px;
+    font-size: 25px;
+    background-color: #e6f9ffcc;
   }
 
 .reviewText {
@@ -45,7 +120,6 @@ textarea {
 }
 
 .reviewsContainer {
-    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,7 +129,7 @@ textarea {
     box-sizing: content-box;
 }
 
-.reviewEntry {
+.review_entry {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -63,14 +137,7 @@ textarea {
     min-width: 800px;
     margin-bottom: 10px;
     border: 3px solid rgb(29, 29, 29);
-}
-
-.reviewEntry > h1 {
-    font-size: 35px;
-}
-
-.reviewEntry > p {
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .staticRating {
