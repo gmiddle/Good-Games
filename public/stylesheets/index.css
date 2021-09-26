@@ -106,6 +106,10 @@ footer{
 
 }
 
+footer a:hover{
+    color: whitesmoke;
+}
+
 .username {
     margin-right: 20px;
 }
