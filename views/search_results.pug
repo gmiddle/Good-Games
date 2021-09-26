@@ -9,12 +9,12 @@ block append head
 
 block append main
     body
-        div(class="allGames")
+        div(class="all_games")
             if (searchResult)
                 each game in games
-                    div(class="gameBox")
+                    div(class="game_box")
                         a(href=`/games/${game.id}`)
-                            img(class="gameImage" src=game.game_img, alt="#{game.name}")
+                            img(class="game_image" src=game.game_img, alt="#{game.name}")
             else
                 div(class="none-found")
                     h1 No Results Found
