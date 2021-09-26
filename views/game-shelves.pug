@@ -19,7 +19,8 @@ block append head
                         div(class="shelf_list")
                             each shelf in gameShelves
                                 div(class="each_shelf" id=`${shelf.id}`)= shelf.shelf_name
-                                    button(type="submit" value="Delete Shelf" class="delete_button" id=`${shelf.id}`) Delete Shelf
+                                    form(method="DELETE" action=`/game-shelves/${shelf.id}/delete`)
+                                        button(type="submit" value="Delete Shelf" class="delete_button" ) Delete Shelf
                                     div(class="eachShelf_container")
                                         each game in shelf.Games
                                             div(class="gameBox")
