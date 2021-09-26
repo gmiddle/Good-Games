@@ -5,17 +5,17 @@
 }
 
 .shelf_container {
-    /* min-height: 500px; */
-    display: flex;
-    border: 1px solid black;
-    padding: 120px;
-    background-color: rgba(28, 102, 137, .4);
-    border-radius: 10px;
-    margin-bottom: 30px;
-    margin-right: 60px;
-    /* overflow-x: scroll;
-    overflow-y: hidden;
-    white-space:nowrap */
+  /* min-height: 500px; */
+  display: flex;
+  border: 1px solid black;
+  padding: 120px;
+  background-color: rgba(28, 102, 137, .4);
+  border-radius: 10px;
+  margin-bottom: 30px;
+  margin-right: 60px;
+  /* overflow-x: scroll;
+  overflow-y: hidden;
+  white-space:nowrap */
 }
 
 .shelf_list {
@@ -24,22 +24,32 @@
     margin-left: 60px;
 }
 
-.each_shelf {
-    color: whitesmoke;
-    font-size: 25px;
-    margin-left: 0px
+.delete_button{
+  border: 0;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+  border-radius: 4px;
 }
+
+.each_shelf {
+  color: whitesmoke;
+  font-size: 25px;
+  margin-left: 0px
+}
+
 .eachShelf_container {
-    display: flex;
-    border: 1px solid black;
-    padding: 30px;
-    background-color: rgba(28, 102, 137, .4);
-    border-radius: 10px;
-    margin-bottom: 30px;
-    margin-right: 60px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space:nowrap
+  display: flex;
+  border: 1px solid black;
+  padding: 30px;
+  background-color: rgba(28, 102, 137, .4);
+  border-radius: 10px;
+  margin-top: 6px;
+  margin-bottom: 30px;
+  margin-right: 60px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space:nowrap
 }
 
 .eachShelf_container::-webkit-scrollbar {

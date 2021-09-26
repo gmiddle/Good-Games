@@ -99,9 +99,9 @@ h1 {
 }
 
 /* TODO move left */
-.user_review review_text {
+/* .user_review review_text { */
     /* color: #c59b08; */
-}
+/* } */
 
 textarea {
     display: flex;
