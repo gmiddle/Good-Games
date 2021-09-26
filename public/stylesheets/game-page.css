@@ -74,6 +74,17 @@ h1 {
     font-weight: bold;
 }
 
+.shelf_button {
+    border-style: none;
+    height: 33px;
+    margin-left: 10px;
+    border-radius: 7.5px;
+    background-color: #434953;
+    color: whitesmoke;
+    font-weight: bold;
+    box-shadow: 5px 5px 12px rgb(0, 0, 0);
+}
+
 .review_form {
     font-size: 40px;
     display: flex;
