@@ -66,7 +66,7 @@ router.post(
   })
 );
 
-router.delete("/game-shelves", asyncHandler(async (req, res, next) => {
+router.delete("/", asyncHandler(async (req, res, next) => {
   console.log("THIS POST WAS HITTTTTTTT")
   let loggedIn = req.session.auth;
   // console.log("----------------You made it to the game shelves page.----------------");
@@ -74,6 +74,8 @@ router.delete("/game-shelves", asyncHandler(async (req, res, next) => {
   // console.log("--------this is the userId", userId);
   // const gameShelves findsAll game shelves that are owned by a specific user
   const {shelfId} = req.body
+
+  console.log(shelfId)
   const gameShelves = await Game_Shelf.findByPk()
   gameShelves.destroy()
   // res.json(gameShelves)
