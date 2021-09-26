@@ -10,11 +10,11 @@ block append head
 block append main
     body
 
-        div(class='gameInfo')
+        div(class='game_info')
             h1 #{game.name}
-            div(class='imageAndInfo')
-                img(src=game.game_img, alt="#{game.name}")
-                div(class='shortInfo')
+            div(class='image_info')
+                img(src=game.game_img, alt="#{game.name}" class='game_image')
+                div(class='short_info')
                     p Developer: #{game.developer}
                     p Publisher: #{game.publisher}
                     p Genre: #{game.genre}
@@ -32,7 +32,7 @@ block append main
 
         div(class='userReview')
             if (loggedIn)
-                h1 Your Review
+                p(class="title_text review_text") Your Review
                 form(action="/games/reviews" method="post")
                     input(type="hidden" name="_csrf" value=token)
                     input(type="hidden" name="gameId" value=game.id)
@@ -82,7 +82,7 @@ block append main
                         input(type="submit" value="Delete Review")
 
         div(class='reviews')
-            h1 Reviews
+            p(class="title_text") Reviews
             each review in reviews
                 if review.User.userId !== currentUser
                     div(class='reviewEntry')
