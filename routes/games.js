@@ -89,7 +89,6 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
       token: req.csrfToken(),
     });
   } else {
-    // TODO create error in case of non existant game id
     console.log('Game not found')
     // next()
   }
@@ -107,13 +106,15 @@ router.post("/reviews", requireAuth, csrfProtection, asyncHandler(async (req, re
   });
   if (!userReview) {
     // post
-    await Review.create({
-      rating,
-      review,
-      spoiler_status:'n', //defaults it to no spoilers (not being used)
-      userId: req.session.auth.userId,
-      gameId
-    });
+    if (rating) {
+      await Review.create({
+        rating,
+        review,
+        spoiler_status:'n', //defaults it to no spoilers (not being used)
+        userId: req.session.auth.userId,
+        gameId
+      });
+    }
   } else {
     // update
     await userReview.update({
@@ -134,7 +135,6 @@ router.post("/reviews/delete", requireAuth, csrfProtection, asyncHandler(async (
     }
   });
   if (userReview) {
-    // TODO does not work yet
     userReview.destroy();
     res.redirect(`/games/${gameId}`);
   }
@@ -159,7 +159,6 @@ router.post("/shelf-entry", requireAuth, asyncHandler(async (req, res, next) => 
       play_status: "Unplayed"
     });
   } else {
-    // TODO add error for shelf already existing
     console.log('Shelf Already Exists')
   }
   res.redirect("/game-shelves")

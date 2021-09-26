@@ -39,9 +39,9 @@ block append main
 
                     div(class="rate")
                         if userRating == 5
-                            input(type="radio" id="star5" name="rating" value=5 checked)
+                            input(type="radio" id="star5" name="rating" value=5 checked required)
                         else
-                            input(type="radio" id="star5" name="rating" value=5)
+                            input(type="radio" id="star5" name="rating" value=5 required)
                         label(for="star5" title="text") 5 stars
 
                         if userRating == 4
@@ -70,10 +70,10 @@ block append main
 
                     label(for="review")
                     if (hasReview)
-                        textarea(type="text" id="review" rows='6' cols='60' name="review" required) #{userReview.review}
+                        textarea(type="text" id="review" rows='6' cols='60' name="review" placeholder="Type your review and set your star rating." required) #{userReview.review}
                         input(type="submit" value="Update Review" class="review_button edit_add_form")
                     else
-                        textarea(type="text" id="review" rows='6' cols='60' name="review" required)
+                        textarea(type="text" id="review" rows='6' cols='60' name="review" placeholder="Type your review and set your star rating." required)
                         input(type="submit" value="Submit Review" class="review_button edit_add_form")
                 if (hasReview)
                     form(action="/games/reviews/delete" method="post")
