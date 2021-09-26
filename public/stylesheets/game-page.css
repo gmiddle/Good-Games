@@ -17,6 +17,11 @@ h1 {
 
 .title_text {
     font-size: 55px;
+    margin-top: 10px;
+}
+
+.reviews_title {
+    margin-bottom: 4px;
 }
 
 .content {
@@ -60,6 +65,13 @@ h1 {
     font-weight: bold;
     margin-right: 25px;
     margin-left: 25px;
+}
+
+.add_to_shelf {
+    border: 0;
+    margin-left: 10px;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .review_form {
