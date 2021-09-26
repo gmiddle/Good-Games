@@ -37,11 +37,7 @@ router.get(
       include: Game
     });
     // console.log(">>>>>>>>>>>>>>", gameShelves.Game, "<<<<<<<<<<<<<<<<<")
-    for (shelf of gameShelves) {
-      for(game of shelf.Games){
-        console.log(game.game_img)
-      }
-    }
+ 
 
     // console.log(gameShelves);
     res.render("game-shelves.pug", {
