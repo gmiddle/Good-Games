@@ -23,13 +23,27 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
     const newShelfDiv = document.createElement("div");
     const newShelfContainer = document.createElement("div")
+    const buttonContainer =  document.createElement("div")
+    const buttonForm = document.createElement("form")
+    const buttonInput = document.createElement("input")
     newShelfDiv.className = "new_shelf"
-    newShelfContainer.className = "shelf_container"
+    newShelfContainer.className = "eachShelf_container"
+    buttonContainer.className = "shelf_gamesLink"
+    buttonInput.className = "shelf_gamesButton"
+    buttonInput.type = "submit"
+    buttonInput.value = "Click here to find games to add to your Shelf!"
 
+    buttonForm.action = "/games"
+    buttonForm.method = "get"
+
+    buttonContainer.href = "/games"
     newShelfDiv.innerText = shelfFetch.shelf_name;
     let shelfList = document.querySelector(".shelf_list");
     shelfList.appendChild(newShelfDiv);
     newShelfDiv.appendChild(newShelfContainer)
+    newShelfContainer.appendChild(buttonContainer)
+    buttonContainer.appendChild(buttonForm)
+    buttonForm.appendChild(buttonInput)
   });
 
   // const shelfDeleteteButton = document.querySelectorAll("delete_button")
