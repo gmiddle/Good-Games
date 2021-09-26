@@ -81,7 +81,7 @@ h1 {
     font-size: 25px;
     width: 180px;
     height: 45px;
-    background-color: #b8b6b4;
+    background-color: #dedede;
 }
 
 .delete_button {
@@ -108,7 +108,7 @@ textarea {
     flex-direction: column;
     align-items: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 25px;
+    font-size: 18px;
     background-color: #e6f9ffcc;
   }
 y

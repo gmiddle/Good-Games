@@ -70,6 +70,8 @@ const userValidators = [
     }),
 ];
 
+
+
 router.post(
   "/",
   csrfProtection,
@@ -85,8 +87,7 @@ router.post(
       user.password = hashedPassword;
       await user.save();
       loginUser(req, res, user);
-      res.redirect("/game-shelves");
-      // console.log("testing the redirect")
+      // res.redirect("/game-shelves") is called with loginUser
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       console.log(errors);

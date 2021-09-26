@@ -1,8 +1,7 @@
 const db = require('./db/models');
 const loginUser = (req, res, user) => {
     req.session.auth = {userId:user.id};
-    req.session.save(()=>{res.redirect('/games')})
-
+    req.session.save(()=>{res.redirect('/game-shelves')})
 };
 
 const logoutUser = (req, res, user) => {
