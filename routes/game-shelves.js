@@ -158,6 +158,7 @@ router.delete("/:gameShelfId/delete", asyncHandler(async (req, res, next) => {
 
 //set up api route for fetch in event listener
 // check to add json object
+// note add
 
 
 module.exports = router;
