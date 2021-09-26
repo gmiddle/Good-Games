@@ -86,7 +86,7 @@ block append main
             each review in reviews
                 if review.User.userId !== currentUser
                     div(class='review_entry')
-                        p #{review.User.user_name}
+                        p(class="review_user") #{review.User.user_name}
                         div(class='staticRating')
                             if review.rating == 1
                                 p ★

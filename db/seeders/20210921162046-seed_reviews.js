@@ -78,7 +78,7 @@ const fakeReviews = [
   }
 ];
 
-for (let i = 0; i <= 300; i++) {
+for (let i = 0; i <= 800; i++) {
   const rating = getRandomNum(1, 5)
   let newReview = {
     userId: getRandomNum(1, 100),
