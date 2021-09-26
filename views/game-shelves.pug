@@ -16,10 +16,10 @@ block append head
                             label(for="shelf_name")
                             input(type="text" id="shelf_name" name="shelf_name" value placeholder="Shelf Name" required)
                             button(type="submit" id="shelf_submit" value="Submit") Create Shelf
-                        div(class="shelf_list")
+                        div(class="shelf_list" id= "shelf_list")
                             each shelf in gameShelves
-                                div(class="each_shelf" id=`${shelf.id}`)= shelf.shelf_name
-                                    button(type="submit" value="Delete Shelf" class="delete_button" id=`${shelf.id}`) Delete Shelf
+                                div(class="each_shelf" id=`shelf_number_${shelf.id}`)= shelf.shelf_name
+                                    button(type="submit" value=`${shelf.id}` class="delete_button" id=`${shelf.id}`) Delete Shelf
                                     div(class="eachShelf_container")
                                         each game in shelf.Games
                                             div(class="gameBox")
@@ -27,7 +27,5 @@ block append head
                                                     img(class="gameImage" src=game.game_img, alt="#{game.name}")
                                         div(class="shelf_gamesLink")
                                             form(action="/games" method="get" )
-                                              input(class="shelf_gamesButton gameImage" type="submit" value="Click here to find games to add to your shelf!")
-                                            //-     a
-                                        //- each game in Shelf_Entry
-                                        //-     div()= game.gameId
+                                              input(class="shelf_gamesButton" type="submit" value="Click here to find games to add to your shelf!")
+                    script(src="/javascripts/shelves.js" type="module")

@@ -46,15 +46,19 @@ document.addEventListener("DOMContentLoaded", (e) => {
     buttonForm.appendChild(buttonInput)
   });
 
-  // const shelfDeleteteButton = document.querySelectorAll("delete_button")
-  // console.log(shelfDeleteteButton)
-
-  // shelfDeleteteButton.addEventListener("click", (e) => {
-  //   e.preventDefault()
-  //   console.log("this event listener was hit")
+  const shelfDeleteteButton = document.getElementById("shelf_list")
 
 
-  // })
+
+
+  shelfDeleteteButton.addEventListener("click", (e) => {
+
+    if (e.target.classList.contains("delete_button")){
+      const shelfId = e.target.value
+      const shelfName = document.getElementById(`shelf_number_${shelfId}`)
+      shelfName.remove()
+    }
+  })
 
 
 
