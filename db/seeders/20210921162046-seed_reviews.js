@@ -10,24 +10,30 @@ function randomReview(rating) {
       'Worse game I have ever played!',
       'Why did this game cost any money?',
       'I rather try to steal a bear\'s cub then play this game.',
-      'Refunded, this was not worth my time.'
+      'Refunded, this was not worth my time.',
+      'Felt like stubbing my toe every 5 seconds of game play!'
     ],
     2:[
       'The story was ok but otherwise skip this one.',
       'I want my money back.',
-      'It looked fun and has good graphics but is bad otherwise.'
+      'It looked fun and has good graphics but is bad in every other way.',
+      "A concussion is more fun than this game.",
+      "Either this game sucks or I do but it is definitely one of the two."
     ],
     3:[
       'Most average game I have ever played.',
       'I enjoyed it well enough but I would not recommend unless it is on a deep sale.',
-      'Good price for such an average game.',
-      'It\'s just ok.'
+      'Good price for an average game.',
+      'It\'s just ok.',
+      'Take it or leave it if you have spare time and money.'
+
     ],
     4:[
       'It was great but it could have been better without the DRM.',
       'Not as good as the original but it is a must buy.',
       'I was given this for my birthday, It is so much fun to play!',
-      'This was well worth the time!'
+      'This was well worth the time!',
+      'Amazing game but was a bit slow midway through but picked up again for the last third.'
     ],
     5:[
       'This game is amazing. I love it more then my family!',
@@ -72,7 +78,7 @@ const fakeReviews = [
   }
 ];
 
-for (let i = 0; i <= 150; i++) {
+for (let i = 0; i <= 300; i++) {
   const rating = getRandomNum(1, 5)
   let newReview = {
     userId: getRandomNum(1, 100),
