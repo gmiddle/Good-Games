@@ -5,12 +5,12 @@ block append head
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet" href="/stylesheets/all-games.css")
-    title All Games
+    title Good Games - All Games
 
 block append main
     body
-        div(class="allGames")
+        div(class="all_games")
             each game in games
-                div(class="gameBox")
+                div(class="game_box")
                     a(href=`/games/${game.id}`)
-                        img(class="gameImage" src=game.game_img, alt="#{game.name}")
+                        img(class="game_image" src=game.game_img, alt="#{game.name}")
