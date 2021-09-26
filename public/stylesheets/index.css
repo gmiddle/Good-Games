@@ -31,8 +31,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-width: 300px;
-
+    width: 35%;
 }
 
 /* HEADER/NAVIGATION */
@@ -195,9 +194,6 @@ form {
 }
 
 /* Box1 */
-.box-1 input.sign-up {
-    margin-top: 10px;
-}
 
 .box-1 input {
     margin: 5px;
@@ -206,6 +202,11 @@ form {
 .box-1 input:hover {
     background-color: #b8b6b4;
     border: 1px bevel black;
+}
+
+.box-head {
+    width: 100%;
+    text-align: center;
 }
 
 .box-1 {
@@ -223,7 +224,7 @@ form {
     box-shadow: 5px 5px 12px rgb(0, 0, 0);
     margin-right: 100px;
     position: relative;
-    top: 250px;
+    top: 165px;
 
 
 }
@@ -234,7 +235,7 @@ form {
     font-family: "Microsoft Yi Baiti", "Motiva Sans", Sans-serif;
     font-size: 1rem;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
     margin-top: 70px;
@@ -242,12 +243,9 @@ form {
     border-radius: 15px;
     box-shadow: 5px 5px 12px rgb(0, 0, 0);
     position: relative;
-    top: 250px;
-    /* flex-wrap: wrap; */
-    /* align-content: center; */
     padding-top: 50px;
     padding-bottom: 50px;
-
+    top: 165px;
 
 }
 
@@ -263,7 +261,7 @@ form {
 
 
 .img-container {
-    min-width: 700px;
+    /* min-width: 700px; */
     max-width: 700px;
     height: 400px;
     transition: 0.3s;
