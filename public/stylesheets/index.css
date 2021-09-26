@@ -183,7 +183,6 @@ form {
     flex-direction: row-reverse;
     /* align-items: center; */
     align-content: center;
-
 }
 
 
@@ -212,6 +211,8 @@ form {
     border-radius: 15px;
     box-shadow: 5px 5px 12px rgb(0, 0, 0);
     margin-right: 100px;
+    position: relative;
+    top: 250px;
 
 
 }
@@ -223,14 +224,16 @@ form {
     font-size: 1rem;
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
     align-items: center;
-    /* align-content: center; */
     justify-content: center;
     margin-top: 70px;
     margin-left: 100px;
     border-radius: 15px;
     box-shadow: 5px 5px 12px rgb(0, 0, 0);
+    position: relative;
+    top: 250px;
+    /* flex-wrap: wrap; */
+    /* align-content: center; */
     /* padding: 50px; */
 
 
