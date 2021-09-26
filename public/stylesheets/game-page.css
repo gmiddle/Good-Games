@@ -14,13 +14,16 @@ h1 {
     display: flex;
     justify-content: center;
     font-size: 65px;
+    color: #ccc;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 .title_text {
     font-size: 55px;
 }
 
-.content { 
+.content {
     font-family: "Microsoft Yi Baiti", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 30px;
     display: flex;
@@ -37,9 +40,11 @@ h1 {
 
 .image_info {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     background-color: #0000007d;
+    /* margin-left: 100px; */
+    left: 0;
 }
 
 .game_image {
@@ -48,23 +53,54 @@ h1 {
 }
 
 .short_info {
+    font-size: 20px;
+    font-weight: bold;
     margin-left: 20px;
     margin-right: 20px;
 }
 
+.game_desc {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 25px;
+    margin-left: 25px;
+}
 
-form {
+
+.review_form {
     font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.review_button {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 25px;
+    width: 180px;
+    height: 45px;
+    background-color: #b8b6b4;
+}
+
+.delete_button {
+    margin-top: -10px;
 }
 
 .review_text {
     margin: 1px;
 }
 
-.userReview {
+.user_review {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* TODO move left */
+.user_review review_text {
+    /* color: #c59b08; */
 }
 
 textarea {
@@ -72,9 +108,10 @@ textarea {
     flex-direction: column;
     align-items: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 30px;
+    font-size: 25px;
+    background-color: #e6f9ffcc;
   }
-
+y
 .reviewText {
     display: flex;
     flex-direction: column;
@@ -92,7 +129,7 @@ textarea {
     box-sizing: content-box;
 }
 
-.reviewEntry {
+.review_entry {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -100,6 +137,7 @@ textarea {
     min-width: 800px;
     margin-bottom: 10px;
     border: 3px solid rgb(29, 29, 29);
+    font-size: 25px;
 }
 
 .staticRating {
@@ -132,11 +170,11 @@ textarea {
     content: '★ ';
 }
 .rate > input:checked ~ label {
-    color: #ffc700;    
+    color: #ffc700;
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-    color: #deb217;  
+    color: #deb217;
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
