@@ -22,7 +22,7 @@ router.post("/entry", asyncHandler(async (req, res, next) => {
   let games
   let searchResult = false
   if (search !== undefined) {
-      console.log('Starting search for', search)
+      // console.log('Starting search for', search)
       games = await Game.findAll({
         where:{
           name:{
@@ -30,8 +30,8 @@ router.post("/entry", asyncHandler(async (req, res, next) => {
           }
         }
       })
-      console.log('\n\n\n')
-      console.log(games.length)
+      // console.log('\n\n\n')
+      // console.log(games.length)
       if (games.length > 0) {
         searchResult = true
       }

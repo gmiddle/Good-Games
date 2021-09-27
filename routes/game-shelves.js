@@ -58,18 +58,14 @@ router.post(
   "/",
   asyncHandler(async (req, res) => {
     let loggedIn = req.session.auth;
-    console.log(
-      "------------- GAME-SHELVES POST ROUTE WAS HIT ---------------"
-    );
+    // console.log("------------- GAME-SHELVES POST ROUTE WAS HIT ---------------");
 
 
 
     const userId = req.session.auth.userId;
     // console.log("this should be a userID>>>>>>", req.session.auth.userId)
     const { shelf_name } = req.body;
-    console.log(
-      // `>>>>>>>>>>>>> THIS IS THE NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`
-    );
+    // console.log(`>>>>>>>>>>>>> THIS IS THE NAME YOU ARE GIVING THE NEW SHELF: ${shelf_name}`);
       try{
         const gameShelf = await Game_Shelf.create({ shelf_name, userId });
         // console.log(
@@ -86,7 +82,7 @@ router.post(
         });
 
       } catch(err){
-        console.log(">>>>>>>>", err)
+        // console.log(">>>>>>>>", err)
         next()
       }
     // we have 2 different res
@@ -111,7 +107,7 @@ const shelfValidators = [
 router.put(
   "/",
   asyncHandler(async (req, res) => {
-    console.log("------------- GAME-SHELVES PUT ROUTE WAS HIT ---------------");
+    // console.log("------------- GAME-SHELVES PUT ROUTE WAS HIT ---------------");
     // const { shelf_name, userId } = req.body;
     // const shelfId = await Game_Shelf.findOne({ where: { shelf_name } });
     // console.log(shelfId.id)  // => expect the id of the shelf that is in req body
@@ -138,14 +134,14 @@ router.put(
 // delete a shelf
 // DELETE to remove shelf id from list of users shelves
 router.delete("/:gameShelfId/delete", asyncHandler(async (req, res, next) => {
-  console.log("---------- DELETE POST WAS HIT ------------")
+  // console.log("---------- DELETE POST WAS HIT ------------")
   let loggedIn = req.session.auth;
   // console.log("----------------You made it to the game shelves page.----------------");
   let userId = req.session.auth;
   // console.log("--------this is the userId", userId);
   // const gameShelves findsAll game shelves that are owned by a specific user
   const { gameShelfId } = req.params
-  console.log("------------------------ This is the ID of the game shelf we are deleting", gameShelfId)
+  // console.log("------------------------ This is the ID of the game shelf we are deleting", gameShelfId)
   const gameShelves = await Game_Shelf.findByPk( gameShelfId );
 
   await gameShelves.destroy()

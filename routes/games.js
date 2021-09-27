@@ -88,10 +88,11 @@ router.get("/:id(\\d+)", csrfProtection, asyncHandler(async (req, res, next) => 
       hasReview,
       token: req.csrfToken(),
     });
-  } else {
-    console.log('Game not found')
-    // next()
-  }
+  } 
+    // else {
+    // console.log('Game not found')
+    // // next()
+    // }
 }));
 
 // add review
@@ -158,9 +159,10 @@ router.post("/shelf-entry", requireAuth, asyncHandler(async (req, res, next) => 
       gameId,
       play_status: "Unplayed"
     });
-  } else {
-    console.log('Shelf Already Exists')
-  }
+  } 
+    // else {
+    // console.log('Shelf Already Exists')
+    // }
   res.redirect("/game-shelves")
 }));
 
