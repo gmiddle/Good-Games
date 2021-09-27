@@ -7,9 +7,9 @@ function getRandomNum(min, max) {
 function randomReview(rating) {
   const ratingReviews = {
     1: [
-      'Worse game I have ever played!',
+      'Worst game I have ever played!',
       'Why did this game cost any money?',
-      'I rather try to steal a bear\'s cub then play this game.',
+      'I rather try to steal a bear\'s cub than play this game.',
       'Refunded, this was not worth my time.',
       'Felt like stubbing my toe every 5 seconds of game play!'
     ],
@@ -26,17 +26,16 @@ function randomReview(rating) {
       'Good price for an average game.',
       'It\'s just ok.',
       'Take it or leave it if you have spare time and money.'
-
     ],
     4:[
       'It was great but it could have been better without the DRM.',
       'Not as good as the original but it is a must buy.',
-      'I was given this for my birthday, It is so much fun to play!',
+      'I was given this for my birthday, it is so much fun to play!',
       'This was well worth the time!',
       'Amazing game but was a bit slow midway through but picked up again for the last third.'
     ],
     5:[
-      'This game is amazing. I love it more then my family!',
+      'This game is amazing. I love it more than my family!',
       'Best game I have ever played!',
       'How do I send you more money because this was too cheap for the value!',
       'Bought this for a friend! I must get as many people to try this as possible.',
@@ -63,7 +62,7 @@ const fakeReviews = [
     userId: '2',
     rating: '1',
     spoiler_status: 'n',
-    review: 'Why are the space dwarves taller then me? 1 foot out of 5!',
+    review: 'Why are the space dwarves taller than me? 1 foot out of 5!',
     createdAt: new Date(),
     updatedAt: new Date()
   },
