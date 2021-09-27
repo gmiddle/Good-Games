@@ -31,7 +31,7 @@ This page displays a specific Game, as well as a navigation bar with a logout bu
 
 * `GET /games/:id`
 * `POST /games/:id/reviews`
-* `PUT /games/:id/reviews`
+* `POST /games/:id/reviews - the PUT happens within the POST route`
 * `DELETE /games/:id/reviews`
 * `POST /games/:id/genre-tags`
 * `DELETE /games/:id/genre-tags`

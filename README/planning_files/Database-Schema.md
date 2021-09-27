@@ -5,8 +5,8 @@
 | column name | data type | details                    |
 |-------------|------------|---------------------------|
 | id          | integer    | not null, primary key     |
-| user_name   | string(25) | not null, unique          |
-| email       | string(80) | not null, unique          |
+| user_name   | string(25) | not null                  |
+| email       | string(80) | not null                  |
 | password    | string(80) | not null                  |
 | created_at  | datetime   | not null                  |
 | updated-at  | datetime   | not null                  |
