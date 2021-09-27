@@ -25,7 +25,7 @@ h1 {
 }
 
 .content {
-    font-family: "Microsoft Yi Baiti", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: "Microsoft Yi Baiti", Cambria, Cochin, Georgia, Times, 'Times New Roman', sans-serif;
     font-size: 30px;
     display: flex;
     flex-direction: column;
