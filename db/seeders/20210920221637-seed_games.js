@@ -51,7 +51,7 @@ module.exports = {
       {
           "name": "Portal 2",
           "game_img": "https://cdn.akamai.steamstatic.com/steam/apps/620/header.jpg?t=1610490805",
-          "description": "The &quot;Perpetual Testing Initiative&quot; has been expanded to allow you to design co-op puzzles for you and your friends!",
+          "description": "The Perpetual Testing Initiative has been expanded to allow you to design co-op puzzles for you and your friends!",
           "release_date": "Apr 18, 2011",
           "developer": "Valve",
           "publisher": "Valve",
@@ -96,7 +96,7 @@ module.exports = {
       {
           "name": "Portal",
           "game_img": "https://cdn.akamai.steamstatic.com/steam/apps/400/header.jpg?t=1608593358",
-          "description": "Portal&trade; is a new single player game from Valve. Set in the mysterious Aperture Science Laboratories, Portal has been called one of the most innovative new games on the horizon and will offer gamers hours of unique gameplay.",
+          "description": "Portal is a new single player game from Valve. Set in the mysterious Aperture Science Laboratories, Portal has been called one of the most innovative new games on the horizon and will offer gamers hours of unique gameplay.",
           "release_date": "10 Oct, 2007",
           "developer": "Valve",
           "publisher": "Valve",
@@ -276,7 +276,7 @@ module.exports = {
       {
           "name": "Subnautica: Below Zero",
           "game_img": "https://cdn.akamai.steamstatic.com/steam/apps/848450/header.jpg?t=1625546902",
-          "description": "Dive into a freezing underwater adventure on an alien planet. Below Zero is set two years after the original Subnautica. Return to Planet 4546B to uncover the truth behind a deadly cover-up. Survive by building habitats, crafting tools, &amp; diving deeper into the world of Subnautica.",
+          "description": "Dive into a freezing underwater adventure on an alien planet. Below Zero is set two years after the original Subnautica. Return to Planet 4546B to uncover the truth behind a deadly cover-up. Survive by building habitats, crafting tools, and diving deeper into the world of Subnautica.",
           "release_date": "May 13, 2021",
           "developer": "Unknown Worlds Entertainment",
           "publisher": "Unknown Worlds Entertainment",
@@ -447,7 +447,7 @@ module.exports = {
       {
           "name": "Dishonored 2",
           "game_img": "https://cdn.akamai.steamstatic.com/steam/apps/403640/header.jpg?t=1603889340",
-          "description": "Reprise your role as a supernatural assassin in Dishonored 2. Declared a masterpiece by Eurogamer and hailed a must-play revenge tale by Game Informer, Dishonored 2 is the follow up to Arkane's 1st-person action blockbuster &amp; winner of 100+ 'Game of the Year' awards, Dishonored.",
+          "description": "Reprise your role as a supernatural assassin in Dishonored 2. Declared a masterpiece by Eurogamer and hailed a must-play revenge tale by Game Informer, Dishonored 2 is the follow up to Arkane's 1st-person action blockbuster winner of 100+ 'Game of the Year' awards, Dishonored.",
           "release_date": "Nov 11, 2016",
           "developer": "Arkane Studios",
           "publisher": "Bethesda Softworks",
@@ -501,7 +501,7 @@ module.exports = {
       {
           "name": "The Walking Dead: Saints & Sinners",
           "game_img": "https://cdn.akamai.steamstatic.com/steam/apps/916840/header.jpg?t=1594746141",
-          "description": "Saints &amp; Sinners is a game unlike any other in The Walking Dead universe. Every challenge you face and decision you make is driven by YOU. Fight the undead, scavenge through the flooded ruins of New Orleans, and face gut-wrenching choices for you and the other survivors. Live The Walking Dead.",
+          "description": "Saints & Sinners is a game unlike any other in The Walking Dead universe. Every challenge you face and decision you make is driven by YOU. Fight the undead, scavenge through the flooded ruins of New Orleans, and face gut-wrenching choices for you and the other survivors. Live The Walking Dead.",
           "release_date": "Jan 23, 2020",
           "developer": "Skydance Interactive",
           "publisher": "Skydance Interactive",
@@ -708,7 +708,7 @@ module.exports = {
       {
           "name": "Dungeon Defenders",
           "game_img": "https://cdn.akamai.steamstatic.com/steam/apps/65800/header.jpg?t=1617394709",
-          "description": "Create a hero from one of four classes to save Etheria in this 4-player coop Tower Defense Action-RPG. Includes Steam exclusive Portal gun &amp; TF2 familiars!",
+          "description": "Create a hero from one of four classes to save Etheria in this 4-player coop Tower Defense Action-RPG. Includes Steam exclusive Portal gun & TF2 familiars!",
           "release_date": "Oct 18, 2011",
           "developer": "Trendy Entertainment",
           "publisher": "Trendy Entertainment",
@@ -888,7 +888,7 @@ module.exports = {
       {
           "name": "FTL: Faster Than Light",
           "game_img": "https://cdn.akamai.steamstatic.com/steam/apps/212680/header.jpg?t=1589331228",
-          "description": "This &quot;spaceship simulation roguelike-like&quot; allows you to take your ship and crew on an adventure through a randomly generated galaxy filled with glory and bitter defeat.",
+          "description": "This spaceship simulation roguelike-like allows you to take your ship and crew on an adventure through a randomly generated galaxy filled with glory and bitter defeat.",
           "release_date": "Sep 14, 2012",
           "developer": "Subset Games",
           "publisher": "Subset Games",
@@ -1059,7 +1059,7 @@ module.exports = {
       {
           "name": "Mirror's Edge",
           "game_img": "https://cdn.akamai.steamstatic.com/steam/apps/17410/header.jpg?t=1615390591",
-          "description": "In a city where information is heavily monitored, couriers called Runners transport sensitive data. In this seemingly utopian paradise, a crime has been committed, &amp; you are being hunted. You are a Runner called Faith and this innovative first-person action-adventure is your story.",
+          "description": "In a city where information is heavily monitored, couriers called Runners transport sensitive data. In this seemingly utopian paradise, a crime has been committed, and you are being hunted. You are a Runner called Faith and this innovative first-person action-adventure is your story.",
           "release_date": "Jan 14, 2009",
           "developer": "DICE",
           "publisher": "Electronic Arts",
