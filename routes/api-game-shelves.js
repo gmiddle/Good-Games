@@ -28,9 +28,9 @@ router.get(
       where: userId,
       include: Shelf_Entry
     });
-    for(item of shelf){
-      console.log(item.Shelf_Entry.gameId)
-    }
+    // for(item of shelf){
+    //   // console.log(item.Shelf_Entry.gameId)
+    // }
     res.json(shelf);
   })
 );
@@ -58,7 +58,7 @@ router.post(
       const  { shelf_name } = req.body;
 
       const gameShelf = await Game_Shelf.create({ shelf_name, userId });
-      console.log( "------------- GAME-SHELVES POST ROUTE WAS HIT ---------------");
+      // console.log( "------------- GAME-SHELVES POST ROUTE WAS HIT ---------------");
 
     // TODO: if/else to validate if shelf name already exists for this user
 
@@ -67,7 +67,7 @@ router.post(
 );
 
 router.delete("/", asyncHandler(async (req, res, next) => {
-  console.log("THIS POST WAS HITTTTTTTT")
+  // console.log("THIS POST WAS HITTTTTTTT")
   let loggedIn = req.session.auth;
   // console.log("----------------You made it to the game shelves page.----------------");
   let userId = req.session.auth;
@@ -75,7 +75,7 @@ router.delete("/", asyncHandler(async (req, res, next) => {
   // const gameShelves findsAll game shelves that are owned by a specific user
   const {shelfId} = req.body
 
-  console.log(shelfId)
+  // console.log(shelfId)
   const gameShelves = await Game_Shelf.findByPk()
   gameShelves.destroy()
   // res.json(gameShelves)
