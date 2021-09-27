@@ -25,7 +25,7 @@ h1 {
 }
 
 .content {
-    font-family: "Microsoft Yi Baiti", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: "Microsoft Yi Baiti", Cambria, Cochin, Georgia, Times, 'Times New Roman', sans-serif;
     font-size: 30px;
     display: flex;
     flex-direction: column;
@@ -74,6 +74,17 @@ h1 {
     font-weight: bold;
 }
 
+.shelf_button {
+    border-style: none;
+    height: 33px;
+    margin-left: 10px;
+    border-radius: 7.5px;
+    background-color: #434953;
+    color: whitesmoke;
+    font-weight: bold;
+    box-shadow: 5px 5px 12px rgb(0, 0, 0);
+}
+
 .review_form {
     font-size: 40px;
     display: flex;
@@ -86,10 +97,11 @@ h1 {
     margin-top: 10px;
     font-weight: bold;
     font-size: 25px;
-    width: 180px;
+    width: 200px;
     height: 45px;
     background-color: #dedede;
 }
+
 
 .delete_button {
     margin-top: -10px;

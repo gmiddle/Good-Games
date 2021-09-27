@@ -79,7 +79,7 @@ router.post(
   asyncHandler(async (req, res) => {
     let loggedIn = req.session.auth;
     const { user_name, email, password } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     const user = await db.User.build({ user_name, email });
     const validatorErrors = validationResult(req);
     if (validatorErrors.isEmpty()) {
@@ -90,7 +90,7 @@ router.post(
       // res.redirect("/game-shelves") is called with loginUser
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
-      console.log(errors);
+      // console.log(errors);
       res.render("index", {
         title: "Sign Up",
         user,
@@ -129,23 +129,23 @@ router.post(
   asyncHandler(async (req, res) => {
     let loggedIn = req.session.auth;
     const { user_name, password } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
 
     let errors = [];
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
       const user = await db.User.findOne({ where: { user_name } });
-      console.log(user);
+      // console.log(user);
       if (user !== null) {
-        console.log("user is not null!!!!!!!!!");
+        // console.log("user is not null!!!!!!!!!");
         const passwordMatch = await bcrypt.compare(
           password,
           user.password.toString()
         );
 
         if (passwordMatch) {
-          console.log("PASSWORD MATCHES!!!!!!!!!!!!!!");
+          // console.log("PASSWORD MATCHES!!!!!!!!!!!!!!");
           loginUser(req, res, user);
         }
       }
@@ -166,7 +166,7 @@ router.post(
 router.post("/logout", (req, res) => {
   logoutUser(req, res);
   // res.redirect('/')
-  console.log("USER SUCCESSFULLY LOGGED OUT");
+  // console.log("USER SUCCESSFULLY LOGGED OUT");
 });
 
 module.exports = router;

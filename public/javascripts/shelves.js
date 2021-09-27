@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
   //pass in variables to create card
   shelfSubmitButton.addEventListener("click", async (e) => {
     e.preventDefault();
-    console.log("----this event listener was hit-----");
+    // console.log("----this event listener was hit-----");
 
     const shelfName = document.getElementById("shelf_name");
 
-    console.log(shelfName.value);
+    // console.log(shelfName.value);
     let shelfFetch = await fetch("/api-game-shelves", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
