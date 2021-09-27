@@ -1,9 +1,3 @@
-Who Wants It
-What Do They Want
-Why Do They Want It
-
-
-
 
 Logged-in user:
 --------------------------------------------------------
@@ -56,7 +50,7 @@ Logged-in user:
     * I can view all of my created Game-Shelves.
       * So that I can see and interact with my Game-Shelves.
 
-### Create And Remove Game-Shelf
+### Create And Remove Game-Shelf (Remove shelf not implmented)
 
 * As a logged in user, I want to be able to post a new Game-Shelf.
   * When I'm on the `/game-shelves/:id` page:
@@ -69,7 +63,7 @@ Logged-in user:
       * So that I can keep my Games and Game-Shelves organized.
 
 
-### Adding and Removing A Game To/From A Game-Shelf
+### Adding and Removing A Game To/From A Game-Shelf (Remove game not implemented)
 
 * As a logged in user, I want to be able to add a Game to one of my Game-Shelves.
   * When I'm on the `/games/:id` page:
@@ -81,7 +75,7 @@ Logged-in user:
     * I can remove a game from a Game-Shelf.
       * So that I can keep my games and Game-Shelves organized.
 
-### Viewing Games, Reviews, and Play Status
+### Viewing Games, Reviews, and Play Status (play status not implemented)
 
 * As a logged in user, I want to be able to view a selection of the most recent Games.
   * When I'm on the `/games` page:
